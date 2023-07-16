@@ -2,11 +2,11 @@ import React from "react";
 import * as styles from './Button.module.scss';
 import cs from 'classnames';
 
-const Button = ({children, type = 'button', onClick, disabled, size = '', text, secondary}) => {
+const Button = ({children, className = '', type = 'button', onClick, disabled, size = '', text, secondary}) => {
     return (
         <button
             className={cs(
-                styles.button, {
+                styles.button, className, {
                     [styles.small]: size === 'small',
                     [styles.medium]: size === 'medium',
                     [styles.text]: text,

@@ -34,4 +34,14 @@
       }
     }
   }
+
+  .actionWrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .loginWrap {
+      margin-left: 50px;
+    }
+  }
 }

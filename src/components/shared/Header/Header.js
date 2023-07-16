@@ -16,6 +16,7 @@ const Header = () => {
             </div>
 
             <div className={styles.actionWrap}>
+                <img src="" alt=""/>
                 <Button size='small'>
                     Chcę subskrybować
                 </Button>
@@ -23,6 +24,10 @@ const Header = () => {
                 <div className={styles.loginWrap}>
                     <Button size='medium' text secondary>
                         Logowanie
+                    </Button>
+                    <span> / </span>
+                    <Button size='medium' text>
+                        Rejestracja
                     </Button>
                 </div>
             </div>
