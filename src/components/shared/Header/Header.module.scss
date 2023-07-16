@@ -1,0 +1,37 @@
+@import 'src/styles/config';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 38.5px 31.5px 39.5px 60.5px;
+
+  .logoWrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 440px;
+
+    .logo {
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 120%;
+      color: $primary;
+      margin-right: 35px
+    }
+
+    .contact {
+      position: relative;
+      top: -3px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 140%;
+      color: $primary;
+
+      &Link {
+        color: $black;
+        margin-left: 3px;
+      }
+    }
+  }
+}

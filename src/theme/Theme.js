@@ -1,10 +1,14 @@
 import React from "react";
+import Header from "../components/shared/Header/Header";
 
 const Theme = ({children}) => {
     return (
-        <main>
-            {children}
-        </main>
+        <>
+            <Header/>
+            <main>
+                {children}
+            </main>
+        </>
     );
 };
 
