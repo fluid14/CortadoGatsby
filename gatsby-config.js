@@ -3,7 +3,7 @@
  */
 module.exports = {
   siteMetadata: {
-    siteUrl: ``,
+    siteUrl: `https://kawacortado.pl`,
     title: `Cortado`,
     description: `Najlepsza kawa dla Twojej firmy!`,
     author: `@springStudio`,
