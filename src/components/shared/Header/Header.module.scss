@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 38.5px 31.5px 39.5px 60.5px;
+  padding: 42.5px 31.5px 33.5px 60.5px;
 
   &:after {
     content: '';
@@ -30,14 +30,14 @@
       font-weight: 500;
       line-height: 120%;
       color: $primary;
-      margin-right: 40px
+      margin-right: 45px
     }
 
     .contact {
       position: relative;
       top: -1px;
       font-size: 14px;
-      font-weight: 400;
+      font-weight: 300;
       line-height: 140%;
       color: $primary;
 
