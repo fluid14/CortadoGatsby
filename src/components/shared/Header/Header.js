@@ -27,8 +27,9 @@ const Header = () => {
         </div>
 
         <div className={styles.actionWrap}>
-          <img src="" alt="" />
-          <Button size="small">Chcę subskrybować</Button>
+          <Button size="small" className={styles.subscription}>
+            Chcę subskrybować
+          </Button>
 
           <div className={styles.loginWrap}>
             <StaticImage
@@ -79,6 +80,9 @@ const Header = () => {
             </Link>
           </li>
         </ul>
+        <Button size="small" className={cs(styles.subscription, styles.mobile)}>
+          Chcę subskrybować
+        </Button>
       </nav>
     </div>
   );
