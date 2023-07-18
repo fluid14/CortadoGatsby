@@ -3,11 +3,13 @@ import * as styles from './Header.module.scss';
 import Button from '../Button/Button';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
+import cs from 'classnames';
 
 const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
 
   const handleBurgerClick = () => {
+    console.log('click');
     setBurgerState((prev) => !prev);
   };
 
@@ -43,7 +45,10 @@ const Header = () => {
             </Button>
           </div>
 
-          <div className={styles.hamburger} onClick={handleBurgerClick}>
+          <div
+            className={cs(styles.hamburger, { [styles.active]: burgerState })}
+            onClick={handleBurgerClick}
+          >
             <span className={styles.line} />
             <span className={styles.line} />
             <span className={styles.line} />
@@ -51,7 +56,7 @@ const Header = () => {
         </div>
       </header>
 
-      <nav className={styles.nav}>
+      <nav className={cs(styles.nav, { [styles.active]: burgerState })}>
         <ul className={styles.navList}>
           <li className={styles.navItem}>
             <Link className={styles.navLink} activeClassName={styles.active} to="/">
