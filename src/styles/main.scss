@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+//Utils
 @import 'utils/reset';
+
+//Config
 @import 'config';
+
+//Theme
 @import 'theme/global';
+
+//Base
+@import 'base/typhography';
+@import 'base/sections';
