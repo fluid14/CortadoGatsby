@@ -18,7 +18,7 @@ const HowItWork = () => {
         </p>
       </div>
 
-      <HowItWorkSteps />
+      <HowItWorkSteps className={styles.steps} />
     </section>
   );
 };

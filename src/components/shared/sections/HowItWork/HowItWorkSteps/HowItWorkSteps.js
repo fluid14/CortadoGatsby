@@ -1,15 +1,16 @@
 import React from 'react';
 import * as styles from './HowItWorkSteps.module.scss';
 import HowItWorkStep from '../HowItWorkStep/HowItWorkStep';
+import cs from 'classnames';
 
 import img1 from '../../../../../images/develop/howitwork1.png';
 import img2 from '../../../../../images/develop/howitwork3.png';
 import img3 from '../../../../../images/develop/howitwork2.png';
 import Button from '../../../Button/Button';
 
-const HowItWorkSteps = () => {
+const HowItWorkSteps = ({ className = '' }) => {
   return (
-    <div className={styles.howItWorkStepsWrap}>
+    <div className={cs(className, styles.howItWorkStepsWrap)}>
       <h2 className={styles.title}>Jak to działa?</h2>
       <ul className={styles.steps}>
         <HowItWorkStep img={img1} number="1" title="Kawa" />
