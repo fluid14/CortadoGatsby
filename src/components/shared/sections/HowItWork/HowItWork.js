@@ -1,6 +1,7 @@
 import React from 'react';
 import * as styles from './HowItWork.module.scss';
 import cs from 'classnames';
+import HowItWorkSteps from './HowItWorkSteps/HowItWorkSteps';
 
 const HowItWork = () => {
   return (
@@ -16,6 +17,8 @@ const HowItWork = () => {
           kaw czy porównywanie ofert.
         </p>
       </div>
+
+      <HowItWorkSteps />
     </section>
   );
 };
