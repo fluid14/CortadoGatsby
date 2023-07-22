@@ -33,3 +33,21 @@ p {
   margin: 0;
   padding: 0;
 }
+
+.link {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  text-decoration: underline;
+  color: $link;
+  cursor: pointer;
+  transition: .2s ease;
+
+  &:hover {
+    color: $link2;
+  }
+
+  &:focus {
+    color: $link3;
+  }
+}
