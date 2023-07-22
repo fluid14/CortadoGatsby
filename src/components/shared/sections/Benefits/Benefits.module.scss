@@ -41,3 +41,39 @@
     max-width: 50%;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .benefitsWrap {
+    flex-direction: column;
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    }
+    background: url('../../../../images/coffe.svg') calc(100vw - 220px) bottom / 180px no-repeat $cortado1;
+
+    .descriptionWrap {
+      width: 100%;
+      max-width: 80vw;
+      margin-right: 0;
+
+      .title {
+        max-width: 350px;
+        margin-bottom: 30px;
+      }
+
+      .subscriptionButton {
+        margin-bottom: 40px;
+      }
+    }
+
+    .list {
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .benefitsWrap {
+    background: url('../../../../images/coffe.svg') calc(100vw - 120px) bottom / 100px no-repeat $cortado1;
+  }
+}

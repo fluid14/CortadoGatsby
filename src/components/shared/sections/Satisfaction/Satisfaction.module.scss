@@ -44,6 +44,11 @@
 
 @media screen and (max-width: 992px) {
   .satisfactionWrap {
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    }
+
     .imageSun {
       margin-right: 0;
     }
@@ -56,11 +61,6 @@
 
 @media screen and (max-width: 767px) {
   .satisfactionWrap {
-    padding: {
-      top: 30px;
-      bottom: 30px;
-    }
-
     .text {
       position: relative;
       font-size: 28px;
@@ -82,10 +82,6 @@
 
 @media screen and (max-width: 550px) {
   .satisfactionWrap {
-    padding: {
-      top: 30px;
-      bottom: 30px;
-    }
     overflow: hidden;
 
     .text {

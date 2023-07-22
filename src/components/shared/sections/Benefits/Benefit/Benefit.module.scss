@@ -51,3 +51,19 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  .benefitWrap {
+    .image {
+      margin-right: 29px;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .benefitWrap {
+    .image {
+      margin-right: 17px;
+    }
+  }
+}
