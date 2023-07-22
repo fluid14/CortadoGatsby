@@ -1,0 +1,43 @@
+@import 'src/styles/config';
+
+.benefitsWrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: {
+    top: 46px;
+    bottom: 43px;
+  }
+  background: url('../../../../images/coffe.svg') 93px bottom / 225px no-repeat $cortado1;
+
+  .descriptionWrap {
+    width: 50%;
+    max-width: 477px;
+    margin-right: 60px;
+
+    .title {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 124%;
+      color: $white;
+      max-width: 350px;
+      margin-bottom: 46px;
+    }
+
+    .text {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 132%;
+      color: $white;
+      margin-bottom: 17px;
+    }
+
+    .subscriptionButton {
+      border: $white;
+    }
+  }
+
+  .list {
+    max-width: 50%;
+  }
+}
