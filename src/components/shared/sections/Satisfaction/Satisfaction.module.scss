@@ -1,5 +1,42 @@
 @import 'src/styles/config';
 
 .satisfactionWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: $spacerLight;
+  padding: {
+    top: 42px;
+    bottom: 46px;
+  }
+
+  .text {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 120%;
+    color: $third;
+    max-width: 597px;
+
+    .title {
+      color: $primary;
+    }
+  }
+
+  .imageSun {
+    width: 237px;
+    max-width: 237px;
+    margin: {
+      left: 40px;
+      right: 127px
+    };
+  }
+
+  .imageLeaf {
+    position: absolute;
+    top: -184px;
+    right: 45px;
+    width: 125px;
+    max-width: 125px;
+  }
 }
