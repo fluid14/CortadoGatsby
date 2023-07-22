@@ -26,6 +26,7 @@
   .imageSun {
     width: 237px;
     max-width: 237px;
+    min-width: 237px;
     margin: {
       left: 40px;
       right: 127px
@@ -38,5 +39,68 @@
     right: 45px;
     width: 125px;
     max-width: 125px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .satisfactionWrap {
+    .imageSun {
+      margin-right: 0;
+    }
+
+    .imageLeaf {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .satisfactionWrap {
+    padding: {
+      top: 30px;
+      bottom: 30px;
+    }
+
+    .text {
+      position: relative;
+      font-size: 28px;
+      z-index: 1;
+    }
+
+    .imageSun {
+      width: 150px;
+      max-width: 150px;
+      min-width: 150px;
+      margin: {
+        right: 0;
+        left: 20px;
+      };
+      z-index: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .satisfactionWrap {
+    padding: {
+      top: 30px;
+      bottom: 30px;
+    }
+    overflow: hidden;
+
+    .text {
+      position: relative;
+      font-size: 28px;
+      z-index: 1;
+      padding-right: 60px;
+    }
+
+    .imageSun {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%);
+      margin: 0;
+    }
   }
 }
