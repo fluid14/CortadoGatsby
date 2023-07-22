@@ -3,6 +3,7 @@ import Theme from '../theme/Theme';
 import HowItWork from '../components/shared/sections/HowItWork/HowItWork';
 import Satisfaction from '../components/shared/sections/Satisfaction/Satisfaction';
 import Benefits from '../components/shared/sections/Benefits/Benefits';
+import Products from '../components/shared/sections/Products/Products';
 
 const IndexPage = () => {
   return (
@@ -11,6 +12,7 @@ const IndexPage = () => {
       <HowItWork />
       <Satisfaction />
       <Benefits />
+      <Products />
     </Theme>
   );
 };

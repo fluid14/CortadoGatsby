@@ -1,0 +1,29 @@
+@import 'src/styles/config';
+
+.productsWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: {
+    top: 108px;
+    bottom: 94px;
+  }
+
+  .title {
+    display: block;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 120%;
+    text-align: center;
+    max-width: 580px;
+    margin-bottom: 26px;
+  }
+
+  .description {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 132%;
+    margin-bottom: 30px;
+  }
+}
