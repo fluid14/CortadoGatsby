@@ -1,13 +1,14 @@
 import * as React from 'react';
 import Theme from '../theme/Theme';
 import HowItWork from '../components/shared/sections/HowItWork/HowItWork';
+import Satisfaction from '../components/shared/sections/Satisfaction/Satisfaction';
 
 const IndexPage = () => {
   return (
     <Theme>
       {/*<HeaderSlider />*/}
       <HowItWork />
-      <h1>Cortado</h1>
+      <Satisfaction />
     </Theme>
   );
 };

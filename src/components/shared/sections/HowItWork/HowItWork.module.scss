@@ -67,16 +67,17 @@
 
 @media screen and (max-width: 767px) {
   .howItWorkWrap {
-    padding-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 30px;
 
     .title {
       font-size: 28px;
-      max-width: unset;
       padding-top: 20px;
+      max-width: 400px;
       margin-bottom: 30px;
 
       &::before {
-        height: 3px;
+        display: none;
       }
     }
 
@@ -91,6 +92,10 @@
       .description {
         font-size: 18px;
       }
+    }
+
+    .steps {
+      margin-top: 40px;
     }
   }
 }
