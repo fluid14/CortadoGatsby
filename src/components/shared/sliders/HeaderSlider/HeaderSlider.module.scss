@@ -2,7 +2,7 @@
 
 .sliderWrap {
   background-color: $forth;
-  padding-right: 59px !important;
+  padding-right: 0 !important;
 
   .slider {
     width: 100%;
@@ -62,7 +62,7 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1350px) {
   .sliderWrap {
     padding: {
       left: calc(((100% - 1440px) / 2) + 93px);
@@ -76,12 +76,71 @@
 
 @media screen and (max-width: 992px) {
   .sliderWrap {
-    padding-right: 40px !important;
+    padding: 0 !important;
+
+    .slider {
+      .slide {
+        padding: {
+          left: 40px;
+          right: 40px;
+        }
+
+        .contentWrap {
+          width: 100%;
+        }
+
+        .contentWrap {
+          padding: 40px 0;
+
+          .subtext {
+            margin-bottom: 12px;
+          }
+
+          .title {
+            font-size: 36px;
+            max-width: 505px;
+          }
+
+          .text {
+            margin-bottom: 30px;
+          }
+        }
+
+        .imageWrap {
+          display: none;
+        }
+      }
+    }
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 550px) {
   .sliderWrap {
-    padding-right: 25px !important;
+    .slider {
+      .slide {
+        padding: {
+          left: 25px;
+          right: 25px;
+        }
+
+        .contentWrap {
+          padding: 25px 0;
+
+          .subtext {
+            margin-bottom: 6px;
+          }
+
+          .title {
+            font-size: 28px;
+            max-width: unset;
+          }
+
+          .text {
+            font-size: 16px;
+            margin-bottom: 25px;
+          }
+        }
+      }
+    }
   }
 }
