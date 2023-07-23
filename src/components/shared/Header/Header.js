@@ -14,8 +14,8 @@ const Header = () => {
   };
 
   return (
-    <>
-      <header className={cs('section fullWidth', styles.header)}>
+    <div className={styles.headerWrap}>
+      <header className={styles.header}>
         <div className={styles.logoWrap}>
           <p className={styles.logo}>Cortado</p>
           <p className={styles.contact}>
@@ -84,7 +84,7 @@ const Header = () => {
           Chcę subskrybować
         </Button>
       </nav>
-    </>
+    </div>
   );
 };
 

@@ -1,5 +1,10 @@
 @import 'src/styles/config';
 
+.headerWrap {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 .header {
   position: relative;
   display: flex;
@@ -13,9 +18,10 @@
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     display: block;
-    width: 100%;
+    width: 100vw;
     height: 1px;
     background-color: $spacer;
     opacity: 0.5;
@@ -110,8 +116,6 @@
 }
 
 .nav {
-  border-bottom: 1px solid red;
-
   &List {
     display: flex;
     align-items: center;
