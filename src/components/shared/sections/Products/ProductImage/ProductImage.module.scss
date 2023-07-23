@@ -22,3 +22,22 @@
     object-fit: fill;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .productImageWrap {
+    height: 130px;
+    max-height: 130px;
+    margin-top: 30px;
+
+    .image {
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      width: 120px;
+      max-width: 120px;
+      height: auto;
+      max-height: unset;
+      min-height: unset;
+    }
+  }
+}

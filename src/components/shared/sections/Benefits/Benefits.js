@@ -7,7 +7,7 @@ import clockImage from '../../../../images/develop/clock.svg';
 
 const Benefits = () => {
   return (
-    <section className={cs('section', styles.benefitsWrap)}>
+    <section className={cs('section test', styles.benefitsWrap)}>
       <div className={styles.descriptionWrap}>
         <h3 className={styles.title}>Co zyskujesz subskrybują kawę Cortado?</h3>
         <p className={styles.text}>
