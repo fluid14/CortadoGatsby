@@ -11,26 +11,51 @@ import sliderImage from '../../../../images/develop/headerSlider1.png';
 
 const HeaderSlider = () => {
   return (
-    <Swiper
-      className={cs('section fullWidth', styles.slider)}
-      modules={[Pagination]}
-      spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      <SwiperSlide className={styles.slide}>
-        <div className={styles.contentWrap}>
-          <p className={styles.subtext}>Cortado</p>
-          <h2 className={styles.title}>Subskrybuj kawę dla Twojego biznesu.</h2>
-          <p className={styles.text}>Anuluj w dowolnym momencie.</p>
-          <Button className={styles.button}>Sprawdź jak to działa</Button>
-        </div>
-        <div className={styles.imageWrap}>
-          <img className={styles.image} src={sliderImage} alt="header-slider-1" />
-        </div>
-      </SwiperSlide>
-    </Swiper>
+    <section className={cs('section fullWidth', styles.sliderWrap)}>
+      <Swiper
+        className={cs(styles.slider)}
+        modules={[Pagination]}
+        spaceBetween={50}
+        slidesPerView="1"
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+        loop={true}
+      >
+        <SwiperSlide className={styles.slide}>
+          <div className={styles.contentWrap}>
+            <p className={styles.subtext}>Cortado</p>
+            <h2 className={styles.title}>Subskrybuj kawę dla Twojego biznesu.</h2>
+            <p className={styles.text}>Anuluj w dowolnym momencie.</p>
+            <Button>Sprawdź jak to działa</Button>
+          </div>
+          <div className={styles.imageWrap}>
+            <img className={styles.image} src={sliderImage} alt="header-slider-1" />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className={styles.slide}>
+          <div className={styles.contentWrap}>
+            <p className={styles.subtext}>Cortado</p>
+            <h2 className={styles.title}>Subskrybuj kawę dla Twojego biznesu.</h2>
+            <p className={styles.text}>Anuluj w dowolnym momencie.</p>
+            <Button className={styles.button}>Sprawdź jak to działa</Button>
+          </div>
+          <div className={styles.imageWrap}>
+            <img className={styles.image} src={sliderImage} alt="header-slider-1" />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className={styles.slide}>
+          <div className={styles.contentWrap}>
+            <p className={styles.subtext}>Cortado</p>
+            <h2 className={styles.title}>Subskrybuj kawę dla Twojego biznesu.</h2>
+            <p className={styles.text}>Anuluj w dowolnym momencie.</p>
+            <Button className={styles.button}>Sprawdź jak to działa</Button>
+          </div>
+          <div className={styles.imageWrap}>
+            <img className={styles.image} src={sliderImage} alt="header-slider-1" />
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </section>
   );
 };
 
