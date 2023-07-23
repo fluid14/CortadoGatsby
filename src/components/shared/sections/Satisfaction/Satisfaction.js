@@ -6,7 +6,7 @@ import sunImage from '../../../../images/sun.svg';
 
 const Satisfaction = () => {
   return (
-    <section className={cs('section', styles.satisfactionWrap)}>
+    <section className={cs('section fullWidth', styles.satisfactionWrap)}>
       <h3 className={styles.text}>
         <span className={styles.title}>W bonusie:</span> zadowolenie współpracowników gwarantowane!
       </h3>

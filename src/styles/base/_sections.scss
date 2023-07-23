@@ -1,7 +1,15 @@
+$padding: 93px;
+$fullWidthPadding: calc(((100% - 1440px) / 2) + #{$padding});
+
 .section {
+  max-width: 1440px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
   padding: {
-    left: 93px;
-    right: 93px
+    left: $padding;
+    right: $padding;
   };
 
   &.small {
@@ -12,9 +20,21 @@
   }
 
   &.fullWidth {
+    max-width: unset;
     padding: {
-      left: 0;
-      right: 0;
+      left: $fullWidthPadding;
+      right: $fullWidthPadding;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .section {
+    &.fullWidth {
+      padding: {
+        left: $padding;
+        right: $padding;
+      }
     }
   }
 }
@@ -26,7 +46,8 @@
       right: 40px
     }
 
-    &.small {
+    &.small,
+    &.fullWidth {
       padding: {
         left: 40px;
         right: 40px;
@@ -42,7 +63,8 @@
       right: 25px
     }
 
-    &.small {
+    &.small,
+    &.fullWidth {
       padding: {
         left: 25px;
         right: 25px;
