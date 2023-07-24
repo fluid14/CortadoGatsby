@@ -75,3 +75,53 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .sliderWrap {
+    .slider {
+      width: 100%;
+      padding: 0 20px;
+
+      .slide {
+        padding: 20px 20px 25px;
+
+        .stars {
+          width: 120px;
+          margin-bottom: 5px;
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .title {
+          font-size: 16px;
+        }
+
+        .text {
+          font-size: 14px;
+        }
+
+        .sign {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .swiperPagination {
+      gap: 12px;
+      margin-top: 25px;
+
+      .bullet {
+        width: 11px;
+        height: 11px;
+
+        &Active {
+          width: 22px;
+          height: 22px;
+        }
+      }
+    }
+  }
+}
+

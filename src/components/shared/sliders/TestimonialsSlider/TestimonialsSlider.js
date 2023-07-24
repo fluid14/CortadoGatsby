@@ -14,7 +14,7 @@ const TestimonialsSlider = () => {
         className={cs(styles.slider)}
         modules={[Pagination]}
         spaceBetween={33}
-        slidesPerView={1.8}
+        slidesPerView="auto"
         pagination={{
           clickable: true,
           type: 'bullets',

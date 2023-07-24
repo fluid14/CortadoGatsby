@@ -44,3 +44,51 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .testimonialsWrap {
+    .popup {
+      background: url('../../../images/coffeBig.svg') left 140px / 185px no-repeat $bgLightGray;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .testimonialsWrap {
+    padding: {
+      top: 30px;
+      bottom: 30px;
+    }
+
+    .popup {
+      padding: 40px 0 25px;
+      background: url('../../../images/coffeBig.svg') left 180px / 70px no-repeat $bgLightGray;
+
+
+      .description {
+        padding: 0 25px;
+        margin-bottom: 25px;
+
+        .title {
+          font-size: 22px;
+          margin-bottom: 25px;
+        }
+
+        .stars {
+          margin-bottom: 5px;
+
+          .star,
+          svg {
+            width: 30px;
+            height: 30px;
+          }
+        }
+
+        .text {
+          font-size: 14px;
+          color: $border;
+        }
+      }
+    }
+  }
+}
