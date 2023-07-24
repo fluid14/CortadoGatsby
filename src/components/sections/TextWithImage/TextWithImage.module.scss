@@ -1,0 +1,40 @@
+@import 'src/styles/config';
+
+.textWithImageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('../../../images/textWithTextImage.png') center center / cover no-repeat $cortado1;
+  min-height: 325px;
+  padding: 40px 93px;
+
+  .text {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 120%;
+    color: $white;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .textWithImageWrap {
+    min-height: 280px;
+    padding: 40px;
+
+    .text {
+      font-size: 36px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .textWithImageWrap {
+    min-height: 200px;
+    padding: 25px;
+
+    .text {
+      font-size: 28px;
+    }
+  }
+}

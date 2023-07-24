@@ -6,6 +6,8 @@ import Benefits from '../components/sections/Benefits/Benefits';
 import Products from '../components/sections/Products/Products';
 import HeaderSlider from '../components/shared/sliders/HeaderSlider/HeaderSlider';
 import Testimonials from '../components/sections/Tesimonials/Testimonials';
+import TextWithImage from '../components/sections/TextWithImage/TextWithImage';
+import Faq from '../components/sections/Faq/Faq';
 
 const IndexPage = () => {
   return (
@@ -16,6 +18,8 @@ const IndexPage = () => {
       <Benefits />
       <Products />
       <Testimonials />
+      <TextWithImage />
+      <Faq />
     </Theme>
   );
 };

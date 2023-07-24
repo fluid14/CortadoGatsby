@@ -1,0 +1,98 @@
+@import 'src/styles/config';
+
+.faqWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: {
+    top: 64px;
+    bottom: 50px;
+  }
+  background-color: $bgLightGray;
+
+  .title {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 120%;
+    margin-bottom: 24px;
+  }
+
+  .accordionWrap :global {
+    margin-bottom: 66px;
+
+    .accordion-item {
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid $gray2;
+
+      .accordion-header {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 128%;
+
+        .accordion-button {
+          padding: 20px 28px;
+          background-color: transparent;
+
+          &:after {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 16px;
+            width: 16px;
+            background: url('../../../images/icons/arrowDown.svg') center center / 16px no-repeat;
+          }
+
+          &:not(.collapsed) {
+            color: $black;
+
+            &:after {
+              transform: translateY(-50%) rotate(180deg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .button {
+    align-self: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .faqWrap {
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    }
+
+    .title {
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .accordionWrap :global {
+      margin-bottom: 30px;
+
+      .accordion-item {
+        .accordion-header {
+          font-size: 14px;
+
+          .accordion-button {
+            padding: 20px 28px;
+            background-color: transparent;
+          }
+        }
+
+        .accordion-body {
+          font-size: 16px;
+          font-weight: 300;
+          line-height: 148%;
+        }
+      }
+    }
+  }
+}
