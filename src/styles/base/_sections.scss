@@ -1,5 +1,7 @@
 $padding: 93px;
+$paddingSmall: 62px;
 $fullWidthPadding: calc(((100% - 1440px) / 2) + #{$padding});
+$fullWidthPaddingSmall: calc(((100% - 1440px) / 2) + #{$paddingSmall});
 
 .section {
   max-width: 1440px;
@@ -25,6 +27,13 @@ $fullWidthPadding: calc(((100% - 1440px) / 2) + #{$padding});
       left: $fullWidthPadding;
       right: $fullWidthPadding;
     }
+
+    &.small {
+      padding: {
+        left: $fullWidthPaddingSmall;
+        right: $fullWidthPaddingSmall;
+      }
+    }
   }
 }
 
@@ -34,6 +43,13 @@ $fullWidthPadding: calc(((100% - 1440px) / 2) + #{$padding});
       padding: {
         left: $padding;
         right: $padding;
+      }
+
+      &.small {
+        padding: {
+          left: $paddingSmall;
+          right: $paddingSmall;
+        }
       }
     }
   }
@@ -47,7 +63,8 @@ $fullWidthPadding: calc(((100% - 1440px) / 2) + #{$padding});
     }
 
     &.small,
-    &.fullWidth {
+    &.fullWidth,
+    &.fullWidth.small{
       padding: {
         left: 40px;
         right: 40px;
@@ -64,7 +81,8 @@ $fullWidthPadding: calc(((100% - 1440px) / 2) + #{$padding});
     }
 
     &.small,
-    &.fullWidth {
+    &.fullWidth,
+    &.fullWidth.small{
       padding: {
         left: 25px;
         right: 25px;

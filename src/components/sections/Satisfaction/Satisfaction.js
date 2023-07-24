@@ -1,8 +1,8 @@
 import React from 'react';
 import * as styles from './Satisfaction.module.scss';
 import cs from 'classnames';
-import leafImage from '../../../../images/leaf.svg';
-import sunImage from '../../../../images/sun.svg';
+import leafImage from '../../../images/leaf.svg';
+import sunImage from '../../../images/sun.svg';
 
 const Satisfaction = () => {
   return (

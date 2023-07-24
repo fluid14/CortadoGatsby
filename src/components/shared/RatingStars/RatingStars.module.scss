@@ -1,0 +1,15 @@
+@import 'src/styles/config';
+
+.ratingStars {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 230px;
+
+  .star {
+    svg {
+      width: 41px;
+      height: 41px;
+    }
+  }
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import * as styles from './Products.module.scss';
 import cs from 'classnames';
-import Button from '../../Button/Button';
+import Button from '../../shared/Button/Button';
 import Product from './Product/Product';
-import productImage from '../../../../images/develop/product.png';
+import productImage from '../../../images/develop/product.png';
 
 const Products = () => {
   return (

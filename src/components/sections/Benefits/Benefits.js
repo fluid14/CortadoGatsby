@@ -1,9 +1,9 @@
 import React from 'react';
 import * as styles from './Benefits.module.scss';
 import cs from 'classnames';
-import Button from '../../Button/Button';
+import Button from '../../shared/Button/Button';
 import Benefit from './Benefit/Benefit';
-import clockImage from '../../../../images/develop/clock.svg';
+import clockImage from '../../../images/develop/clock.svg';
 
 const Benefits = () => {
   return (

@@ -1,4 +1,4 @@
-@import 'src/styles/config';
+@import '../../../styles/config';
 
 .benefitsWrap {
   display: flex;
@@ -8,7 +8,7 @@
     top: 46px;
     bottom: 43px;
   }
-  background: url('../../../../images/coffe.svg') 93px bottom / 225px no-repeat $cortado1;
+  background: url('../../../images/coffe.svg') 93px bottom / 225px no-repeat $cortado1;
 
   .descriptionWrap {
     width: 50%;
@@ -49,7 +49,7 @@
       top: 40px;
       bottom: 40px;
     }
-    background: url('../../../../images/coffe.svg') calc(100vw - 220px) bottom / 180px no-repeat $cortado1;
+    background: url('../../../images/coffe.svg') calc(100vw - 220px) bottom / 180px no-repeat $cortado1;
 
     .descriptionWrap {
       width: 100%;
@@ -74,6 +74,6 @@
 
 @media screen and (max-width: 550px) {
   .benefitsWrap {
-    background: url('../../../../images/coffe.svg') calc(100vw - 120px) bottom / 100px no-repeat $cortado1;
+    background: url('../../../images/coffe.svg') calc(100vw - 120px) bottom / 100px no-repeat $cortado1;
   }
 }

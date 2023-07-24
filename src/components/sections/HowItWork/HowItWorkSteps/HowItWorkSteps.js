@@ -3,10 +3,10 @@ import * as styles from './HowItWorkSteps.module.scss';
 import HowItWorkStep from '../HowItWorkStep/HowItWorkStep';
 import cs from 'classnames';
 
-import img1 from '../../../../../images/develop/howitwork1.png';
-import img2 from '../../../../../images/develop/howitwork3.png';
-import img3 from '../../../../../images/develop/howitwork2.png';
-import Button from '../../../Button/Button';
+import img1 from '../../../../images/develop/howitwork1.png';
+import img2 from '../../../../images/develop/howitwork3.png';
+import img3 from '../../../../images/develop/howitwork2.png';
+import Button from '../../../shared/Button/Button';
 
 const HowItWorkSteps = ({ className = '' }) => {
   return (
