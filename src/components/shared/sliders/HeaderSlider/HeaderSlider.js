@@ -25,7 +25,7 @@ const HeaderSlider = () => {
           renderBullet: function (index, className) {
             return `<span class="${className}">${
               index > 10 ? index + 1 : '0' + (index + 1)
-            }}</span>`;
+            }</span>`;
           },
         }}
       >
