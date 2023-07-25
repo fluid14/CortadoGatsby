@@ -5,7 +5,7 @@ import HowItWorkSteps from './HowItWorkSteps/HowItWorkSteps';
 
 const HowItWork = () => {
   return (
-    <section className={cs('section', styles.howItWorkWrap)}>
+    <section className={cs('section fullWidth', styles.howItWorkWrap)}>
       <h1 className={styles.title}>Na czym polega subskrypcja kawy?</h1>
       <div className={styles.descriptionWrap}>
         <p className={styles.subTitle}>Masz pełną kontrolę</p>

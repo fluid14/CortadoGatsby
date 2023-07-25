@@ -3,6 +3,7 @@
 .howItWorkWrap {
   padding-top: 80px;
   padding-bottom: 120px;
+  background: url('../../../images/coddeOpacityUp.svg') left 650px / 216px no-repeat, url('../../../images/coffeMini.svg') 450px 550px / 83px no-repeat, url('../../../images/coffeOpacityDown.svg') right 80px / 216px no-repeat;
 
   .title {
     position: relative;
@@ -27,7 +28,7 @@
   }
 
   .descriptionWrap {
-    max-width: 675px;
+    max-width: 770px;
     padding-left: 100px;
 
     .subTitle {
@@ -45,13 +46,26 @@
   }
 
   .steps {
-    margin-top: 75px;
+    margin-top: 95px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .howItWorkWrap {
+    background: url('../../../images/coddeOpacityUp.svg') left 650px / 216px no-repeat, url('../../../images/coffeMini.svg') 450px 520px / 83px no-repeat, url('../../../images/coffeOpacityDown.svg') right 80px / 216px no-repeat;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .howItWorkWrap {
+    background: url('../../../images/coddeOpacityUp.svg') left 650px / 216px no-repeat, url('../../../images/coffeMini.svg') 450px 520px / 83px no-repeat, url('../../../images/coffeOpacityDown.svg') right -130px / 216px no-repeat;
   }
 }
 
 @media screen and (max-width: 992px) {
   .howItWorkWrap {
     padding-top: 40px;
+    background: url('../../../images/coddeOpacityUp.svg') left 1150px / 216px no-repeat, url('../../../images/coffeMini.svg') 50px 500px / 83px no-repeat, url('../../../images/coffeOpacityDown.svg') right -130px / 216px no-repeat;
 
     .title {
       padding-top: 30px;
@@ -69,6 +83,7 @@
   .howItWorkWrap {
     padding-top: 20px;
     padding-bottom: 50px;
+    background: url('../../../images/coffeOpacityDown.svg') right -90px / 120px no-repeat;
 
     .title {
       font-size: 28px;
