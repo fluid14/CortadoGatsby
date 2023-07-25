@@ -31,6 +31,7 @@
     "react-bootstrap-accordion": "^1.0.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "rodal": "^2.1.0",
     "sass": "^1.63.6",
     "swiper": "^10.0.4"
   },
