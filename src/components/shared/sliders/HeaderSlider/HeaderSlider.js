@@ -18,6 +18,16 @@ const HeaderSlider = () => {
         spaceBetween={50}
         slidesPerView="1"
         loop={true}
+        pagination={{
+          clickable: true,
+          type: 'bullets',
+          el: `.${styles.swiperPagination}`,
+          renderBullet: function (index, className) {
+            return `<span class="${className}">${
+              index > 10 ? index + 1 : '0' + (index + 1)
+            }}</span>`;
+          },
+        }}
       >
         <SwiperSlide className={styles.slide}>
           <div className={styles.contentWrap}>
@@ -52,6 +62,8 @@ const HeaderSlider = () => {
             <img className={styles.image} src={sliderImage} alt="header-slider-1" />
           </div>
         </SwiperSlide>
+
+        <div className={styles.swiperPagination} />
       </Swiper>
     </section>
   );
