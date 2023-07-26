@@ -1,0 +1,31 @@
+@import 'src/styles/config';
+
+.partnersWrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 30px;
+  padding: {
+    top: 61px;
+    bottom: 61px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .partnersWrap {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .partnersWrap {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    padding: {
+      top: 25px;
+      bottom: 25px;
+    }
+  }
+}

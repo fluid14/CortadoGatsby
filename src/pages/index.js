@@ -8,6 +8,7 @@ import HeaderSlider from '../components/shared/sliders/HeaderSlider/HeaderSlider
 import Testimonials from '../components/sections/Tesimonials/Testimonials';
 import TextWithImage from '../components/sections/TextWithImage/TextWithImage';
 import Faq from '../components/sections/Faq/Faq';
+import Partners from '../components/sections/Partners/Partners';
 
 const IndexPage = () => {
   return (
@@ -19,6 +20,7 @@ const IndexPage = () => {
       <Products />
       <Testimonials />
       <TextWithImage />
+      <Partners />
       <Faq />
     </Theme>
   );
