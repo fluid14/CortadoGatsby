@@ -9,7 +9,6 @@ const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
 
   const handleBurgerClick = () => {
-    console.log('click');
     setBurgerState((prev) => !prev);
   };
 

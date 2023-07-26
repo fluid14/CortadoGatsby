@@ -3,22 +3,35 @@ import * as styles from './HowItWork.module.scss';
 import cs from 'classnames';
 import HowItWorkSteps from './HowItWorkSteps/HowItWorkSteps';
 
-const HowItWork = () => {
+const HowItWork = ({ data }) => {
+  console.log(data);
+
+  const {
+    title,
+    descriptionTitle,
+    description: {
+      data: { description },
+    },
+    steps,
+    diagramTitle,
+    diagramSufix,
+    button,
+  } = data;
   return (
     <section className={cs('section fullWidth', styles.howItWorkWrap)}>
-      <h1 className={styles.title}>Na czym polega subskrypcja kawy?</h1>
+      <h1 className={styles.title}>{title}</h1>
       <div className={styles.descriptionWrap}>
-        <p className={styles.subTitle}>Masz pełną kontrolę</p>
-        <p className={styles.description}>
-          Raz w miesiącu/Co miesiąc dostarczymy do Twojej firmy aromatyczną, znakomitej jakości kawę
-          do ekspresu. Raz wybierasz rodzaj ziaren, częstotliwość, wielkość dostawy oraz czas
-          trwania umowy. Pamiętaj, że umowę możesz anulować w każdym momencie. Zapewniamy pełną
-          elastyczność i wygodę. Od teraz nie będziesz musiał się martwić o ciągłość dostaw, wybór
-          kaw czy porównywanie ofert.
-        </p>
+        <p className={styles.subTitle}>{descriptionTitle}</p>
+        <p className={styles.description}>{description}</p>
       </div>
 
-      <HowItWorkSteps className={styles.steps} />
+      <HowItWorkSteps
+        className={styles.steps}
+        steps={steps}
+        diagramTitle={diagramTitle}
+        diagramSufix={diagramSufix}
+        button={button}
+      />
     </section>
   );
 };

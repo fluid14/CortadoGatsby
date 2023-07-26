@@ -2,23 +2,36 @@ import React from 'react';
 import * as styles from './HowItWorkSteps.module.scss';
 import HowItWorkStep from '../HowItWorkStep/HowItWorkStep';
 import cs from 'classnames';
-
-import img1 from '../../../../images/develop/howitwork1.png';
-import img2 from '../../../../images/develop/howitwork3.png';
-import img3 from '../../../../images/develop/howitwork2.png';
 import Button from '../../../shared/Button/Button';
 
-const HowItWorkSteps = ({ className = '' }) => {
+const HowItWorkSteps = ({
+  className = '',
+  steps,
+  diagramSufix,
+  diagramTitle,
+  button: { secondary: buttonSecondary, text: buttonText, url: buttonUrl, size: buttonSize },
+}) => {
+  console.log(steps);
   return (
     <div className={cs(className, styles.howItWorkStepsWrap)}>
-      <h2 className={styles.title}>Jak to działa?</h2>
+      <h2 className={styles.title}>{diagramTitle}</h2>
       <ul className={styles.steps}>
-        <HowItWorkStep img={img1} number="1" title="Kawa" />
-        <HowItWorkStep img={img2} number="2" title="Subskrypcja" reverse />
-        <HowItWorkStep img={img3} number="3" title="Cos jeszcze" />
+        {steps.length &&
+          steps.map(({ title, description, number, strapi_id: id, image }, index) => (
+            <HowItWorkStep
+              key={id}
+              image={image}
+              number={number}
+              title={title}
+              description={description}
+              reverse={index % 2}
+            />
+          ))}
       </ul>
-      <p className={styles.afterText}>smacznego!</p>
-      <Button>Chcę subskrybować</Button>
+      <p className={styles.afterText}>{diagramSufix}</p>
+      <Button to={buttonUrl} type="link" secondary={buttonSecondary} size={buttonSize}>
+        {buttonText}
+      </Button>
     </div>
   );
 };
