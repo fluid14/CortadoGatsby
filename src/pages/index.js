@@ -9,10 +9,12 @@ import Testimonials from '../components/sections/Tesimonials/Testimonials';
 import TextWithImage from '../components/sections/TextWithImage/TextWithImage';
 import Faq from '../components/sections/Faq/Faq';
 import Partners from '../components/sections/Partners/Partners';
+import ProductDescription from '../components/sections/ProductDescription/ProductDescription';
 
 const IndexPage = () => {
   return (
     <Theme>
+      <ProductDescription />
       <HeaderSlider />
       <HowItWork />
       <Satisfaction />

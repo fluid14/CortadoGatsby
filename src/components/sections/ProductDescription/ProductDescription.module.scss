@@ -1,0 +1,123 @@
+@import 'src/styles/config';
+
+.productDescription {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: $forth;
+  padding-right: 0 !important;
+
+  .content {
+    width: 55%;
+    padding: {
+      top: 58px;
+      bottom: 58px;
+      right: 80px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 120%;
+      margin-bottom: 10px;
+    }
+
+    .subTitle {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 124%;
+      color: $primary;
+      margin-bottom: 29px;
+    }
+
+    .text {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 132%;
+      color: $black;
+      margin-bottom: 19px;
+      max-width: 533px;
+    }
+  }
+
+  .imageWrap {
+    width: 45%;
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left top;
+    }
+  }
+}
+
+@media screen and (min-width: 1350px) {
+  .productDescription {
+    padding: {
+      left: calc(((100% - 1440px) / 2) + 93px);
+      right: calc(((100% - 1440px) / 2) + 93px) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .productDescription {
+    padding: {
+      right: 40px !important;
+      left: 40px !important;
+    }
+
+    .content {
+      width: 100%;
+      padding: {
+        top: 40px;
+        bottom: 40px;
+        right: 0;
+      }
+
+      .text {
+        max-width: unset;
+      }
+    }
+
+    .imageWrap {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .productDescription {
+    padding: {
+      right: 25px !important;
+      left: 25px !important;
+    }
+
+    .content {
+      padding: {
+        top: 25px;
+        bottom: 25px;
+      }
+
+      .title {
+        font-size: 28px;
+        margin-bottom: 5px;
+      }
+
+      .subTitle {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .text {
+        font-size: 16px;
+        margin-bottom: 19px;
+      }
+    }
+
+    .imageWrap {
+      display: none;
+    }
+  }
+}
