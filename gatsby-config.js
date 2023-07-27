@@ -42,9 +42,9 @@ module.exports = {
       options: {
         apiURL: process.env.STRAPI_API_URL,
         accessToken: process.env.STRAPI_API_TOKEN,
-        singleTypes: [
+        collectionTypes: [
           {
-            singularName: 'home',
+            singularName: 'page',
             queryParams: {
               populate: 'deep',
             },

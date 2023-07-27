@@ -11,7 +11,6 @@ const HowItWorkSteps = ({
   diagramTitle,
   button: { secondary: buttonSecondary, text: buttonText, url: buttonUrl, size: buttonSize },
 }) => {
-  console.log(steps);
   return (
     <div className={cs(className, styles.howItWorkStepsWrap)}>
       <h2 className={styles.title}>{diagramTitle}</h2>
