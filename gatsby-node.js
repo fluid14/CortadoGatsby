@@ -171,6 +171,16 @@ exports.createPages = async ({ graphql, actions }) => {
                 text
               }
             }
+            ... on STRAPI__COMPONENT_SECTIONS_FAQ {
+              id
+              strapi_component
+              title
+              questions {
+                text
+                title
+                id
+              }
+            }
           }
         }
       }

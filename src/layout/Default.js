@@ -8,6 +8,7 @@ import Testimonials from '../components/sections/Tesimonials/Testimonials';
 import Products from '../components/sections/Products/Products';
 import TextWithImage from '../components/sections/TextWithImage/TextWithImage';
 import Partners from '../components/sections/Partners/Partners';
+import Faq from '../components/sections/Faq/Faq';
 
 const Default = ({ pageContext: { data } }) => {
   console.log(data);
@@ -42,6 +43,9 @@ const Default = ({ pageContext: { data } }) => {
 
           case 'sections.images-grid':
             return <Partners data={component} key={id} />;
+
+          case 'sections.faq':
+            return <Faq data={component} key={id} />;
 
           default:
             return null;
