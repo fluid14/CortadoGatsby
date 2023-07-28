@@ -11,8 +11,6 @@ import Partners from '../components/sections/Partners/Partners';
 import Faq from '../components/sections/Faq/Faq';
 
 const Default = ({ pageContext: { data } }) => {
-  console.log(data);
-
   return (
     <Theme>
       {data?.map((component) => {

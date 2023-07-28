@@ -53,12 +53,17 @@
 @media screen and (max-width: 767px) {
   .productsWrap {
     padding: {
-      top: 60px;
-      bottom: 60px;
+      top: 40px;
+      bottom: 40px;
     }
 
     .title {
-      font-size: 26px;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .description {
+      margin-bottom: 15px;
     }
 
     .productsList {
@@ -69,16 +74,6 @@
 
 @media screen and (max-width: 650px) {
   .productsWrap {
-    padding: {
-      top: 40px;
-      bottom: 40px;
-    }
-
-    .title {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
     .productsList {
       grid-template-columns: 1fr;
       grid-gap: 40px;

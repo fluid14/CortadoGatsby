@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import { StaticImage } from 'gatsby-plugin-image';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import cs from 'classnames';
+import { isBrowser } from '../../../utils/isBrowser';
 
 const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
@@ -14,22 +15,23 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const header = headerRef.current;
-    const headerHeight = header.offsetHeight;
+    if (isBrowser()) {
+      const header = headerRef.current;
+      const headerHeight = header.offsetHeight;
 
-    window.addEventListener(
-      'scroll',
-      () => {
-        const top = document.documentElement.scrollTop || document.body.scrollTop;
-        if (top > headerHeight) {
-          header.classList.add(styles.scroll);
-          console.log('add');
-        } else {
-          header.classList.remove(styles.scroll);
-        }
-      },
-      false
-    );
+      window.addEventListener(
+        'scroll',
+        () => {
+          const top = document.documentElement.scrollTop || document.body.scrollTop;
+          if (top > headerHeight) {
+            header.classList.add(styles.scroll);
+          } else {
+            header.classList.remove(styles.scroll);
+          }
+        },
+        false
+      );
+    }
   }, []);
 
   return (
@@ -110,7 +112,12 @@ const Header = () => {
                 {navigation.length &&
                   navigation.map(({ id, title, url }) => (
                     <li className={styles.navItem} key={id}>
-                      <Link className={styles.navLink} activeClassName={styles.active} to={url}>
+                      <Link
+                        className={styles.navLink}
+                        activeClassName={styles.active}
+                        to={url}
+                        onClick={handleBurgerClick}
+                      >
                         {title}
                       </Link>
                     </li>
