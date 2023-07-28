@@ -4,6 +4,7 @@ import HeaderSlider from '../components/shared/sliders/HeaderSlider/HeaderSlider
 import HowItWork from '../components/sections/HowItWork/HowItWork';
 import Satisfaction from '../components/sections/Satisfaction/Satisfaction';
 import Benefits from '../components/sections/Benefits/Benefits';
+import Testimonials from '../components/sections/Tesimonials/Testimonials';
 
 const Default = ({ pageContext: { data } }) => {
   console.log(data);
@@ -26,6 +27,9 @@ const Default = ({ pageContext: { data } }) => {
 
           case 'sections.benefits':
             return <Benefits data={component} key={id} />;
+
+          case 'sections.testimonials':
+            return <Testimonials data={component} key={id} />;
 
           default:
             return null;

@@ -8,10 +8,11 @@
     .slide {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: stretch;
       width: 100%;
       max-width: 700px;
+      height: auto;
       background-color: $white;
       padding: 44px 32px 53px;
       cursor: pointer;

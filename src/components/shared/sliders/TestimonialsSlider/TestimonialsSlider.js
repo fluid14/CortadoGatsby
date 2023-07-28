@@ -7,7 +7,7 @@ import * as styles from './TestimonialsSlider.module.scss';
 import cs from 'classnames';
 import RatingStars from '../../RatingStars/RatingStars';
 
-const TestimonialsSlider = () => {
+const TestimonialsSlider = ({ slides }) => {
   return (
     <div className={styles.sliderWrap}>
       <Swiper
@@ -23,57 +23,15 @@ const TestimonialsSlider = () => {
           bulletActiveClass: styles.bulletActive,
         }}
       >
-        <SwiperSlide className={styles.slide}>
-          <RatingStars className={styles.stars} rating="4" />
-          <h4 className={styles.title}>Wspaniałe</h4>
-          <p className={styles.text}>
-            Subskrybujemy kawę Cortado od trzech miesięcy, wszystkie dostawy były dokładnie na czas
-            i według naszych oczekiwań. To bardzo wygoda forma współpracy, a dodatkowo cieszymy się
-            naprawdę dobrą kawą, która smakuje całej załodze.
-          </p>
-          <p className={styles.sign}>Jan Kowalski, właściciel Bellano</p>
-        </SwiperSlide>
-
-        <SwiperSlide className={styles.slide}>
-          <RatingStars className={styles.stars} rating="2" />
-          <h4 className={styles.title}>Wspaniałe</h4>
-          <p className={styles.text}>
-            Subskrybujemy kawę Cortado od trzech miesięcy, wszystkie dostawy były dokładnie na czas
-            i według naszych oczekiwań. To bardzo wygoda forma współpracy, a dodatkowo cieszymy się
-            naprawdę dobrą kawą, która smakuje całej załodze.
-          </p>
-          <p className={styles.sign}>Jan Kowalski, właściciel Bellano</p>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <RatingStars className={styles.stars} rating="2" />
-          <h4 className={styles.title}>Wspaniałe</h4>
-          <p className={styles.text}>
-            Subskrybujemy kawę Cortado od trzech miesięcy, wszystkie dostawy były dokładnie na czas
-            i według naszych oczekiwań. To bardzo wygoda forma współpracy, a dodatkowo cieszymy się
-            naprawdę dobrą kawą, która smakuje całej załodze.
-          </p>
-          <p className={styles.sign}>Jan Kowalski, właściciel Bellano</p>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <RatingStars className={styles.stars} rating="2" />
-          <h4 className={styles.title}>Wspaniałe</h4>
-          <p className={styles.text}>
-            Subskrybujemy kawę Cortado od trzech miesięcy, wszystkie dostawy były dokładnie na czas
-            i według naszych oczekiwań. To bardzo wygoda forma współpracy, a dodatkowo cieszymy się
-            naprawdę dobrą kawą, która smakuje całej załodze.
-          </p>
-          <p className={styles.sign}>Jan Kowalski, właściciel Bellano</p>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <RatingStars className={styles.stars} rating="2" />
-          <h4 className={styles.title}>Wspaniałe</h4>
-          <p className={styles.text}>
-            Subskrybujemy kawę Cortado od trzech miesięcy, wszystkie dostawy były dokładnie na czas
-            i według naszych oczekiwań. To bardzo wygoda forma współpracy, a dodatkowo cieszymy się
-            naprawdę dobrą kawą, która smakuje całej załodze.
-          </p>
-          <p className={styles.sign}>Jan Kowalski, właściciel Bellano</p>
-        </SwiperSlide>
+        {slides.length &&
+          slides.map(({ id, sign, stars, text, title }) => (
+            <SwiperSlide className={styles.slide} key={id}>
+              <RatingStars className={styles.stars} rating={stars} />
+              <h4 className={styles.title}>{title}</h4>
+              <p className={styles.text}>{text}</p>
+              <p className={styles.sign}>{sign}</p>
+            </SwiperSlide>
+          ))}
       </Swiper>
 
       <div className={styles.swiperPagination} />

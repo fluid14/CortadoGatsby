@@ -118,6 +118,20 @@ exports.createPages = async ({ graphql, actions }) => {
                 url
               }
             }
+            ... on STRAPI__COMPONENT_SECTIONS_TESTIMONIALS {
+              id
+              reviews {
+                title
+                text
+                stars
+                sign
+                id
+              }
+              stars
+              strapi_component
+              subText
+              title
+            }
           }
         }
       }

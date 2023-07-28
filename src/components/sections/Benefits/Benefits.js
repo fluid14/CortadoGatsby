@@ -3,7 +3,6 @@ import * as styles from './Benefits.module.scss';
 import cs from 'classnames';
 import Button from '../../shared/Button/Button';
 import Benefit from './Benefit/Benefit';
-import clockImage from '../../../images/develop/clock.svg';
 
 const Benefits = ({ data: { text, title, benefits, button } }) => {
   return (
@@ -27,11 +26,6 @@ const Benefits = ({ data: { text, title, benefits, button } }) => {
       <ul className={styles.list}>
         {benefits.length &&
           benefits.map(({ id, icon, text }) => <Benefit key={id} icon={icon} description={text} />)}
-        <Benefit
-          img={clockImage}
-          imgAlt="imgAlt"
-          description="·Oszczędność czasu, nie musisz już pamiętać o obowiązkach związanych z zakupem kawy."
-        />
       </ul>
     </section>
   );
