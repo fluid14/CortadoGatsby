@@ -6,6 +6,8 @@ import Satisfaction from '../components/sections/Satisfaction/Satisfaction';
 import Benefits from '../components/sections/Benefits/Benefits';
 import Testimonials from '../components/sections/Tesimonials/Testimonials';
 import Products from '../components/sections/Products/Products';
+import TextWithImage from '../components/sections/TextWithImage/TextWithImage';
+import Partners from '../components/sections/Partners/Partners';
 
 const Default = ({ pageContext: { data } }) => {
   console.log(data);
@@ -34,6 +36,12 @@ const Default = ({ pageContext: { data } }) => {
 
           case 'sections.products':
             return <Products data={component} key={id} />;
+
+          case 'sections.text-with-background-image':
+            return <TextWithImage data={component} key={id} />;
+
+          case 'sections.images-grid':
+            return <Partners data={component} key={id} />;
 
           default:
             return null;

@@ -3,21 +3,11 @@ import * as styles from './Partners.module.scss';
 import cs from 'classnames';
 import Partner from './Partner/Partner';
 
-const Partners = () => {
+const Partners = ({ data: { images } }) => {
   return (
     <section className={cs('section fullWidth small', styles.partnersWrap)}>
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
-      <Partner />
+      {images.length &&
+        images.map(({ id, image, text }) => <Partner key={id} image={image} text={text} />)}
     </section>
   );
 };

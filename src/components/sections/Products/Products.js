@@ -5,14 +5,13 @@ import Button from '../../shared/Button/Button';
 import Product from './Product/Product';
 import productImage from '../../../images/develop/product.png';
 
-const Products = ({ data }) => {
-  console.log(data);
-
-  const {
+const Products = ({
+  data: {
     title,
     text,
     button: { size, secondary, text: buttonText, url },
-  } = data;
+  },
+}) => {
   return (
     <section className={cs('section small', styles.productsWrap)}>
       <h3 className={styles.title}>{title}</h3>

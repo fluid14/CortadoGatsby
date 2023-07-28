@@ -145,6 +145,32 @@ exports.createPages = async ({ graphql, actions }) => {
               text
               title
             }
+            ... on STRAPI__COMPONENT_SECTIONS_TEXT_WITH_BACKGROUND_IMAGE {
+              id
+              backgroundImage {
+                localFile {
+                  url
+                }
+              }
+              strapi_component
+              text
+            }
+            ... on STRAPI__COMPONENT_SECTIONS_IMAGES_GRID {
+              id
+              strapi_component
+              images {
+                id
+                image {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                  alternativeText
+                }
+                text
+              }
+            }
           }
         }
       }
