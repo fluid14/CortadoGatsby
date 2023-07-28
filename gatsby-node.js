@@ -132,6 +132,19 @@ exports.createPages = async ({ graphql, actions }) => {
               subText
               title
             }
+            ... on STRAPI__COMPONENT_SECTIONS_PRODUCTS {
+              id
+              button {
+                secondary
+                size
+                text
+                url
+                id
+              }
+              strapi_component
+              text
+              title
+            }
           }
         }
       }

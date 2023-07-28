@@ -5,16 +5,18 @@ import Button from '../../shared/Button/Button';
 import Product from './Product/Product';
 import productImage from '../../../images/develop/product.png';
 
-const Products = () => {
+const Products = ({ data }) => {
+  console.log(data);
+
+  const {
+    title,
+    text,
+    button: { size, secondary, text: buttonText, url },
+  } = data;
   return (
     <section className={cs('section small', styles.productsWrap)}>
-      <h3 className={styles.title}>
-        Już musisz martwić się o dobór kawy, zrobiliśmy to za Ciebie!
-      </h3>
-      <p className={styles.description}>
-        Poznaj trzy starannie wyselekcjonowane kawy ziarniste, które doskonale sprawdzą się z Twojej
-        firmie:
-      </p>
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.description}>{text}</p>
 
       <ul className={styles.productsList}>
         <Product
@@ -34,7 +36,9 @@ const Products = () => {
         />
       </ul>
 
-      <Button size="medium">Chcę subskrybować</Button>
+      <Button type="link" to={url} size={size} secondary={secondary}>
+        {buttonText}
+      </Button>
     </section>
   );
 };

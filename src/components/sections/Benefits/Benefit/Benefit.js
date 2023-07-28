@@ -2,12 +2,11 @@ import React from 'react';
 import * as styles from './Benefit.module.scss';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-const Benefit = ({ icon, description, key }) => {
-  console.log(icon);
+const Benefit = ({ icon, description }) => {
   return (
     <>
       {icon && (
-        <li className={styles.benefitWrap} key={key}>
+        <li className={styles.benefitWrap}>
           <GatsbyImage
             className={styles.image}
             image={icon.localFile.childImageSharp.gatsbyImageData}

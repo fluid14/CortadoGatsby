@@ -5,6 +5,7 @@ import HowItWork from '../components/sections/HowItWork/HowItWork';
 import Satisfaction from '../components/sections/Satisfaction/Satisfaction';
 import Benefits from '../components/sections/Benefits/Benefits';
 import Testimonials from '../components/sections/Tesimonials/Testimonials';
+import Products from '../components/sections/Products/Products';
 
 const Default = ({ pageContext: { data } }) => {
   console.log(data);
@@ -30,6 +31,9 @@ const Default = ({ pageContext: { data } }) => {
 
           case 'sections.testimonials':
             return <Testimonials data={component} key={id} />;
+
+          case 'sections.products':
+            return <Products data={component} key={id} />;
 
           default:
             return null;
