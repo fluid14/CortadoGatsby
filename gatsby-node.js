@@ -42,7 +42,9 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             ... on STRAPI__COMPONENT_SECTIONS_HOW_IT_WORKS {
               id
-              sectionId
+              sectionInfo {
+                sectionId
+              }
               button {
                 secondary
                 size

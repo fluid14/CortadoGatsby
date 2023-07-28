@@ -6,7 +6,7 @@ import HowItWorkSteps from './HowItWorkSteps/HowItWorkSteps';
 const HowItWork = ({ data }) => {
   const {
     title,
-    sectionId,
+    sectionInfo: { sectionId },
     descriptionTitle,
     description: {
       data: { description },
