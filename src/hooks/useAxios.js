@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 export const useAxios = () => {
   const apiService = axios.create({
     baseURL: process.env.STRAPI_API_URL,
+    headers: { 'Content-Type': 'application/json' },
   });
   apiService.interceptors.request.use((response) => {
     return response;

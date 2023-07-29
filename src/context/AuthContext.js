@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
   const getUser = async (token) => {
     await apiService
       .get(routes.getCurrentUser, {
-        headers: { Authorization: `${BEARER} ${token}`, 'Content-Type': 'application/json' },
+        headers: { Authorization: `${BEARER} ${token}` },
       })
       .then((response) => {
         setUserData(response.json());
@@ -46,7 +46,6 @@ const AuthProvider = ({ children }) => {
   const register = async (values) => {
     await apiService
       .post(routes.register, {
-        headers: { Authorization: `${BEARER} ${token}` },
         body: JSON.stringify(values),
       })
       .then(async (response) => {

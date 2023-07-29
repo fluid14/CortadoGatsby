@@ -9,6 +9,14 @@
   cursor: pointer;
   user-select: none;
 
+  &.error {
+    color: $red;
+
+    .input:before {
+      border-color: $red;
+    }
+  }
+
   .input {
     display: block;
 

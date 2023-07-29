@@ -4,13 +4,24 @@ import cs from 'classnames';
 import * as styles from './index.module.scss';
 import Popup from '../../components/shared/Popup/Popup';
 import PopupTitle from '../../components/shared/Popup/PopupTitle/PopupTitle';
-import Input from '../../components/shared/Inputs/Input/Input';
 import Button from '../../components/shared/Button/Button';
 import { Link } from 'gatsby';
 import PopupSubtitle from '../../components/shared/Popup/PopupSubtitle/PopupSubtitle';
+import { useForm } from 'react-hook-form';
+import Input from '../../components/shared/Inputs/Input/Input';
 import Checkbox from '../../components/shared/Inputs/Checkbox/Checkbox';
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <Theme>
       <div className={cs('section fullWidth small', styles.registerWrap)}>
@@ -24,13 +35,60 @@ const Register = () => {
             </Link>
           </PopupSubtitle>
 
-          <form className={styles.form}>
-            <Input title="Imię" name="name" type="text" required />
-            <Input title="Nazwisko" name="surname" type="text" required />
-            <Input title="E-mail" name="email" type="email" required />
-            <Input title="Hasło" name="password" type="password" required />
-            <Input title="Powtórz hasło" name="repeatPassword" type="password" required />
-            <Checkbox name="regulations" required>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <Input
+              ref={null}
+              label="Imię"
+              name="name"
+              type="text"
+              error={errors.name}
+              register={register}
+              validationSchema={{ required: 'To pole jest wymagane' }}
+            />
+            <Input
+              ref={null}
+              label="Nazwisko"
+              name="surname"
+              type="text"
+              error={errors.surname}
+              register={register}
+              validationSchema={{ required: 'To pole jest wymagane' }}
+            />
+            <Input
+              ref={null}
+              label="E-mail"
+              name="email"
+              type="email"
+              error={errors.email}
+              register={register}
+              validationSchema={{ required: 'To pole jest wymagane' }}
+            />
+            <Input
+              ref={null}
+              label="Hasło"
+              name="password"
+              type="password"
+              error={errors.password}
+              register={register}
+              validationSchema={{ required: 'To pole jest wymagane' }}
+            />
+            <Input
+              ref={null}
+              label="Powtórz hasło"
+              name="repeatPassword"
+              type="password"
+              error={errors.repeatPassword}
+              register={register}
+              validationSchema={{ required: 'To pole jest wymagane' }}
+            />
+
+            <Checkbox
+              ref={null}
+              name="regulations"
+              error={errors.regulations}
+              register={register}
+              validationSchema={{ required: 'To pole jest wymagane' }}
+            >
               Rejestrując się potwierdzasz warunki&nbsp;
               <Link className="link" to="/regulamin">
                 regulaminu
