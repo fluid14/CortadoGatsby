@@ -1,12 +1,27 @@
 @import 'src/styles/config';
 
 .popupWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   border-radius: 24px;
-  background: url('../../../images/coffeBig.svg') left 50px / 185px no-repeat $white;
-  padding: 60px 49px;
+  background-color: $white;
+  padding: 60px 49px 40px;
+  margin: 0 auto;
   overflow: auto;
 
   &.bigPadding {
     padding: 60px 143px;
+  }
+
+  &.decorator {
+    background: url('../../../images/coffeBig.svg') left 50px / 185px no-repeat $white;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .popupWrap {
+    padding: 40px 25px;
   }
 }

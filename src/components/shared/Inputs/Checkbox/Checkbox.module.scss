@@ -1,0 +1,51 @@
+@import 'src/styles/config';
+
+.checkbox {
+  position: relative;
+  padding-left: 30px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 148%;
+  cursor: pointer;
+
+  .input {
+    display: block;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      height: 18px;
+      min-height: 18px;
+      width: 18px;
+      max-width: 18px;
+      border-radius: 4px;
+      border: 1px solid $border;
+      transition: .2s ease;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: rotate(45deg) translateY(calc(-50% - 3.5px));
+      height: 10px;
+      width: 6px;
+      border-bottom: 2px solid $white;
+      border-right: 2px solid $white;
+    }
+
+    &:checked {
+      &:before {
+        border-color: $primary;
+        background-color: $primary;
+      }
+    }
+  }
+
+}

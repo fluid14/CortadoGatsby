@@ -61,7 +61,9 @@ const Header = () => {
           <div className={styles.headerWrap} ref={headerRef}>
             <header className={styles.header}>
               <div className={styles.logoWrap}>
-                <p className={styles.logo}>{logoText}</p>
+                <Link className={styles.logo} to="/">
+                  {logoText}
+                </Link>
                 <p className={styles.contact}>
                   {text}
                   <a className={styles.contactLink} href={`mailto: ${mail}`}>
@@ -87,11 +89,24 @@ const Header = () => {
                     src="../../../images/icons/person.svg"
                     alt="user"
                   />
-                  <Button className={styles.login} size="medium" text secondary>
+                  <Button
+                    className={styles.login}
+                    to="/logowanie"
+                    type="link"
+                    size="medium"
+                    text
+                    secondary
+                  >
                     Logowanie
                   </Button>
                   <span> / </span>
-                  <Button className={styles.register} size="medium" text>
+                  <Button
+                    className={styles.register}
+                    to="/rejestracja"
+                    type="link"
+                    size="medium"
+                    text
+                  >
                     Rejestracja
                   </Button>
                 </div>
@@ -122,6 +137,26 @@ const Header = () => {
                       </Link>
                     </li>
                   ))}
+                <li className={cs(styles.navItem, styles.mobile)}>
+                  <Link
+                    className={styles.navLink}
+                    activeClassName={styles.active}
+                    to="/logowanie"
+                    onClick={handleBurgerClick}
+                  >
+                    Logowanie
+                  </Link>
+                </li>
+                <li className={cs(styles.navItem, styles.mobile)}>
+                  <Link
+                    className={styles.navLink}
+                    activeClassName={styles.active}
+                    to="/rejestracja"
+                    onClick={handleBurgerClick}
+                  >
+                    Rejestracja
+                  </Link>
+                </li>
               </ul>
               <Button
                 className={cs(styles.subscription, styles.mobile)}

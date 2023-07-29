@@ -41,6 +41,7 @@ p {
   text-decoration: underline;
   color: $link;
   cursor: pointer;
+  white-space: nowrap;
   transition: .2s ease;
 
   &:hover {
