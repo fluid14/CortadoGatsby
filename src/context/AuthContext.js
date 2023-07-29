@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { useAxios } from '../hooks/useAxios';
 import useToken from '../hooks/useToken';
 import routes from '../routes.json';
@@ -6,16 +6,12 @@ import { BEARER } from '../constant';
 import { toast } from 'react-toastify';
 import { navigate } from 'gatsby';
 
-export const AuthContext = createContext({
-  user: undefined,
-  setUser: () => {},
-  register: () => {},
-});
+const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState();
   const { apiService } = useAxios();
-  const { getToken, setToken, setUser } = useToken();
+  const { getToken, setToken } = useToken();
 
   const authToken = getToken();
 
@@ -31,7 +27,7 @@ const AuthProvider = ({ children }) => {
         headers: { Authorization: `${BEARER} ${token}` },
       })
       .then((response) => {
-        setUserData(response.json());
+        setUserData(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -39,38 +35,24 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  const handleUser = (user) => {
-    setUserData(user);
-  };
-
-  const register = async (values) => {
-    await apiService
-      .post(routes.register, {
-        body: JSON.stringify(values),
-      })
-      .then(async (response) => {
-        setUserData(response.json());
-
-        const data = await response.json();
-
-        if (data?.error) {
-          throw data?.error;
-        } else {
-          setToken(data.jwt);
-          setUser(data.user);
-          toast.success(`Welcome to Social Cards ${data.user.username}!`);
-          navigate('/profile', { replace: true });
-        }
-      });
+  const registerUser = async (data) => {
+    await apiService.post(routes.register, data).then(async (response) => {
+      const data = await response.data;
+      console.log(data);
+      if (data?.error) {
+        throw data?.error;
+      } else {
+        setToken(data.jwt);
+        setUserData(data.user);
+        toast.success(`Welcome to Social Cards ${data.user.username}!`);
+        await navigate('/konto');
+      }
+    });
   };
 
   return (
-    <AuthContext.Provider value={{ user: userData, setUser: handleUser, register }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ user: userData, registerUser }}>{children}</AuthContext.Provider>
   );
 };
 
-const useAuthContext = () => useContext(AuthContext);
-
-export { AuthProvider, useAuthContext };
+export { AuthProvider, AuthContext };

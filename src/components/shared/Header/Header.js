@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import * as styles from './Header.module.scss';
 import Button from '../Button/Button';
 import { StaticImage } from 'gatsby-plugin-image';
@@ -6,13 +6,13 @@ import { graphql, Link, navigate, StaticQuery } from 'gatsby';
 import cs from 'classnames';
 import { isBrowser } from '../../../utils/isBrowser';
 import useToken from '../../../hooks/useToken';
-import { useAuthContext } from '../../../context/AuthContext';
+import { AuthContext } from '../../../context/AuthContext';
 
 const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
   const headerRef = useRef(null);
   const { removeToken } = useToken();
-  const { user } = useAuthContext();
+  const { user } = useContext(AuthContext);
 
   const handleBurgerClick = () => {
     setBurgerState((prev) => !prev);
@@ -144,7 +144,6 @@ const Header = () => {
                       >
                         Rejestracja
                       </Button>
-                      )
                     </>
                   )}
                 </div>

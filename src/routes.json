@@ -1,4 +1,4 @@
 {
   "getCurrentUser": "api/me",
-  "register": "auth/local/register"
+  "register": "api/auth/local/register"
 }
