@@ -2,16 +2,25 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as styles from './Header.module.scss';
 import Button from '../Button/Button';
 import { StaticImage } from 'gatsby-plugin-image';
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { graphql, Link, navigate, StaticQuery } from 'gatsby';
 import cs from 'classnames';
 import { isBrowser } from '../../../utils/isBrowser';
+import useToken from '../../../hooks/useToken';
+import { useAuthContext } from '../../../context/AuthContext';
 
 const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
   const headerRef = useRef(null);
+  const { removeToken } = useToken();
+  const { user } = useAuthContext();
 
   const handleBurgerClick = () => {
     setBurgerState((prev) => !prev);
+  };
+
+  const handleLogout = () => {
+    removeToken();
+    navigate('/logowanie', { replace: true });
   };
 
   useEffect(() => {
@@ -89,26 +98,55 @@ const Header = () => {
                     src="../../../images/icons/person.svg"
                     alt="user"
                   />
-                  <Button
-                    className={styles.login}
-                    to="/logowanie"
-                    type="link"
-                    size="medium"
-                    text
-                    secondary
-                  >
-                    Logowanie
-                  </Button>
-                  <span> / </span>
-                  <Button
-                    className={styles.register}
-                    to="/rejestracja"
-                    type="link"
-                    size="medium"
-                    text
-                  >
-                    Rejestracja
-                  </Button>
+                  {user ? (
+                    <>
+                      <Button
+                        className={styles.login}
+                        to="/konto"
+                        type="link"
+                        size="medium"
+                        text
+                        secondary
+                      >
+                        Moje konto
+                      </Button>
+                      <span> / </span>
+                      <Button
+                        className={styles.register}
+                        to="/rejestracja"
+                        type="link"
+                        size="medium"
+                        text
+                        onClick={handleLogout}
+                      >
+                        Wyloguj
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button
+                        className={styles.login}
+                        to="/logowanie"
+                        type="link"
+                        size="medium"
+                        text
+                        secondary
+                      >
+                        Logowanie
+                      </Button>
+                      <span> / </span>
+                      <Button
+                        className={styles.register}
+                        to="/rejestracja"
+                        type="link"
+                        size="medium"
+                        text
+                      >
+                        Rejestracja
+                      </Button>
+                      )
+                    </>
+                  )}
                 </div>
 
                 <div

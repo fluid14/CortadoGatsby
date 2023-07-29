@@ -1,0 +1,4 @@
+{
+  "getCurrentUser": "api/me",
+  "register": "auth/local/register"
+}
