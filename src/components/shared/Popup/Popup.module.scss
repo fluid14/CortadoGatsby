@@ -1,0 +1,12 @@
+@import 'src/styles/config';
+
+.popupWrap {
+  border-radius: 24px;
+  background: url('../../../images/coffeBig.svg') left 50px / 185px no-repeat $white;
+  padding: 60px 49px;
+  overflow: auto;
+
+  &.bigPadding {
+    padding: 60px 143px;
+  }
+}
