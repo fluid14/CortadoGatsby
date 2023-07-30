@@ -27,11 +27,7 @@ const AuthProvider = ({ children }) => {
         headers: { Authorization: `${BEARER} ${token}` },
       })
       .then((response) => {
-        setUserData(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-        console.error('Error While Getting Logged In User Details');
+        setUserData(response?.data);
       });
   };
 
@@ -39,14 +35,10 @@ const AuthProvider = ({ children }) => {
     await apiService.post(routes.register, data).then(async (response) => {
       const data = await response.data;
       console.log(data);
-      if (data?.error) {
-        throw data?.error;
-      } else {
-        setToken(data.jwt);
-        setUserData(data.user);
-        toast.success(`Welcome to Social Cards ${data.user.username}!`);
-        await navigate('/konto');
-      }
+      setToken(data.jwt);
+      setUserData(data.user);
+      toast.success(`Zostałeś pomyślnie zarejestrowany!`);
+      await navigate('/konto');
     });
   };
 

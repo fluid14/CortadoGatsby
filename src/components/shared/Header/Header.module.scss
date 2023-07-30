@@ -184,10 +184,8 @@
     }
   }
 
-  .subscription {
-    &.mobile {
-      display: none;
-    }
+  .mobile {
+    display: none;
   }
 }
 
@@ -332,10 +330,10 @@
   .nav {
     .subscription {
       margin-top: 20px;
+    }
 
-      &.mobile {
-        display: flex;
-      }
+    .mobile {
+      display: flex;
     }
   }
 }

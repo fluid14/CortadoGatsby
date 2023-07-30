@@ -1,0 +1,48 @@
+@import 'src/styles/config';
+
+@keyframes preloader {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  z-index: 999;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background-color: $black;
+    z-index: 99;
+    opacity: .6;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 4px;
+    border-radius: 50%;
+    border: 5px solid;
+    border-color: $white transparent $white transparent;
+    animation: preloader 1.2s linear infinite;
+    z-index: 999;
+  }
+}

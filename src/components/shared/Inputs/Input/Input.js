@@ -2,15 +2,7 @@ import React from 'react';
 import cs from 'classnames';
 import * as styles from './Input.module.scss';
 
-const Input = ({
-  className,
-  label = '',
-  name,
-  error,
-  validationSchema,
-  register = () => {},
-  ...rest
-}) => {
+const Input = ({ className, label = '', name, error, register = () => {}, ...rest }) => {
   return (
     <div className={styles.inputWrap}>
       <label className={styles.label} htmlFor={name}>
@@ -21,7 +13,7 @@ const Input = ({
         className={cs(className, styles.input)}
         name={name}
         id={name}
-        {...register(name, validationSchema)}
+        {...register(name)}
       />
       {error && <p className={styles.error}>{error.message}</p>}
     </div>
