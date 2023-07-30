@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import * as styles from '../../../../pages/rejestracja/index.module.scss';
+import * as styles from './RegisterForm.module.scss';
 import Input from '../../Inputs/Input/Input';
 import Checkbox from '../../Inputs/Checkbox/Checkbox';
 import { Link } from 'gatsby';

@@ -4,10 +4,9 @@ import cs from 'classnames';
 import * as styles from './index.module.scss';
 import Popup from '../../components/shared/Popup/Popup';
 import PopupTitle from '../../components/shared/Popup/PopupTitle/PopupTitle';
-import Input from '../../components/shared/Inputs/Input/Input';
-import Button from '../../components/shared/Button/Button';
 import { Link } from 'gatsby';
 import PopupSubtitle from '../../components/shared/Popup/PopupSubtitle/PopupSubtitle';
+import LoginForm from '../../components/shared/forms/LoginForm/LoginForm';
 
 const Login = () => {
   return (
@@ -23,14 +22,7 @@ const Login = () => {
             </Link>
           </PopupSubtitle>
 
-          <form className={styles.form}>
-            <Input title="E-mail" name="email" type="email" required />
-            <Input title="Hasło" name="password" type="password" required />
-
-            <Button className={styles.button} type="submit" size="medium">
-              Zaloguj się
-            </Button>
-          </form>
+          <LoginForm />
         </Popup>
       </div>
     </Theme>

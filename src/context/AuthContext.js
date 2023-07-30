@@ -17,11 +17,11 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (authToken) {
-      getUser(authToken);
+      getCurrentUser(authToken);
     }
   }, [authToken]);
 
-  const getUser = async (token) => {
+  const getCurrentUser = async (token) => {
     await apiService
       .get(routes.getCurrentUser, {
         headers: { Authorization: `${BEARER} ${token}` },
@@ -34,7 +34,6 @@ const AuthProvider = ({ children }) => {
   const registerUser = async (data) => {
     await apiService.post(routes.register, data).then(async (response) => {
       const data = await response.data;
-      console.log(data);
       setToken(data.jwt);
       setUserData(data.user);
       toast.success(`Zostałeś pomyślnie zarejestrowany!`);
@@ -42,8 +41,20 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  const loginUser = async (data) => {
+    await apiService.post(routes.login, data).then(async (response) => {
+      const data = await response.data;
+      setToken(data.jwt);
+      setUserData(data.user);
+      toast.success(`Zostałeś pomyślnie zalogowany!`);
+      await navigate('/konto');
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ user: userData, registerUser }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user: userData, registerUser, loginUser }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
