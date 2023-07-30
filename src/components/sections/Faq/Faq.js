@@ -10,7 +10,6 @@ const Faq = ({ data: { title, questions } }) => {
   const Accordion = loadable(() =>
     import('react-bootstrap-accordion').then((module) => module.Accordion)
   );
-  console.log(Accordion);
 
   return (
     <section className={cs('section fullWidth', styles.faqWrap)}>

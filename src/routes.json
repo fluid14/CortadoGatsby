@@ -1,5 +1,11 @@
 {
-  "getCurrentUser": "api/me",
-  "register": "api/auth/local/register",
-  "login": "api/auth/local"
+  "api" : {
+    "getCurrentUser": "api/users/me",
+    "register": "api/auth/local/register",
+    "login": "api/auth/local"
+  },
+  "home": "/",
+  "register": "/app/rejestracja",
+  "login": "/app/logowanie",
+  "account": "/app/konto"
 }

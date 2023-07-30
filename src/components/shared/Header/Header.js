@@ -2,25 +2,19 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import * as styles from './Header.module.scss';
 import Button from '../Button/Button';
 import { StaticImage } from 'gatsby-plugin-image';
-import { graphql, Link, navigate, StaticQuery } from 'gatsby';
+import { graphql, Link, StaticQuery } from 'gatsby';
 import cs from 'classnames';
 import { isBrowser } from '../../../utils/isBrowser';
-import useToken from '../../../hooks/useToken';
 import { AuthContext } from '../../../context/AuthContext';
+import routes from '../../../routes';
 
 const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
   const headerRef = useRef(null);
-  const { removeToken } = useToken();
-  const { user } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
 
   const handleBurgerClick = () => {
     setBurgerState((prev) => !prev);
-  };
-
-  const handleLogout = () => {
-    removeToken();
-    navigate('/logowanie', { replace: true });
   };
 
   useEffect(() => {
@@ -102,7 +96,7 @@ const Header = () => {
                     <>
                       <Button
                         className={styles.login}
-                        to="/konto"
+                        to={routes.account}
                         type="link"
                         size="medium"
                         text
@@ -113,11 +107,11 @@ const Header = () => {
                       <span> / </span>
                       <Button
                         className={styles.register}
-                        to="/rejestracja"
+                        to={routes.register}
                         type="link"
                         size="medium"
                         text
-                        onClick={handleLogout}
+                        onClick={logoutUser}
                       >
                         Wyloguj
                       </Button>
@@ -126,7 +120,7 @@ const Header = () => {
                     <>
                       <Button
                         className={styles.login}
-                        to="/logowanie"
+                        to={routes.login}
                         type="link"
                         size="medium"
                         text
@@ -137,7 +131,7 @@ const Header = () => {
                       <span> / </span>
                       <Button
                         className={styles.register}
-                        to="/rejestracja"
+                        to={routes.register}
                         type="link"
                         size="medium"
                         text
@@ -178,7 +172,7 @@ const Header = () => {
                   <Link
                     className={styles.navLink}
                     activeClassName={styles.active}
-                    to="/logowanie"
+                    to={routes.login}
                     onClick={handleBurgerClick}
                   >
                     Logowanie
@@ -188,7 +182,7 @@ const Header = () => {
                   <Link
                     className={styles.navLink}
                     activeClassName={styles.active}
-                    to="/rejestracja"
+                    to={routes.register}
                     onClick={handleBurgerClick}
                   >
                     Rejestracja

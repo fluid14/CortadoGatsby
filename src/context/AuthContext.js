@@ -6,53 +6,68 @@ import { BEARER } from '../constant';
 import { toast } from 'react-toastify';
 import { navigate } from 'gatsby';
 
-const AuthContext = createContext(null);
+const AuthContext = createContext({
+  user: {},
+  registerUser: () => {},
+  loginUser: () => {},
+  logoutUser: () => {},
+  isLogged: () => {},
+});
 
 const AuthProvider = ({ children }) => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState(null);
   const { apiService } = useAxios();
-  const { getToken, setToken } = useToken();
+  const { getToken, setToken, removeToken } = useToken();
 
   const authToken = getToken();
 
   useEffect(() => {
-    if (authToken) {
+    if (authToken && !userData) {
+      console.log('GET CURRENT USER');
       getCurrentUser(authToken);
     }
   }, [authToken]);
 
   const getCurrentUser = async (token) => {
     await apiService
-      .get(routes.getCurrentUser, {
+      .get(routes.api.getCurrentUser, {
         headers: { Authorization: `${BEARER} ${token}` },
       })
-      .then((response) => {
-        setUserData(response?.data);
+      .then(async ({ data }) => {
+        setUserData(() => data);
       });
   };
 
   const registerUser = async (data) => {
-    await apiService.post(routes.register, data).then(async (response) => {
-      const data = await response.data;
+    await apiService.post(routes.api.register, data).then(async ({ data }) => {
+      setUserData(() => data);
       setToken(data.jwt);
-      setUserData(data.user);
       toast.success(`Zostałeś pomyślnie zarejestrowany!`);
-      await navigate('/konto');
+      navigate(routes.account);
     });
   };
 
   const loginUser = async (data) => {
-    await apiService.post(routes.login, data).then(async (response) => {
-      const data = await response.data;
+    await apiService.post(routes.api.login, data).then(async ({ data }) => {
       setToken(data.jwt);
-      setUserData(data.user);
+      setUserData(() => data);
       toast.success(`Zostałeś pomyślnie zalogowany!`);
-      await navigate('/konto');
+      navigate(routes.account);
     });
   };
 
+  const logoutUser = () => {
+    removeToken();
+    setUserData(() => null);
+    navigate(routes.home);
+  };
+
+  const isLogged = () => {
+    return userData;
+  };
+
   return (
-    <AuthContext.Provider value={{ user: userData, registerUser, loginUser }}>
+    <AuthContext.Provider value={{ user: userData, registerUser, loginUser, logoutUser, isLogged }}>
       {children}
     </AuthContext.Provider>
   );
