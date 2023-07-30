@@ -1,10 +1,10 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext } from 'react';
 import { useAxios } from '../hooks/useAxios';
 import useToken from '../hooks/useToken';
 import routes from '../routes.json';
-import { BEARER } from '../constant';
 import { toast } from 'react-toastify';
 import { navigate } from 'gatsby';
+import useUser from '../hooks/useUser';
 
 const AuthContext = createContext({
   user: {},
@@ -15,32 +15,13 @@ const AuthContext = createContext({
 });
 
 const AuthProvider = ({ children }) => {
-  const [userData, setUserData] = useState(null);
   const { apiService } = useAxios();
-  const { getToken, setToken, removeToken } = useToken();
-
-  const authToken = getToken();
-
-  useEffect(() => {
-    if (authToken && !userData) {
-      console.log('GET CURRENT USER');
-      getCurrentUser(authToken);
-    }
-  }, [authToken]);
-
-  const getCurrentUser = async (token) => {
-    await apiService
-      .get(routes.api.getCurrentUser, {
-        headers: { Authorization: `${BEARER} ${token}` },
-      })
-      .then(async ({ data }) => {
-        setUserData(() => data);
-      });
-  };
+  const { setToken, removeToken } = useToken();
+  const { getUser, setUser, removeUser } = useUser();
 
   const registerUser = async (data) => {
     await apiService.post(routes.api.register, data).then(async ({ data }) => {
-      setUserData(() => data);
+      setUser(data);
       setToken(data.jwt);
       toast.success(`Zostałeś pomyślnie zarejestrowany!`);
       navigate(routes.account);
@@ -49,25 +30,23 @@ const AuthProvider = ({ children }) => {
 
   const loginUser = async (data) => {
     await apiService.post(routes.api.login, data).then(async ({ data }) => {
+      setUser(data);
       setToken(data.jwt);
-      setUserData(() => data);
       toast.success(`Zostałeś pomyślnie zalogowany!`);
       navigate(routes.account);
     });
   };
 
   const logoutUser = () => {
+    removeUser();
     removeToken();
-    setUserData(() => null);
     navigate(routes.home);
   };
 
-  const isLogged = () => {
-    return userData;
-  };
+  const isLogged = () => !!getUser();
 
   return (
-    <AuthContext.Provider value={{ user: userData, registerUser, loginUser, logoutUser, isLogged }}>
+    <AuthContext.Provider value={{ registerUser, loginUser, logoutUser, isLogged }}>
       {children}
     </AuthContext.Provider>
   );
