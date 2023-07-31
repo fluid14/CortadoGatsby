@@ -7,17 +7,19 @@ import cs from 'classnames';
 import { isBrowser } from '../../../utils/isBrowser';
 import { AuthContext } from '../../../context/AuthContext';
 import routes from '../../../routes';
-import useUser from '../../../hooks/useUser';
 
 const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
   const headerRef = useRef(null);
-  const { logoutUser } = useContext(AuthContext);
-  const { getUser } = useUser();
+  const { logoutUser, isLoggedIn } = useContext(AuthContext);
 
   const handleBurgerClick = () => {
     setBurgerState((prev) => !prev);
   };
+
+  useEffect(() => {
+    console.log('isLoggedInHEADER: ', isLoggedIn);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (isBrowser()) {
@@ -94,7 +96,7 @@ const Header = () => {
                     src="../../../images/icons/person.svg"
                     alt="user"
                   />
-                  {getUser() ? (
+                  {isLoggedIn.logged ? (
                     <>
                       <Button
                         className={styles.login}

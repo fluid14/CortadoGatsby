@@ -1,14 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import routes from '../../routes.json';
 import { navigate } from 'gatsby';
 
 const PrivateRoute = ({ component: Component, location, ...rest }) => {
-  const { isLogged } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
-  if (!isLogged() && location.pathname !== routes.login) {
+  useEffect(() => {
+    console.log('isLoggedInPRIVATEROUTE: ', isLoggedIn);
+  }, [isLoggedIn]);
+
+  if (!isLoggedIn.logged) {
     console.log('REDIRECT');
-    navigate(routes.login);
+    navigate(routes.home);
     return null;
   }
 

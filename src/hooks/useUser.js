@@ -4,12 +4,12 @@ import { USER } from '../constant';
 
 const useUser = () => {
   const getUser = () => {
-    if (isBrowser()) return localStorage.getItem(USER);
+    if (isBrowser()) return JSON.parse(localStorage.getItem(USER));
   };
 
   const setUser = (user) => {
     if (user) {
-      if (isBrowser()) localStorage.setItem(USER, user);
+      if (isBrowser()) localStorage.setItem(USER, JSON.stringify(user));
     }
   };
 

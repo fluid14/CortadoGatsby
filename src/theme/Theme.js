@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '../components/shared/Header/Header';
-import { AuthProvider } from '../context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 
 const Theme = ({ children }) => {
   return (
-    <AuthProvider>
+    <>
+      {/*<AuthProvider>*/}
       <Header />
       <main>{children}</main>
       <ToastContainer
@@ -20,7 +20,8 @@ const Theme = ({ children }) => {
         pauseOnHover
         theme="light"
       />
-    </AuthProvider>
+      {/*</AuthProvider>*/}
+    </>
   );
 };
 

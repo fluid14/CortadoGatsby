@@ -10,9 +10,11 @@ import routes from '../../routes.json';
 import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
-  const { isLogged } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
-  if (isLogged()) {
+  console.log('ISLOGEDING: ', isLoggedIn);
+
+  if (isLoggedIn.logged) {
     navigate(`/app/konto`);
   }
 
