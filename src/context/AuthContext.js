@@ -7,22 +7,23 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import { AUTH_TOKEN, USER } from '../constant';
 
 const AuthContext = createContext({
-  isLoggedIn: false,
+  isLoggedIn: () => {},
   registerUser: () => {},
   loginUser: () => {},
   logoutUser: () => {},
   getToken: () => {},
   getUser: () => {},
+  loginState: false,
 });
 
 const AuthProvider = ({ children }) => {
   const { getItem, setItem, removeItem } = useLocalStorage();
   const { apiService } = useAxios();
-  const [isLoggedIn, setIsLoggedIn] = useState(() => false);
+  const [loginState, setLoginState] = useState(() => false);
 
   useEffect(() => {
     if (getToken()) {
-      setIsLoggedIn(() => true);
+      setLoginState(() => true);
     }
   }, []);
 
@@ -30,7 +31,7 @@ const AuthProvider = ({ children }) => {
     await apiService.post(routes.api.register, data).then(async ({ data: { jwt, user } }) => {
       setItem(AUTH_TOKEN, jwt);
       setItem(USER, user);
-      setIsLoggedIn(() => true);
+      setLoginState(() => true);
       toast.success(`Zostałeś pomyślnie zarejestrowany!`);
       await navigate(routes.account);
     });
@@ -40,7 +41,7 @@ const AuthProvider = ({ children }) => {
     await apiService.post(routes.api.login, data).then(async ({ data: { jwt, user } }) => {
       setItem(AUTH_TOKEN, jwt);
       setItem(USER, user);
-      setIsLoggedIn(() => true);
+      setLoginState(() => true);
       toast.success(`Zostałeś pomyślnie zalogowany!`);
       await navigate(routes.account);
     });
@@ -49,7 +50,7 @@ const AuthProvider = ({ children }) => {
   const logoutUser = async () => {
     removeItem(USER);
     removeItem(AUTH_TOKEN);
-    setIsLoggedIn(() => false);
+    setLoginState(() => false);
     await navigate(routes.home);
   };
 
@@ -57,11 +58,11 @@ const AuthProvider = ({ children }) => {
 
   const getUser = () => getItem(USER);
 
-  // const isLoggedIn = () => !!getToken();
+  const isLoggedIn = () => !!getToken();
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, registerUser, loginUser, logoutUser, getToken, getUser }}
+      value={{ isLoggedIn, registerUser, loginUser, logoutUser, getToken, getUser, loginState }}
     >
       {children}
     </AuthContext.Provider>

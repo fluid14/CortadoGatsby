@@ -11,7 +11,7 @@ import { AuthContext } from '../../../context/AuthContext';
 const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
   const headerRef = useRef(null);
-  const { logoutUser, isLoggedIn, isLogged } = useContext(AuthContext);
+  const { logoutUser, loginState } = useContext(AuthContext);
   const {
     strapiHeader: { logoText, text, mail, button, navigation },
   } = useStaticQuery(graphql`
@@ -91,7 +91,7 @@ const Header = () => {
               src="../../../images/icons/person.svg"
               alt="user"
             />
-            {isLogged ? (
+            {loginState ? (
               <>
                 <Button
                   className={styles.login}
