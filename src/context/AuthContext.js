@@ -1,62 +1,71 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { useAxios } from '../hooks/useAxios';
-import useToken from '../hooks/useToken';
 import routes from '../routes.json';
 import { toast } from 'react-toastify';
 import { navigate } from 'gatsby';
-import useUser from '../hooks/useUser';
+import { useAxios } from '../hooks/useAxios';
+import useLocalStorage from '../hooks/useLocalStorage';
+import { AUTH_TOKEN, USER } from '../constant';
 
 const AuthContext = createContext({
+  isLoggedIn: false,
   registerUser: () => {},
   loginUser: () => {},
   logoutUser: () => {},
-  isLoggedIn: { logged: false, data: null },
+  getToken: () => {},
+  getUser: () => {},
 });
 
 const AuthProvider = ({ children }) => {
+  const { getItem, setItem, removeItem } = useLocalStorage();
   const { apiService } = useAxios();
-  const { setToken, removeToken } = useToken();
-  const { getUser, setUser, removeUser } = useUser();
-  const [isLoggedIn, setIsLogin] = useState({ logged: false, data: null });
+  const [isLoggedIn, setIsLoggedIn] = useState(() => false);
 
   useEffect(() => {
-    getUser()
-      ? setIsLogin({ logged: true, data: getUser() })
-      : setIsLogin({ logged: false, data: null });
+    if (getToken()) {
+      setIsLoggedIn(() => true);
+    }
   }, []);
 
   const registerUser = async (data) => {
-    await apiService.post(routes.api.register, data).then(async ({ data }) => {
-      setUser(data);
-      setToken(data.jwt);
-      setIsLogin({ logged: true, data });
+    await apiService.post(routes.api.register, data).then(async ({ data: { jwt, user } }) => {
+      setItem(AUTH_TOKEN, jwt);
+      setItem(USER, user);
+      setIsLoggedIn(() => true);
       toast.success(`Zostałeś pomyślnie zarejestrowany!`);
-      navigate(routes.account);
+      await navigate(routes.account);
     });
   };
 
   const loginUser = async (data) => {
-    await apiService.post(routes.api.login, data).then(async ({ data }) => {
-      setUser(data);
-      setToken(data.jwt);
-      setIsLogin({ logged: true, data });
+    await apiService.post(routes.api.login, data).then(async ({ data: { jwt, user } }) => {
+      setItem(AUTH_TOKEN, jwt);
+      setItem(USER, user);
+      setIsLoggedIn(() => true);
       toast.success(`Zostałeś pomyślnie zalogowany!`);
-      navigate(routes.account);
+      await navigate(routes.account);
     });
   };
 
-  const logoutUser = () => {
-    navigate(routes.home);
-    removeUser();
-    removeToken();
-    setIsLogin({ logged: false, data: null });
+  const logoutUser = async () => {
+    removeItem(USER);
+    removeItem(AUTH_TOKEN);
+    setIsLoggedIn(() => false);
+    await navigate(routes.home);
   };
 
+  const getToken = () => getItem(AUTH_TOKEN);
+
+  const getUser = () => getItem(USER);
+
+  // const isLoggedIn = () => !!getToken();
+
   return (
-    <AuthContext.Provider value={{ registerUser, loginUser, logoutUser, isLoggedIn }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, registerUser, loginUser, logoutUser, getToken, getUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
-export { AuthProvider, AuthContext };
+export { AuthContext, AuthProvider };

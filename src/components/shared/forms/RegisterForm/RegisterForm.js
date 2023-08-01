@@ -4,10 +4,10 @@ import Input from '../../Inputs/Input/Input';
 import Checkbox from '../../Inputs/Checkbox/Checkbox';
 import { Link } from 'gatsby';
 import Button from '../../Button/Button';
-import { AuthContext } from '../../../../context/AuthContext';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema';
+import { AuthContext } from '../../../../context/AuthContext';
 
 const RegisterForm = () => {
   const { registerUser } = useContext(AuthContext);

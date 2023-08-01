@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import * as styles from './LoginForm.module.scss';
 import Input from '../../Inputs/Input/Input';
 import Button from '../../Button/Button';
-import { AuthContext } from '../../../../context/AuthContext';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema';
+import { AuthContext } from '../../../../context/AuthContext';
 
 const LoginForm = () => {
   const { loginUser } = useContext(AuthContext);

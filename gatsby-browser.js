@@ -8,16 +8,16 @@ import './src/styles/main.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import Theme from './src/theme/Theme';
 import { PreloaderProvider } from './src/context/PreloaderContext';
-import { AuthProvider } from './src/context/AuthContext';
 import Preloader from './src/components/shared/Preloader/Preloader';
+import { AuthProvider } from './src/context/AuthContext';
 
 export const wrapRootElement = ({ element }) => (
-  <Theme>
+  <AuthProvider>
     <PreloaderProvider>
-      <AuthProvider>
+      <Theme>
         {element}
         <Preloader />
-      </AuthProvider>
+      </Theme>
     </PreloaderProvider>
-  </Theme>
+  </AuthProvider>
 );
