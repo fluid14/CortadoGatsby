@@ -18,7 +18,7 @@ const ProductDescription = () => {
           kawa, jak również jako baza do kaw mlecznych.
         </p>
 
-        <Button className={styles.subscriptionButton} size="small">
+        <Button className={styles.subscriptionButton} size="small" type="link" to={routes.order}>
           Chcę subskrybować
         </Button>
       </div>

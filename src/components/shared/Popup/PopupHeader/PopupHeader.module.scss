@@ -1,0 +1,22 @@
+@import 'src/styles/config';
+
+.popupHeader {
+  width: 100%;
+  background-color: $primary;
+  border-radius: 24px;
+  overflow: hidden;
+
+  & :global {
+    .popupHeaderContentWrap {
+      padding: 39px 48px;
+    }
+
+    .popupHeaderTitle {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 120%;
+      color: $white;
+      margin: 0;
+    }
+  }
+}

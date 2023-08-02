@@ -1,0 +1,77 @@
+@import 'src/styles/config';
+
+.orderWrap {
+  padding: {
+    top: 70px;
+    bottom: 70px;
+  };
+  background-color: rgba($cortado1, .3);
+
+  .popupHeader {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+
+  .orderPopup {
+    max-width: 100%;
+    align-items: flex-start;
+  }
+
+  .orderForm {
+    width: 100%;
+  }
+
+  .step {
+    width: 100%;
+
+    .stepTitleWrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 21px;
+
+      .stepNumberWrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        overflow: hidden;
+        background-color: $gray;
+        margin-right: 12px;
+        width: 32px;
+        height: 32px;
+
+        .stepNumber {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1;
+          text-align: center;
+        }
+      }
+
+      .title {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 124%;
+        margin: 0;
+      }
+    }
+
+    .description {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 148%;
+      padding: 0 7px;
+      margin-bottom: 30px;
+    }
+
+    .form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      column-gap: 30px;
+      row-gap: 0;
+    }
+  }
+}
+

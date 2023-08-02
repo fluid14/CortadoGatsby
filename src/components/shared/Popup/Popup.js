@@ -4,7 +4,11 @@ import cs from 'classnames';
 
 const Popup = ({ children, className, decorator = false }) => {
   return (
-    <div className={cs(className, styles.popupWrap, { [styles.decorator]: decorator })}>
+    <div
+      className={cs(className, styles.popupWrap, {
+        [styles.decorator]: decorator,
+      })}
+    >
       {children}
     </div>
   );

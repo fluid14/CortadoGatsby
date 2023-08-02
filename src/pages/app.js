@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router } from '@gatsbyjs/reach-router';
-import Account from '../layout/Account';
+import Account from '../views/Account/Account';
 import PrivateRoute from '../components/shared/PrivateRoute';
 import Register from '../views/Register';
 import Login from '../views/Login';

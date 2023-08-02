@@ -25,6 +25,7 @@ export const useAxios = () => {
     (error) => {
       hidePreloader();
       console.error(error);
+      toast.error('Coś poszło nie tak');
       return Promise.reject(error);
     }
   );

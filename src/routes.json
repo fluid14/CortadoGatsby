@@ -7,5 +7,6 @@
   "home": "/",
   "register": "/app/rejestracja",
   "login": "/app/logowanie",
-  "account": "/app/konto"
+  "account": "/app/konto",
+  "order": "/zamowienie"
 }

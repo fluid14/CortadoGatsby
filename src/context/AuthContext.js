@@ -50,13 +50,23 @@ const AuthProvider = ({ children }) => {
   };
 
   const loginUser = async (data) => {
-    await apiService.post(routes.api.login, data).then(async ({ data: { jwt, user } }) => {
-      setItem(AUTH_TOKEN, jwt);
-      setItem(USER, user);
-      setLoginState(() => true);
-      toast.success(`Zostałeś pomyślnie zalogowany!`);
-      await navigate(routes.account);
-    });
+    await apiService
+      .post(routes.api.login, data)
+      .then(async ({ data: { jwt, user } }) => {
+        setItem(AUTH_TOKEN, jwt);
+        setItem(USER, user);
+        setLoginState(() => true);
+        toast.success(`Zostałeś pomyślnie zalogowany!`);
+        await navigate(routes.account);
+      })
+      .catch((error) => {
+        if (
+          error.response.status === 400 &&
+          error.response.data.error.message === 'Invalid identifier or password'
+        ) {
+          toast.error(`Nieprawidłowy email lub hasło!`);
+        }
+      });
   };
 
   const logoutUser = async () => {
