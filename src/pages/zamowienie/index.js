@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cs from 'classnames';
 import * as styles from './index.module.scss';
 import Popup from '../../components/shared/Popup/Popup';
@@ -16,6 +16,7 @@ const OrderForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: 'onTouched', resolver: yupResolver(schema) });
+  const [isVat, setIsVat] = useState(false);
 
   const onSubmit = async (data) => {
     const payload = {
@@ -23,6 +24,10 @@ const OrderForm = () => {
     };
 
     console.log(payload);
+  };
+
+  const handleVatChange = () => {
+    setIsVat((prev) => !prev);
   };
 
   return (
@@ -122,10 +127,65 @@ const OrderForm = () => {
                   register={register}
                 />
 
-                <Checkbox ref={null} name="vat" error={errors.vat} register={register}>
+                <Checkbox
+                  ref={null}
+                  name="vat"
+                  error={errors.vat}
+                  register={register}
+                  onClick={handleVatChange}
+                >
                   Chcę fakturę VAT
                 </Checkbox>
               </div>
+
+              {isVat && (
+                <div className={cs(styles.form, styles.additionalForm)}>
+                  <Input
+                    ref={null}
+                    label="Nazwa firmy"
+                    name="companyName"
+                    type="text"
+                    error={errors.companyName}
+                    register={register}
+                  />
+
+                  <Input
+                    ref={null}
+                    label="Nip"
+                    name="nip"
+                    type="text"
+                    error={errors.nip}
+                    register={register}
+                  />
+
+                  <Input
+                    ref={null}
+                    label="Miasto"
+                    name="companyCity"
+                    type="text"
+                    error={errors.companyCity}
+                    register={register}
+                  />
+
+                  <Input
+                    ref={null}
+                    label="Ulica i numer lokalu"
+                    name="companyAdress"
+                    type="text"
+                    error={errors.companyAdress}
+                    register={register}
+                  />
+
+                  <Input
+                    ref={null}
+                    label="Kod pocztowy"
+                    name="companyZipCode"
+                    type="text"
+                    error={errors.companyZipCode}
+                    register={register}
+                  />
+                </div>
+              )}
             </div>
 
             <div className={styles.step}>

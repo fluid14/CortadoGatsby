@@ -4,7 +4,11 @@ import cs from 'classnames';
 
 const Checkbox = ({ children, className = '', name, register = () => {}, error, ...rest }) => {
   return (
-    <label className={cs(className, styles.checkbox, { [styles.error]: error })} htmlFor={name}>
+    <label
+      {...rest}
+      className={cs(className, styles.checkbox, { [styles.error]: error })}
+      htmlFor={name}
+    >
       <input
         {...rest}
         className={styles.input}
@@ -13,7 +17,7 @@ const Checkbox = ({ children, className = '', name, register = () => {}, error, 
         id={name}
         {...register(name)}
       />
-      {children}
+      <span className={styles.children}>{children}</span>
     </label>
   );
 };
