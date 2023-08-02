@@ -28,13 +28,25 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const registerUser = async (data) => {
-    await apiService.post(routes.api.register, data).then(async ({ data: { jwt, user } }) => {
-      setItem(AUTH_TOKEN, jwt);
-      setItem(USER, user);
-      setLoginState(() => true);
-      toast.success(`Zostałeś pomyślnie zarejestrowany!`);
-      await navigate(routes.account);
-    });
+    await apiService
+      .post(routes.api.register, data)
+      .then(async ({ data: { jwt, user } }) => {
+        if (jwt) {
+          setItem(AUTH_TOKEN, jwt);
+          setItem(USER, user);
+          setLoginState(() => true);
+          toast.success(`Zostałeś pomyślnie zarejestrowany!`);
+          await navigate(routes.account);
+        }
+      })
+      .catch((error) => {
+        if (
+          error.response.status === 400 &&
+          error.response.data.error.message === 'Email or Username are already taken'
+        ) {
+          toast.error(`Nazwa użytkownika lub email jest już zajęta!`);
+        }
+      });
   };
 
   const loginUser = async (data) => {
