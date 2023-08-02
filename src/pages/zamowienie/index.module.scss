@@ -15,6 +15,11 @@
   .orderPopup {
     max-width: 100%;
     align-items: flex-start;
+    padding: {
+      top: 46px;
+      left: 150px;
+      right: 150px;
+    }
   }
 
   .orderForm {
@@ -23,6 +28,7 @@
 
   .step {
     width: 100%;
+    margin-bottom: 70px;
 
     .stepTitleWrap {
       display: flex;
@@ -62,7 +68,7 @@
       font-weight: 300;
       line-height: 148%;
       padding: 0 7px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .form {
