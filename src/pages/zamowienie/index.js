@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../../components/shared/forms/RegisterForm/schema';
 import { useForm } from 'react-hook-form';
 import Checkbox from '../../components/shared/Inputs/Checkbox/Checkbox';
+import Radio from '../../components/shared/Inputs/Radio/Radio';
 
 const OrderForm = () => {
   const {
@@ -194,6 +195,41 @@ const OrderForm = () => {
                   <p className={styles.stepNumber}>4</p>
                 </div>
                 <h2 className={styles.title}>Sposób wysyłki</h2>
+              </div>
+
+              <div className={cs(styles.form, styles.deliveryForm)}>
+                <Radio
+                  ref={null}
+                  name="delivery"
+                  error={errors.delivery}
+                  register={register}
+                  value="dpd"
+                  id="dpd"
+                >
+                  DPD
+                </Radio>
+
+                <Radio
+                  ref={null}
+                  name="delivery"
+                  error={errors.delivery}
+                  register={register}
+                  value="dpd"
+                  id="dpd"
+                >
+                  DHL
+                </Radio>
+
+                <Radio
+                  ref={null}
+                  name="delivery"
+                  error={errors.delivery}
+                  register={register}
+                  value="dpd"
+                  id="dpd"
+                >
+                  INPOST
+                </Radio>
               </div>
             </div>
           </form>

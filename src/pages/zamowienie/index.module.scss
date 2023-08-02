@@ -67,7 +67,6 @@
       font-size: 16px;
       font-weight: 300;
       line-height: 148%;
-      padding: 0 7px;
       margin-bottom: 40px;
     }
 
@@ -80,6 +79,12 @@
 
       &.additionalForm {
         margin-top: 60px;
+      }
+
+      &.deliveryForm {
+        grid-template-columns: repeat(5, 1fr);
+        row-gap: 10px;
+        margin-top: 30px;
       }
     }
   }
