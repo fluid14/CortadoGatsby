@@ -15,6 +15,27 @@
   .orderPopup {
     max-width: 100%;
     align-items: flex-start;
+    padding: 0;
+
+    .popupFooter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .right {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .priceSummary {
+          display: block;
+          margin-right: 29px;
+        }
+      }
+    }
+  }
+
+  .contentWrap {
     padding: {
       top: 46px;
       left: 150px;
@@ -85,6 +106,11 @@
         grid-template-columns: repeat(5, 1fr);
         row-gap: 10px;
         margin-top: 30px;
+      }
+
+      &.amountPicker {
+        max-width: 770px;
+        margin: 102px auto 60px;
       }
     }
   }

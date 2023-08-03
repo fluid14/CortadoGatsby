@@ -12,6 +12,10 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import DatePickerWrap from '../../components/shared/Inputs/DatePickerWrap/DatePickerWrap';
 import pl from 'date-fns/locale/pl';
 import ProductAmountPicker from '../../components/shared/Inputs/ProductAmountPicker/ProductAmountPicker';
+import PopupFooter from '../../components/shared/Popup/PopupFooter/PopupFooter';
+import PriceSummary from '../../components/shared/Typography/PriceSummary/PriceSummary';
+import Button from '../../components/shared/Button/Button';
+import Info from '../../components/shared/Info/Info';
 
 registerLocale('pl', pl);
 
@@ -43,220 +47,233 @@ const OrderForm = () => {
           <h1 className="popupHeaderTitle">Twoja subskrypcja</h1>
         </PopupHeaderContentWrap>
 
-        <Popup className={styles.orderPopup}>
+        <Popup className={styles.orderPopup} decorator withFooter>
           <form className={styles.orderForm} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.step}>
-              <div className={styles.stepTitleWrap}>
-                <div className={styles.stepNumberWrap}>
-                  <p className={styles.stepNumber}>1</p>
+            <div className={styles.contentWrap}>
+              <div className={styles.step}>
+                <div className={styles.stepTitleWrap}>
+                  <div className={styles.stepNumberWrap}>
+                    <p className={styles.stepNumber}>1</p>
+                  </div>
+                  <h2 className={styles.title}>Wybierz kawę i jej ilość</h2>
                 </div>
-                <h2 className={styles.title}>Wybierz kawę i jej ilość</h2>
-              </div>
-              <p className={styles.description}>Minimalna ilość to jedno opakowanie = 1 kg</p>
+                <p className={styles.description}>Minimalna ilość to jedno opakowanie = 1 kg</p>
 
-              <div className={styles.form}>
-                <ProductAmountPicker />
-              </div>
-            </div>
-
-            <div className={styles.step}>
-              <div className={styles.stepTitleWrap}>
-                <div className={styles.stepNumberWrap}>
-                  <p className={styles.stepNumber}>2</p>
+                <div className={cs(styles.form, styles.amountPicker)}>
+                  <ProductAmountPicker />
+                  <ProductAmountPicker />
+                  <ProductAmountPicker />
                 </div>
-                <h2 className={styles.title}>Wybierz datę startową subskrypcji</h2>
               </div>
-              <p className={styles.description}>
-                Subskrybcje możesz rozpocząć od 1 dnia kolejnego miesiąca lub od....
-              </p>
 
-              <div className={styles.form}>
-                <Controller
-                  control={control}
-                  name="startDate"
-                  render={({ field }) => (
-                    <DatePickerWrap label="Start subskrypcji" name="startDate">
-                      <DatePicker
-                        locale="pl"
-                        onChange={(date) => field.onChange(date)}
-                        selected={field.value}
-                      />
-                    </DatePickerWrap>
-                  )}
-                />
-              </div>
-            </div>
-
-            <div className={styles.step}>
-              <div className={styles.stepTitleWrap}>
-                <div className={styles.stepNumberWrap}>
-                  <p className={styles.stepNumber}>3</p>
+              <div className={styles.step}>
+                <div className={styles.stepTitleWrap}>
+                  <div className={styles.stepNumberWrap}>
+                    <p className={styles.stepNumber}>2</p>
+                  </div>
+                  <h2 className={styles.title}>Wybierz datę startową subskrypcji</h2>
                 </div>
-                <h2 className={styles.title}>Twoje dane i adres wysyłki </h2>
-              </div>
-              <p className={styles.description}>
-                Subskrybcje możesz rozpocząć od 1 dnia kolejnego miesiąca lub od....
-              </p>
+                <p className={styles.description}>
+                  Subskrybcje możesz rozpocząć od 1 dnia kolejnego miesiąca lub od....
+                </p>
 
-              <div className={styles.form}>
-                <Input
-                  ref={null}
-                  label="Imię"
-                  name="name"
-                  type="text"
-                  error={errors.name}
-                  register={register}
-                />
-
-                <Input
-                  ref={null}
-                  label="Nazwisko"
-                  name="surname"
-                  type="text"
-                  error={errors.surname}
-                  register={register}
-                />
-
-                <Input
-                  ref={null}
-                  label="Adres email"
-                  name="email"
-                  type="email"
-                  error={errors.email}
-                  register={register}
-                />
-
-                <Input
-                  ref={null}
-                  label="Miasto"
-                  name="city"
-                  type="text"
-                  error={errors.city}
-                  register={register}
-                />
-
-                <Input
-                  ref={null}
-                  label="Ulica i numer lokalu"
-                  name="adress"
-                  type="text"
-                  error={errors.adress}
-                  register={register}
-                />
-
-                <Input
-                  ref={null}
-                  label="Kod pocztowy"
-                  name="zipCode"
-                  type="text"
-                  error={errors.zipCode}
-                  register={register}
-                />
-
-                <Checkbox
-                  ref={null}
-                  name="vat"
-                  error={errors.vat}
-                  register={register}
-                  onClick={handleVatChange}
-                >
-                  Chcę fakturę VAT
-                </Checkbox>
+                <div className={styles.form}>
+                  <Controller
+                    control={control}
+                    name="startDate"
+                    render={({ field }) => (
+                      <DatePickerWrap label="Start subskrypcji" name="startDate">
+                        <DatePicker
+                          locale="pl"
+                          onChange={(date) => field.onChange(date)}
+                          selected={field.value}
+                        />
+                      </DatePickerWrap>
+                    )}
+                  />
+                </div>
               </div>
 
-              {isVat && (
-                <div className={cs(styles.form, styles.additionalForm)}>
+              <div className={styles.step}>
+                <div className={styles.stepTitleWrap}>
+                  <div className={styles.stepNumberWrap}>
+                    <p className={styles.stepNumber}>3</p>
+                  </div>
+                  <h2 className={styles.title}>Twoje dane i adres wysyłki </h2>
+                </div>
+                <p className={styles.description}>
+                  Subskrybcje możesz rozpocząć od 1 dnia kolejnego miesiąca lub od....
+                </p>
+
+                <div className={styles.form}>
                   <Input
                     ref={null}
-                    label="Nazwa firmy"
-                    name="companyName"
+                    label="Imię"
+                    name="name"
                     type="text"
-                    error={errors.companyName}
+                    error={errors.name}
                     register={register}
                   />
 
                   <Input
                     ref={null}
-                    label="Nip"
-                    name="nip"
+                    label="Nazwisko"
+                    name="surname"
                     type="text"
-                    error={errors.nip}
+                    error={errors.surname}
+                    register={register}
+                  />
+
+                  <Input
+                    ref={null}
+                    label="Adres email"
+                    name="email"
+                    type="email"
+                    error={errors.email}
                     register={register}
                   />
 
                   <Input
                     ref={null}
                     label="Miasto"
-                    name="companyCity"
+                    name="city"
                     type="text"
-                    error={errors.companyCity}
+                    error={errors.city}
                     register={register}
                   />
 
                   <Input
                     ref={null}
                     label="Ulica i numer lokalu"
-                    name="companyAdress"
+                    name="adress"
                     type="text"
-                    error={errors.companyAdress}
+                    error={errors.adress}
                     register={register}
                   />
 
                   <Input
                     ref={null}
                     label="Kod pocztowy"
-                    name="companyZipCode"
+                    name="zipCode"
                     type="text"
-                    error={errors.companyZipCode}
+                    error={errors.zipCode}
                     register={register}
                   />
-                </div>
-              )}
-            </div>
 
-            <div className={styles.step}>
-              <div className={styles.stepTitleWrap}>
-                <div className={styles.stepNumberWrap}>
-                  <p className={styles.stepNumber}>4</p>
+                  <Checkbox
+                    ref={null}
+                    name="vat"
+                    error={errors.vat}
+                    register={register}
+                    onClick={handleVatChange}
+                  >
+                    Chcę fakturę VAT
+                  </Checkbox>
                 </div>
-                <h2 className={styles.title}>Sposób wysyłki</h2>
+
+                {isVat && (
+                  <div className={cs(styles.form, styles.additionalForm)}>
+                    <Input
+                      ref={null}
+                      label="Nazwa firmy"
+                      name="companyName"
+                      type="text"
+                      error={errors.companyName}
+                      register={register}
+                    />
+
+                    <Input
+                      ref={null}
+                      label="Nip"
+                      name="nip"
+                      type="text"
+                      error={errors.nip}
+                      register={register}
+                    />
+
+                    <Input
+                      ref={null}
+                      label="Miasto"
+                      name="companyCity"
+                      type="text"
+                      error={errors.companyCity}
+                      register={register}
+                    />
+
+                    <Input
+                      ref={null}
+                      label="Ulica i numer lokalu"
+                      name="companyAdress"
+                      type="text"
+                      error={errors.companyAdress}
+                      register={register}
+                    />
+
+                    <Input
+                      ref={null}
+                      label="Kod pocztowy"
+                      name="companyZipCode"
+                      type="text"
+                      error={errors.companyZipCode}
+                      register={register}
+                    />
+                  </div>
+                )}
               </div>
 
-              <div className={cs(styles.form, styles.deliveryForm)}>
-                <Radio
-                  ref={null}
-                  name="delivery"
-                  error={errors.delivery}
-                  register={register}
-                  value="dpd"
-                  id="dpd"
-                >
-                  DPD
-                </Radio>
+              <div className={styles.step}>
+                <div className={styles.stepTitleWrap}>
+                  <div className={styles.stepNumberWrap}>
+                    <p className={styles.stepNumber}>4</p>
+                  </div>
+                  <h2 className={styles.title}>Sposób wysyłki</h2>
+                </div>
 
-                <Radio
-                  ref={null}
-                  name="delivery"
-                  error={errors.delivery}
-                  register={register}
-                  value="dpd"
-                  id="dpd"
-                >
-                  DHL
-                </Radio>
+                <div className={cs(styles.form, styles.deliveryForm)}>
+                  <Radio
+                    ref={null}
+                    name="delivery"
+                    error={errors.delivery}
+                    register={register}
+                    value="dpd"
+                    id="dpd"
+                  >
+                    DPD
+                  </Radio>
 
-                <Radio
-                  ref={null}
-                  name="delivery"
-                  error={errors.delivery}
-                  register={register}
-                  value="dpd"
-                  id="dpd"
-                >
-                  INPOST
-                </Radio>
+                  <Radio
+                    ref={null}
+                    name="delivery"
+                    error={errors.delivery}
+                    register={register}
+                    value="dpd"
+                    id="dpd"
+                  >
+                    DHL
+                  </Radio>
+
+                  <Radio
+                    ref={null}
+                    name="delivery"
+                    error={errors.delivery}
+                    register={register}
+                    value="dpd"
+                    id="dpd"
+                  >
+                    INPOST
+                  </Radio>
+                </div>
               </div>
             </div>
+            <PopupFooter className={styles.popupFooter}>
+              <Info>Minimalna ilość to jedno opakowanie = 1 kg</Info>
+              <div className={styles.right}>
+                <PriceSummary className={styles.priceSummary}>
+                  <span className="bold">Do zapłaty: 300 pln/</span>mc
+                </PriceSummary>
+                <Button type="submit">Następny krok</Button>
+              </div>
+            </PopupFooter>
           </form>
         </Popup>
       </PopupHeader>

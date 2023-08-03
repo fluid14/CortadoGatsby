@@ -1,7 +1,24 @@
 @import 'src/styles/config';
 
 .productAmountPickerWrap {
-  border: 1px solid red;
+  .imageWrap {
+    position: relative;
+    width: 205px;
+    height: 144px;
+    background-color: $cortado1;
+    border-radius: 12px 12px 0 12px;
+    margin-bottom: 20px;
+
+    .image {
+      position: absolute;
+      left: 5px;
+      bottom: 0;
+      width: 126px;
+      min-width: 126px;
+      height: 176px;
+      min-height: 176px;
+    }
+  }
 
   .title {
     font-size: 18px;
@@ -30,4 +47,7 @@
     color: $border;
     margin-bottom: 18px;
   }
+
+  .numberPicker {}
+  max-width: 146px;
 }

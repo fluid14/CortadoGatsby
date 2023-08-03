@@ -16,7 +16,11 @@
   }
 
   &.decorator {
-    background: url('../../../images/coffeBig.svg') left 50px / 185px no-repeat $white;
+    background: url('../../../images/coffeBig.svg') -70px -70px / 185px no-repeat $white;
+  }
+
+  &.withFooter {
+    padding-bottom: 0 !important;
   }
 }
 

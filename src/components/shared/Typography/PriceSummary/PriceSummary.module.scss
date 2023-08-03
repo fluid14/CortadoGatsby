@@ -1,0 +1,12 @@
+@import 'src/styles/config';
+
+.priceSummary {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 132%;
+  color: $purple;
+
+  span {
+    color: $purple;
+  }
+}

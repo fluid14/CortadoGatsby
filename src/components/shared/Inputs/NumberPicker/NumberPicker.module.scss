@@ -1,0 +1,38 @@
+@import 'src/styles/config';
+
+.numberPicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+  border: 1px solid $spacerLight;
+  border-radius: 2px;
+  background-color: $white;
+  padding: 12px;
+
+  .input {
+    width: 58px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Works for Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
