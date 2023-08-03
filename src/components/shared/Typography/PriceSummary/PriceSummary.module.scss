@@ -10,3 +10,9 @@
     color: $purple;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .priceSummary {
+    font-size: 20px;
+  }
+}

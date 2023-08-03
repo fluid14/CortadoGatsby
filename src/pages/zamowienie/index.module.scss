@@ -21,11 +21,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
 
       .right {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
+        flex-grow: 1;
+        margin-left: 40px;
 
         .priceSummary {
           display: block;
@@ -114,5 +117,66 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 992px) {
+  .orderWrap {
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    };
+
+    .orderPopup {
+      .popupFooter {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+
+        .info {
+          display: none;
+        }
+
+        .right {
+          justify-content: space-between;
+          margin:0;
+        }
+      }
+    }
+
+    .contentWrap {
+      padding: {
+        left: 60px;
+        right: 60px;
+      }
+    }
+
+    .step {
+      margin-bottom: 50px;
+
+      .stepTitleWrap {
+        margin-bottom: 15px;
+      }
+
+      .description {
+        margin-bottom: 20px;
+      }
+
+      .form {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 30px;
+        row-gap: 0;
+
+        &.additionalForm {
+          margin-top: 40px;
+        }
+
+        &.amountPicker {
+          max-width: 100%;
+          margin: 60px auto 50px;
+          row-gap: 60px;
+        }
+      }
+    }
+  }
+
 }
 

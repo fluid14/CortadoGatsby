@@ -266,7 +266,7 @@ const OrderForm = () => {
               </div>
             </div>
             <PopupFooter className={styles.popupFooter}>
-              <Info>Minimalna ilość to jedno opakowanie = 1 kg</Info>
+              <Info className={styles.info}>Minimalna ilość to jedno opakowanie = 1 kg</Info>
               <div className={styles.right}>
                 <PriceSummary className={styles.priceSummary}>
                   <span className="bold">Do zapłaty: 300 pln/</span>mc

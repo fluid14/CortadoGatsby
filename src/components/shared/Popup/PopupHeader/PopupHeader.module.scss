@@ -20,3 +20,17 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  .popupHeader {
+    & :global {
+      .popupHeaderContentWrap {
+        padding: 25px 40px;
+      }
+
+      .popupHeaderTitle {
+        font-size: 30px;
+      }
+    }
+  }
+}
