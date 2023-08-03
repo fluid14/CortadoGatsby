@@ -11,6 +11,7 @@ import Radio from '../../components/shared/Inputs/Radio/Radio';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import DatePickerWrap from '../../components/shared/Inputs/DatePickerWrap/DatePickerWrap';
 import pl from 'date-fns/locale/pl';
+import ProductAmountPicker from '../../components/shared/Inputs/ProductAmountPicker/ProductAmountPicker';
 
 registerLocale('pl', pl);
 
@@ -52,6 +53,10 @@ const OrderForm = () => {
                 <h2 className={styles.title}>Wybierz kawę i jej ilość</h2>
               </div>
               <p className={styles.description}>Minimalna ilość to jedno opakowanie = 1 kg</p>
+
+              <div className={styles.form}>
+                <ProductAmountPicker />
+              </div>
             </div>
 
             <div className={styles.step}>

@@ -1,0 +1,33 @@
+@import 'src/styles/config';
+
+.productAmountPickerWrap {
+  border: 1px solid red;
+
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 132%;
+    color: $black;
+    margin-bottom: 10px;
+  }
+
+  .price {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 132%;
+    margin-bottom: 4px;
+    color: $purple;
+
+    span {
+      color: $purple;
+    }
+  }
+
+  .description {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 140%;
+    color: $border;
+    margin-bottom: 18px;
+  }
+}
