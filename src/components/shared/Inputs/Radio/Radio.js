@@ -13,11 +13,7 @@ const Radio = ({
   ...rest
 }) => {
   return (
-    <label
-      {...rest}
-      className={cs(styles.radio, className, { [styles.error]: error })}
-      htmlFor={name}
-    >
+    <label {...rest} className={cs(styles.radio, className, { [styles.error]: error })}>
       <input
         {...rest}
         {...register(name)}

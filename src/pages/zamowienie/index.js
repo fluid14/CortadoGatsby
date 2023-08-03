@@ -5,8 +5,6 @@ import Popup from '../../components/shared/Popup/Popup';
 import PopupHeader from '../../components/shared/Popup/PopupHeader/PopupHeader';
 import PopupHeaderContentWrap from '../../components/shared/Popup/PopupHeader/PopupHeaderContentWrap/PopupHeaderContentWrap';
 import Input from '../../components/shared/Inputs/Input/Input';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../../components/shared/forms/RegisterForm/schema';
 import { useForm } from 'react-hook-form';
 import Checkbox from '../../components/shared/Inputs/Checkbox/Checkbox';
 import Radio from '../../components/shared/Inputs/Radio/Radio';
@@ -16,7 +14,7 @@ const OrderForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onTouched', resolver: yupResolver(schema) });
+  } = useForm({ mode: 'onTouched' });
   const [isVat, setIsVat] = useState(false);
 
   const onSubmit = async (data) => {
