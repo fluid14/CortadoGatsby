@@ -10,6 +10,7 @@ const Radio = ({
   value,
   id,
   error,
+  checked,
   ...rest
 }) => {
   return (
@@ -22,6 +23,7 @@ const Radio = ({
         name={name}
         id={id}
         value={value}
+        checked={checked}
       />
       <span className={styles.children}>{children}</span>
     </label>

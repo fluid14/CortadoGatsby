@@ -1,0 +1,52 @@
+@import 'src/styles/config';
+
+.datePickerWrap {
+  margin-bottom: 19px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .label {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 148%;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  & :global {
+    .react-datepicker-wrapper {
+      width: 100%;
+
+      .react-datepicker__input-container {
+        input {
+          width: 100%;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1;
+          padding: 12px 44px 12px 12px;
+          border: 1px solid rgba($border, .3);
+          border-radius: 4px;
+          transition: .3s ease;
+          background: url('../../../../images/icons/calendar.svg') calc(100% - 12px) center / 20px no-repeat $white;
+
+          &:focus,
+          &:hover {
+            border-color: $primary;
+          }
+
+          &::placeholder {
+            color: $border;
+          }
+        }
+
+      }
+    }
+
+    .react-datepicker__header {
+      background-color: $white;
+    }
+  }
+}

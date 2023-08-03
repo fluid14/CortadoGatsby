@@ -5,15 +5,21 @@ import Popup from '../../components/shared/Popup/Popup';
 import PopupHeader from '../../components/shared/Popup/PopupHeader/PopupHeader';
 import PopupHeaderContentWrap from '../../components/shared/Popup/PopupHeader/PopupHeaderContentWrap/PopupHeaderContentWrap';
 import Input from '../../components/shared/Inputs/Input/Input';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import Checkbox from '../../components/shared/Inputs/Checkbox/Checkbox';
 import Radio from '../../components/shared/Inputs/Radio/Radio';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import DatePickerWrap from '../../components/shared/Inputs/DatePickerWrap/DatePickerWrap';
+import pl from 'date-fns/locale/pl';
+
+registerLocale('pl', pl);
 
 const OrderForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({ mode: 'onTouched' });
   const [isVat, setIsVat] = useState(false);
 
@@ -58,6 +64,22 @@ const OrderForm = () => {
               <p className={styles.description}>
                 Subskrybcje możesz rozpocząć od 1 dnia kolejnego miesiąca lub od....
               </p>
+
+              <div className={styles.form}>
+                <Controller
+                  control={control}
+                  name="startDate"
+                  render={({ field }) => (
+                    <DatePickerWrap label="Start subskrypcji" name="startDate">
+                      <DatePicker
+                        locale="pl"
+                        onChange={(date) => field.onChange(date)}
+                        selected={field.value}
+                      />
+                    </DatePickerWrap>
+                  )}
+                />
+              </div>
             </div>
 
             <div className={styles.step}>
