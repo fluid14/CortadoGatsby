@@ -48,6 +48,19 @@
     margin-bottom: 18px;
   }
 
-  .numberPicker {}
-  max-width: 146px;
+  .numberPicker {
+    max-width: 146px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .productAmountPickerWrap {
+    .imageWrap {
+      width: 100%;
+    }
+
+    .numberPicker {
+      max-width: 100%;
+    }
+  }
 }

@@ -69,7 +69,9 @@
         background-color: $gray;
         margin-right: 12px;
         width: 32px;
+        min-width: 32px;
         height: 32px;
+        min-height: 32px;
 
         .stepNumber {
           font-size: 18px;
@@ -107,13 +109,39 @@
 
       &.deliveryForm {
         grid-template-columns: repeat(5, 1fr);
-        row-gap: 10px;
+        row-gap: 15px;
         margin-top: 30px;
       }
 
       &.amountPicker {
         max-width: 770px;
         margin: 102px auto 60px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .orderWrap {
+    .step {
+      .form {
+        grid-template-columns: repeat(2, 1fr);
+
+        &.amountPicker {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .orderWrap {
+    .step {
+      .form {
+        &.amountPicker {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     }
   }
@@ -137,7 +165,7 @@
 
         .right {
           justify-content: space-between;
-          margin:0;
+          margin: 0;
         }
       }
     }
@@ -177,6 +205,88 @@
       }
     }
   }
-
 }
 
+@media screen and (max-width: 767px) {
+  .orderWrap {
+    padding: {
+      top: 25px;
+      bottom: 25px;
+    };
+
+    .orderPopup {
+      .popupFooter {
+        .right {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+
+          .priceSummary {
+            margin-bottom: 20px;
+          }
+
+          .submitButton {
+            align-self: flex-end;
+          }
+        }
+      }
+    }
+
+    .contentWrap {
+      padding: {
+        top: 30px;
+        left: 25px;
+        right: 25px;
+      }
+    }
+
+    .step {
+      margin-bottom: 40px;
+
+      .stepTitleWrap {
+        margin-bottom: 10px;
+
+        .stepNumberWrap {
+          display: none
+        }
+
+        .title {
+          font-size: 20px;
+        }
+      }
+
+      .form {
+        grid-template-columns: 1fr;
+        column-gap: 30px;
+        row-gap: 0;
+
+        &.additionalForm {
+          margin-top: 30px;
+        }
+
+        &.deliveryForm {
+          grid-template-columns: repeat(2, 1fr);
+          margin-top: 20px;
+        }
+
+        &.amountPicker {
+          max-width: 100%;
+          margin: 50px auto 40px;
+          row-gap: 60px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .orderWrap {
+    .step {
+      .form {
+        &.amountPicker {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}

@@ -271,7 +271,9 @@ const OrderForm = () => {
                 <PriceSummary className={styles.priceSummary}>
                   <span className="bold">Do zapłaty: 300 pln/</span>mc
                 </PriceSummary>
-                <Button type="submit">Następny krok</Button>
+                <Button className={styles.submitButton} type="submit">
+                  Następny krok
+                </Button>
               </div>
             </PopupFooter>
           </form>

@@ -4,3 +4,9 @@
   padding: 20px 52px;
   border-top: 1px solid $spacer;
 }
+
+@media screen and (max-width: 767px) {
+  .popupFooterWrap {
+    padding: 20px 25px;
+  }
+}
