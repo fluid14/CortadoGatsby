@@ -1,0 +1,292 @@
+@import 'src/styles/config';
+
+.orderWrap {
+  padding: {
+    top: 70px;
+    bottom: 70px;
+  };
+  background-color: rgba($cortado1, .3);
+
+  .popupHeader {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+
+  .orderPopup {
+    max-width: 100%;
+    align-items: flex-start;
+    padding: 0;
+
+    .popupFooter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-grow: 1;
+        margin-left: 40px;
+
+        .priceSummary {
+          display: block;
+          margin-right: 29px;
+        }
+      }
+    }
+  }
+
+  .contentWrap {
+    padding: {
+      top: 46px;
+      left: 150px;
+      right: 150px;
+    }
+  }
+
+  .orderForm {
+    width: 100%;
+  }
+
+  .step {
+    width: 100%;
+    margin-bottom: 70px;
+
+    .stepTitleWrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 21px;
+
+      .stepNumberWrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        overflow: hidden;
+        background-color: $gray;
+        margin-right: 12px;
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
+        min-height: 32px;
+
+        .stepNumber {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1;
+          text-align: center;
+        }
+      }
+
+      .title {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 124%;
+        margin: 0;
+      }
+    }
+
+    .description {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 148%;
+      margin-bottom: 40px;
+    }
+
+    .form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      column-gap: 30px;
+      row-gap: 0;
+
+      &.additionalForm {
+        margin-top: 60px;
+      }
+
+      &.deliveryForm {
+        grid-template-columns: repeat(5, 1fr);
+        row-gap: 15px;
+        margin-top: 30px;
+      }
+
+      &.amountPicker {
+        max-width: 770px;
+        margin: 102px auto 60px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .orderWrap {
+    .step {
+      .form {
+        grid-template-columns: repeat(2, 1fr);
+
+        &.amountPicker {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .orderWrap {
+    .step {
+      .form {
+        &.amountPicker {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .orderWrap {
+    padding: {
+      top: 40px;
+      bottom: 40px;
+    };
+
+    .orderPopup {
+      .popupFooter {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+
+        .info {
+          display: none;
+        }
+
+        .right {
+          justify-content: space-between;
+          margin: 0;
+        }
+      }
+    }
+
+    .contentWrap {
+      padding: {
+        left: 60px;
+        right: 60px;
+      }
+    }
+
+    .step {
+      margin-bottom: 50px;
+
+      .stepTitleWrap {
+        margin-bottom: 15px;
+      }
+
+      .description {
+        margin-bottom: 20px;
+      }
+
+      .form {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 30px;
+        row-gap: 0;
+
+        &.additionalForm {
+          margin-top: 40px;
+        }
+
+        &.amountPicker {
+          max-width: 100%;
+          margin: 60px auto 50px;
+          row-gap: 60px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .orderWrap {
+    padding: {
+      top: 25px;
+      bottom: 25px;
+    };
+
+    .orderPopup {
+      .popupFooter {
+        .right {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+
+          .priceSummary {
+            margin-bottom: 20px;
+          }
+
+          .submitButton {
+            align-self: flex-end;
+          }
+        }
+      }
+    }
+
+    .contentWrap {
+      padding: {
+        top: 30px;
+        left: 25px;
+        right: 25px;
+      }
+    }
+
+    .step {
+      margin-bottom: 40px;
+
+      .stepTitleWrap {
+        margin-bottom: 10px;
+
+        .stepNumberWrap {
+          display: none
+        }
+
+        .title {
+          font-size: 20px;
+        }
+      }
+
+      .form {
+        grid-template-columns: 1fr;
+        column-gap: 30px;
+        row-gap: 0;
+
+        &.additionalForm {
+          margin-top: 30px;
+        }
+
+        &.deliveryForm {
+          grid-template-columns: repeat(2, 1fr);
+          margin-top: 20px;
+        }
+
+        &.amountPicker {
+          max-width: 100%;
+          margin: 50px auto 40px;
+          row-gap: 60px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .orderWrap {
+    .step {
+      .form {
+        &.amountPicker {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}

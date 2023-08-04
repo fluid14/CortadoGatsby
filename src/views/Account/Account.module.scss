@@ -1,0 +1,21 @@
+@import 'src/styles/config';
+
+.accountWrap {
+  .greetings {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 120%;
+    color: $primary;
+    padding: 30px 0;
+  }
+
+  .accountContentWrap {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+    .accountContent {
+      padding-left: 50px;
+    }
+  }
+}

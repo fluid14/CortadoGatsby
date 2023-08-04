@@ -8,5 +8,7 @@
   "register": "/app/rejestracja",
   "login": "/app/logowanie",
   "account": "/app/konto",
+  "accountOrders": "/app/konto",
+  "accountSettings": "/app/konto/ustawienia",
   "order": "/zamowienie"
 }
