@@ -2,7 +2,8 @@
   "api" : {
     "getCurrentUser": "api/users/me",
     "register": "api/auth/local/register",
-    "login": "api/auth/local"
+    "login": "api/auth/local",
+    "update": "api/users/{id}"
   },
   "home": "/",
   "register": "/app/rejestracja",
