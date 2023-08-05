@@ -14,6 +14,7 @@ const AuthContext = createContext({
   getToken: () => {},
   getUser: () => {},
   updateUser: () => {},
+  changeUserPassword: () => {},
   loginState: false,
 });
 
@@ -77,6 +78,17 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  const changeUserPassword = async (data) => {
+    await apiService
+      .post(routes.api.changePassword, data)
+      .then(async () => {
+        toast.success(`Hasło zostało zmienione!`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const logoutUser = async () => {
     removeItem(USER);
     removeItem(AUTH_TOKEN);
@@ -101,6 +113,7 @@ const AuthProvider = ({ children }) => {
         getUser,
         loginState,
         updateUser,
+        changeUserPassword,
       }}
     >
       {children}
