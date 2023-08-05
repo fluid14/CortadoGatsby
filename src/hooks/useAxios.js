@@ -44,7 +44,29 @@ export const useAxios = () => {
   const onResponseError = (error) => {
     hidePreloader();
     console.error(error);
-    toast.error('Coś poszło nie tak');
+    switch (error?.response?.status) {
+      case 400:
+        toast.error(error?.response?.data?.message);
+        break;
+      case 401:
+        toast.error('Nie jesteś zalogowany');
+        break;
+      case 403:
+        toast.error('Nie masz uprawnień do wykonania tej akcji');
+        break;
+      case 404:
+        toast.error('Nie znaleziono zasobu');
+        break;
+      case 405:
+        toast.error('Operacja niedozwolona');
+        break;
+      case 500:
+        toast.error('Wewnętrzny błąd serwera');
+        break;
+      default:
+        toast.error('Coś poszło nie tak');
+        break;
+    }
     return Promise.reject(error);
   };
 

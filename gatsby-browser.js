@@ -12,12 +12,12 @@ import Preloader from './src/components/shared/Preloader/Preloader';
 import { AuthProvider } from './src/context/AuthContext';
 
 export const wrapRootElement = ({ element }) => (
-  <AuthProvider>
-    <PreloaderProvider>
+  <PreloaderProvider>
+    <AuthProvider>
       <Theme>
         {element}
         <Preloader />
       </Theme>
-    </PreloaderProvider>
-  </AuthProvider>
+    </AuthProvider>
+  </PreloaderProvider>
 );
