@@ -3,6 +3,7 @@
  */
 
 const path = require(`path`);
+const slugify = require('slugify');
 
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions;
@@ -195,6 +196,55 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      allStrapiProduct {
+        nodes {
+          name
+          subName
+          description
+          descriptionImage {
+            alternativeText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          id
+          otherProducts {
+            sectionInfo {
+              id
+            }
+            text
+            title
+          }
+          productSteps {
+            button {
+              id
+              secondary
+              size
+              text
+              url
+            }
+            subtext
+            title
+            steps {
+              backgroundColor
+              description
+              id
+              image {
+                alternativeText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              title
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -204,6 +254,16 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/layout/Default.js`),
       context: {
         data,
+      },
+    });
+  });
+
+  query.data.allStrapiProduct.nodes.forEach((node) => {
+    createPage({
+      path: `/produkt/${slugify(node.name, { lower: true })}`,
+      component: path.resolve(`./src/layout/Product.js`),
+      context: {
+        data: node,
       },
     });
   });

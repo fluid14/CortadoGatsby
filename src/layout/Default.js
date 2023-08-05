@@ -1,5 +1,4 @@
 import React from 'react';
-import Theme from '../theme/Theme';
 import HeaderSlider from '../components/shared/sliders/HeaderSlider/HeaderSlider';
 import HowItWork from '../components/sections/HowItWork/HowItWork';
 import Satisfaction from '../components/sections/Satisfaction/Satisfaction';
@@ -12,7 +11,7 @@ import Faq from '../components/sections/Faq/Faq';
 
 const Default = ({ pageContext: { data } }) => {
   return (
-    <Theme>
+    <>
       {data?.map((component) => {
         const { strapi_component: componentType, id } = component;
 
@@ -48,7 +47,7 @@ const Default = ({ pageContext: { data } }) => {
             return null;
         }
       })}
-    </Theme>
+    </>
   );
 };
 
