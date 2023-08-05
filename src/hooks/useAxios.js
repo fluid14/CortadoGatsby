@@ -2,58 +2,37 @@ import React, { useContext } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { PreloaderContext } from '../context/PreloaderContext';
-import { BEARER } from '../constant';
-import { AuthContext } from '../context/AuthContext';
+import { AUTH_TOKEN, BEARER } from '../constant';
+import useLocalStorage from './useLocalStorage';
 
 export const useAxios = () => {
   const { showPreloader, hidePreloader } = useContext(PreloaderContext);
-  const { getToken } = useContext(AuthContext);
+  const { getItem } = useLocalStorage();
 
   const apiService = axios.create({
     baseURL: process.env.STRAPI_API_URL,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${BEARER} ${process.env.STRAPI_API_TOKEN}`,
+      Authorization: `${BEARER} ${getItem(AUTH_TOKEN) ?? process.env.STRAPI_API_TOKEN}`,
     },
   });
 
-  apiService.interceptors.request.use((response) => {
-    onRequest(response);
+  apiService.interceptors.request.use((config) => {
+    return onRequest(config);
   });
 
   apiService.interceptors.response.use(
     (response) => {
-      onResponse(response);
+      return onResponse(response);
     },
     (error) => {
-      onResponseError(error);
+      return onResponseError(error);
     }
   );
 
-  const apiUserService = axios.create({
-    baseURL: process.env.STRAPI_API_URL,
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `${BEARER} ${getToken()}`,
-    },
-  });
-
-  apiUserService.interceptors.request.use((response) => {
-    onRequest(response);
-  });
-
-  apiUserService.interceptors.response.use(
-    (response) => {
-      onResponse(response);
-    },
-    (error) => {
-      onResponseError(error);
-    }
-  );
-
-  const onRequest = (response) => {
+  const onRequest = (config) => {
     showPreloader();
-    return response;
+    return config;
   };
 
   const onResponse = (response) => {
@@ -69,5 +48,5 @@ export const useAxios = () => {
     return Promise.reject(error);
   };
 
-  return { apiService, apiUserService };
+  return { apiService };
 };

@@ -10,6 +10,8 @@ import { AuthContext } from '../../../context/AuthContext';
 
 const AccountSettings = () => {
   const { updateUser, getUser } = useContext(AuthContext);
+  const { name, surname, username, email } = getUser();
+
   const {
     register,
     handleSubmit,
@@ -17,58 +19,58 @@ const AccountSettings = () => {
   } = useForm({
     mode: 'onTouched',
     resolver: yupResolver(schema),
-    defaultValues: { ...getUser() },
+    defaultValues: { name, surname, username, email },
   });
 
   const onSubmit = async (data) => {
-    const payload = {
-      ...data,
-    };
-
     const { id } = getUser();
-    console.log(id);
-    console.log(payload);
-
-    updateUser(payload, id);
+    updateUser(
+      {
+        ...data,
+      },
+      id
+    );
   };
 
   return (
     <section className={styles.accountSettingsWrap}>
       <AccountContentTitle>Ustawienia</AccountContentTitle>
 
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          ref={null}
-          label="Imię"
-          name="name"
-          type="text"
-          error={errors.name}
-          register={register}
-        />
-        <Input
-          ref={null}
-          label="Nazwisko"
-          name="surname"
-          type="text"
-          error={errors.surname}
-          register={register}
-        />
-        <Input
-          ref={null}
-          label="Nazwa użytkownika"
-          name="username"
-          type="text"
-          error={errors.username}
-          register={register}
-        />
-        <Input
-          ref={null}
-          label="E-mail"
-          name="email"
-          type="email"
-          error={errors.email}
-          register={register}
-        />
+      <form className={styles.formWrap} onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.form}>
+          <Input
+            ref={null}
+            label="Imię"
+            name="name"
+            type="text"
+            error={errors.name}
+            register={register}
+          />
+          <Input
+            ref={null}
+            label="Nazwisko"
+            name="surname"
+            type="text"
+            error={errors.surname}
+            register={register}
+          />
+          <Input
+            ref={null}
+            label="Nazwa użytkownika"
+            name="username"
+            type="text"
+            error={errors.username}
+            register={register}
+          />
+          <Input
+            ref={null}
+            label="E-mail"
+            name="email"
+            type="email"
+            error={errors.email}
+            register={register}
+          />
+        </div>
 
         <Button className={styles.button} type="submit" size="medium">
           Zapisz
