@@ -85,7 +85,12 @@ const AuthProvider = ({ children }) => {
         toast.success(`Hasło zostało zmienione!`);
       })
       .catch((error) => {
-        console.log(error);
+        if (
+          error?.response?.status === 400 &&
+          error?.response?.data?.error?.message === 'The provided current password is invalid'
+        ) {
+          toast.error(`Aktualne hasło jest nieprawidłowe!`);
+        }
       });
   };
 
