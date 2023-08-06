@@ -16,6 +16,9 @@ import PopupFooter from '../../components/shared/Popup/PopupFooter/PopupFooter';
 import PriceSummary from '../../components/shared/Typography/PriceSummary/PriceSummary';
 import Button from '../../components/shared/Button/Button';
 import Info from '../../components/shared/Info/Info';
+import { firstDayNextMonth } from '../../utils/date';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema';
 
 registerLocale('pl', pl);
 
@@ -26,7 +29,11 @@ const OrderForm = () => {
     formState: { errors },
     control,
     setValue,
-  } = useForm({ mode: 'onTouched' });
+  } = useForm({
+    mode: 'onTouched',
+    resolver: yupResolver(schema),
+    defaultValues: { startDate: firstDayNextMonth() },
+  });
   const [isVat, setIsVat] = useState(false);
 
   const onSubmit = async (data) => {
@@ -103,6 +110,10 @@ const OrderForm = () => {
                           locale="pl"
                           onChange={(date) => field.onChange(date)}
                           selected={field.value}
+                          dateFormat="dd.MM.yyyy"
+                          onKeyDown={(e) => {
+                            e.preventDefault();
+                          }}
                         />
                       </DatePickerWrap>
                     )}
@@ -161,9 +172,9 @@ const OrderForm = () => {
                   <Input
                     ref={null}
                     label="Ulica i numer lokalu"
-                    name="adress"
+                    name="address"
                     type="text"
-                    error={errors.adress}
+                    error={errors.address}
                     register={register}
                   />
 
@@ -178,8 +189,8 @@ const OrderForm = () => {
 
                   <Checkbox
                     ref={null}
-                    name="vat"
-                    error={errors.vat}
+                    name="isVat"
+                    error={errors.isVat}
                     register={register}
                     onClick={handleVatChange}
                   >
@@ -219,9 +230,9 @@ const OrderForm = () => {
                     <Input
                       ref={null}
                       label="Ulica i numer lokalu"
-                      name="companyAdress"
+                      name="companyAddress"
                       type="text"
-                      error={errors.companyAdress}
+                      error={errors.companyAddress}
                       register={register}
                     />
 

@@ -31,6 +31,7 @@
           border-radius: 4px;
           transition: .3s ease;
           background: url('../../../../images/icons/calendar.svg') calc(100% - 12px) center / 20px no-repeat $white;
+          cursor: pointer;
 
           &:focus,
           &:hover {
