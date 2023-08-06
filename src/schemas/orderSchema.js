@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const schema = Yup.object().shape({
+export const orderSchema = Yup.object().shape({
   startDate: Yup.date().required('To pole jest wymagane'),
   name: Yup.string().required('To pole jest wymagane'),
   surname: Yup.string().required('To pole jest wymagane'),
