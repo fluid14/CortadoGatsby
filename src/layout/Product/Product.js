@@ -6,7 +6,6 @@ import Products from '../../components/sections/Products/Products';
 
 const Product = ({
   pageContext: {
-    data,
     data: {
       name,
       subName,
@@ -17,8 +16,6 @@ const Product = ({
     },
   },
 }) => {
-  console.log(data);
-
   return (
     <div className={styles.productPageWrap}>
       <ProductDescription
@@ -36,7 +33,7 @@ const Product = ({
         diagramTitle={title}
       />
 
-      <Products data={otherProducts} />
+      <Products data={otherProducts} without={name} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import * as styles from './ProductAmountPicker.module.scss';
 import productImage from '../../../../images/develop/product.png';
 import NumberPicker from '../NumberPicker/NumberPicker';
 
-const ProductAmountPicker = () => {
+const ProductAmountPicker = ({ name, register, setValue }) => {
   return (
     <div className={styles.productAmountPickerWrap}>
       <div className={styles.imageWrap}>
@@ -14,7 +14,12 @@ const ProductAmountPicker = () => {
         <span className="bold">100 zł/</span>1kg
       </p>
       <p className={styles.description}>1 opakowanie = 1kg</p>
-      <NumberPicker className={styles.numberPicker} />
+      <NumberPicker
+        className={styles.numberPicker}
+        name={name}
+        register={register}
+        setValue={setValue}
+      />
     </div>
   );
 };

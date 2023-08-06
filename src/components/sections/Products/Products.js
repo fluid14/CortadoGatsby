@@ -5,7 +5,7 @@ import Button from '../../shared/Button/Button';
 import Product from './Product/Product';
 import { graphql, useStaticQuery } from 'gatsby';
 
-const Products = ({ data: { title, text, button } }) => {
+const Products = ({ data: { title, text, button }, without = '' }) => {
   const {
     allStrapiProduct: { nodes },
   } = useStaticQuery(graphql`
@@ -26,6 +26,7 @@ const Products = ({ data: { title, text, button } }) => {
               url
             }
           }
+          imageBackgroundColor
         }
       }
     }
@@ -39,9 +40,9 @@ const Products = ({ data: { title, text, button } }) => {
       <p className={styles.description}>{text}</p>
 
       <ul className={styles.productsList}>
-        {nodes.map((data) => (
-          <Product key={data.id} data={data} />
-        ))}
+        {nodes.map((data) =>
+          without === data.name ? null : <Product key={data.id} data={data} />
+        )}
       </ul>
 
       {button?.url && (

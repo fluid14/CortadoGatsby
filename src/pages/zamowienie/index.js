@@ -25,6 +25,7 @@ const OrderForm = () => {
     handleSubmit,
     formState: { errors },
     control,
+    setValue,
   } = useForm({ mode: 'onTouched' });
   const [isVat, setIsVat] = useState(false);
 
@@ -60,9 +61,24 @@ const OrderForm = () => {
                 <p className={styles.description}>Minimalna ilość to jedno opakowanie = 1 kg</p>
 
                 <div className={cs(styles.form, styles.amountPicker)}>
-                  <ProductAmountPicker />
-                  <ProductAmountPicker />
-                  <ProductAmountPicker />
+                  <ProductAmountPicker
+                    ref={null}
+                    name="speciality"
+                    register={register}
+                    setValue={setValue}
+                  />
+                  <ProductAmountPicker
+                    ref={null}
+                    name="arabica"
+                    register={register}
+                    setValue={setValue}
+                  />
+                  <ProductAmountPicker
+                    ref={null}
+                    name="brand"
+                    register={register}
+                    setValue={setValue}
+                  />
                 </div>
               </div>
 
