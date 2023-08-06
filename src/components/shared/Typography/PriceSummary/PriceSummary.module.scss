@@ -16,3 +16,16 @@
     font-size: 20px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .priceSummary {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .priceSummary {
+    font-size: 16px;
+  }
+}

@@ -54,6 +54,11 @@
     width: 100%;
     margin-bottom: 70px;
 
+    .info {
+      max-width: 770px;
+      margin: 0 auto;
+    }
+
     .stepTitleWrap {
       display: flex;
       align-items: center;
@@ -115,7 +120,7 @@
 
       &.amountPicker {
         max-width: 770px;
-        margin: 102px auto 60px;
+        margin: 102px auto 20px;
       }
     }
   }
@@ -154,22 +159,6 @@
       bottom: 40px;
     };
 
-    .orderPopup {
-      .popupFooter {
-        justify-content: space-between;
-        flex-wrap: nowrap;
-
-        .info {
-          display: none;
-        }
-
-        .right {
-          justify-content: space-between;
-          margin: 0;
-        }
-      }
-    }
-
     .contentWrap {
       padding: {
         left: 60px;
@@ -199,7 +188,7 @@
 
         &.amountPicker {
           max-width: 100%;
-          margin: 60px auto 50px;
+          margin: 60px auto 20px;
           row-gap: 60px;
         }
       }
@@ -216,17 +205,26 @@
 
     .orderPopup {
       .popupFooter {
+        flex-direction: column;
+        align-items: flex-start;
+
         .right {
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: flex-start;
+          width: 100%;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          margin: 0;
 
           .priceSummary {
-            margin-bottom: 20px;
+            flex-grow: 1;
+            margin: {
+              top: 20px;
+              right: 20px;
+            }
           }
 
           .submitButton {
-            align-self: flex-end;
+            margin: 20px 0 0 auto;
           }
         }
       }
@@ -271,7 +269,7 @@
 
         &.amountPicker {
           max-width: 100%;
-          margin: 50px auto 40px;
+          margin: 50px auto 20px;
           row-gap: 60px;
         }
       }
@@ -281,6 +279,24 @@
 
 @media screen and (max-width: 600px) {
   .orderWrap {
+    .orderPopup {
+      .popupFooter {
+        .right {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: 10px;
+
+          .priceSummary {
+            margin-right: 0;
+          }
+
+          .submitButton {
+            margin: 20px 0 0 0;
+          }
+        }
+      }
+    }
     .step {
       .form {
         &.amountPicker {

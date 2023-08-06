@@ -15,10 +15,11 @@ import ProductAmountPicker from '../../components/shared/Inputs/ProductAmountPic
 import PopupFooter from '../../components/shared/Popup/PopupFooter/PopupFooter';
 import PriceSummary from '../../components/shared/Typography/PriceSummary/PriceSummary';
 import Button from '../../components/shared/Button/Button';
-import Info from '../../components/shared/Info/Info';
 import { firstDayNextMonth } from '../../utils/date';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema';
+import { Link } from 'gatsby';
+import Info from '../../components/shared/Info/Info';
 
 registerLocale('pl', pl);
 
@@ -87,6 +88,8 @@ const OrderForm = () => {
                     setValue={setValue}
                   />
                 </div>
+
+                <Info className={styles.info}>Minimalna ilość to jedno opakowanie = 1 kg</Info>
               </div>
 
               <div className={styles.step}>
@@ -293,7 +296,18 @@ const OrderForm = () => {
               </div>
             </div>
             <PopupFooter className={styles.popupFooter}>
-              <Info className={styles.info}>Minimalna ilość to jedno opakowanie = 1 kg</Info>
+              <Checkbox
+                ref={null}
+                className={styles.regulations}
+                name="regulations"
+                error={errors.regulations}
+                register={register}
+              >
+                Akceptuje&nbsp;
+                <Link className="link" to="/regulamin">
+                  regulamin
+                </Link>
+              </Checkbox>
               <div className={styles.right}>
                 <PriceSummary className={styles.priceSummary}>
                   <span className="bold">Do zapłaty: 300 pln/</span>mc
