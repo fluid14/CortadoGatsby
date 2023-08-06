@@ -39,15 +39,8 @@ const Products = ({ data: { title, text, button } }) => {
       <p className={styles.description}>{text}</p>
 
       <ul className={styles.productsList}>
-        {nodes.map(({ name, description, image, id, numberOfGrain, bestseller }) => (
-          <Product
-            key={id}
-            img={image}
-            title={name}
-            description={description}
-            numberOfGrain={numberOfGrain}
-            bestseller={bestseller}
-          />
+        {nodes.map((data) => (
+          <Product key={data.id} data={data} />
         ))}
       </ul>
 

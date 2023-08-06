@@ -40,6 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 image {
                   alternativeText
                   localFile {
+                    url
                     childImageSharp {
                       gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                     }
@@ -98,6 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
               icon {
                 alternativeText
                 localFile {
+                  url
                   childImageSharp {
                     gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                   }
@@ -111,6 +113,7 @@ exports.createPages = async ({ graphql, actions }) => {
               benefits {
                 icon {
                   localFile {
+                    url
                     childImageSharp {
                       gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                     }
@@ -175,6 +178,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 id
                 image {
                   localFile {
+                    url
                     childImageSharp {
                       gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                     }
@@ -206,6 +210,7 @@ exports.createPages = async ({ graphql, actions }) => {
           descriptionImage {
             alternativeText
             localFile {
+              url
               childImageSharp {
                 gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
               }

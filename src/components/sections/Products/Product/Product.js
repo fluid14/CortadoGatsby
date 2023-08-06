@@ -6,19 +6,21 @@ import cs from 'classnames';
 import ProductImage from '../ProductImage/ProductImage';
 import slugify from 'slugify';
 
-const Product = ({ img, title, description, link = '#' }) => {
+const Product = ({ data: { name, description, image, numberOfGrain, bestseller } }) => {
   return (
     <li className={styles.productWrap}>
       <ProductImage
         className={styles.image}
-        img={img}
-        link={`/produkt/${slugify(title, { lower: true })}`}
+        img={image}
+        link={`/produkt/${slugify(name, { lower: true })}`}
+        numberOfGrain={numberOfGrain}
+        bestseller={bestseller}
       />
-      <h4 className={styles.title}>{title}</h4>
+      <h4 className={styles.title}>{name}</h4>
       <p className={styles.description}>{description}</p>
       <Link
         className={cs('link', styles.productPage)}
-        to={`/produkt/${slugify(title, { lower: true })}`}
+        to={`/produkt/${slugify(name, { lower: true })}`}
       >
         Karta produktu
       </Link>

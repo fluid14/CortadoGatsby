@@ -63,6 +63,11 @@
       bottom: 40px;
     }
 
+    .productsList {
+      grid-template-columns: 1fr;
+      grid-gap: 40px;
+    }
+
     .title {
       font-size: 22px;
       margin-bottom: 15px;
@@ -74,15 +79,6 @@
 
     .productsList {
       grid-gap: 15px;
-    }
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .productsWrap {
-    .productsList {
-      grid-template-columns: 1fr;
-      grid-gap: 40px;
     }
   }
 }
