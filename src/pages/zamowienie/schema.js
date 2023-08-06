@@ -30,4 +30,5 @@ export const schema = Yup.object().shape({
     then: () => Yup.string().required('To pole jest wymagane'),
   }),
   delivery: Yup.string().required('To pole jest wymagane'),
+  regulations: Yup.bool().oneOf([true], 'To pole jest wymagane'),
 });

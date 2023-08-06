@@ -4,18 +4,18 @@ import cs from 'classnames';
 import plusImage from '../../../../images/icons/plus.svg';
 import minusImage from '../../../../images/icons/minus.svg';
 
-const NumberPicker = ({ className, name, register, setValue: setFormValue }) => {
+const NumberPicker = ({ className, name, register, setValue: setFormValue, stripeId }) => {
   const [value, setValue] = useState(0);
-  setFormValue(name, value);
+  setFormValue(stripeId, value);
 
   const handlePlus = () => {
     setValue((prev) => prev + 1);
-    setFormValue(name, value);
+    setFormValue(stripeId, value);
   };
 
   const handleMinus = () => {
     setValue((prev) => (prev > 0 ? prev - 1 : 0));
-    setFormValue(name, value);
+    setFormValue(stripeId, value);
   };
 
   return (
@@ -26,9 +26,9 @@ const NumberPicker = ({ className, name, register, setValue: setFormValue }) => 
       <input
         className={styles.input}
         type="number"
-        name={name}
-        id={name}
-        {...register(name)}
+        name={stripeId}
+        id={stripeId}
+        {...register(stripeId)}
         disabled
       />
       <button className={cs(styles.plus, styles.button)} type="button" onClick={handlePlus}>

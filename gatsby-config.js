@@ -63,6 +63,12 @@ module.exports = {
               populate: 'deep',
             },
           },
+          {
+            singularName: 'shipping',
+            queryParams: {
+              populate: 'deep',
+            },
+          },
         ],
       },
     },

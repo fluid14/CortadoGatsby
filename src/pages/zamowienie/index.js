@@ -11,7 +11,6 @@ import Radio from '../../components/shared/Inputs/Radio/Radio';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import DatePickerWrap from '../../components/shared/Inputs/DatePickerWrap/DatePickerWrap';
 import pl from 'date-fns/locale/pl';
-import ProductAmountPicker from '../../components/shared/Inputs/ProductAmountPicker/ProductAmountPicker';
 import PopupFooter from '../../components/shared/Popup/PopupFooter/PopupFooter';
 import PriceSummary from '../../components/shared/Typography/PriceSummary/PriceSummary';
 import Button from '../../components/shared/Button/Button';
@@ -20,6 +19,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema';
 import { Link } from 'gatsby';
 import Info from '../../components/shared/Info/Info';
+import OrderProductList from '../../components/Order/OrderProductList/OrderProductList';
 
 registerLocale('pl', pl);
 
@@ -69,24 +69,7 @@ const OrderForm = () => {
                 <p className={styles.description}>Minimalna ilość to jedno opakowanie = 1 kg</p>
 
                 <div className={cs(styles.form, styles.amountPicker)}>
-                  <ProductAmountPicker
-                    ref={null}
-                    name="speciality"
-                    register={register}
-                    setValue={setValue}
-                  />
-                  <ProductAmountPicker
-                    ref={null}
-                    name="arabica"
-                    register={register}
-                    setValue={setValue}
-                  />
-                  <ProductAmountPicker
-                    ref={null}
-                    name="brand"
-                    register={register}
-                    setValue={setValue}
-                  />
+                  <OrderProductList register={register} setValue={setValue} />
                 </div>
 
                 <Info className={styles.info}>Minimalna ilość to jedno opakowanie = 1 kg</Info>

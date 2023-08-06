@@ -6,7 +6,15 @@ import Image from '../../../shared/Image/Image';
 import grainImage from '../../../../images/grain.svg';
 import emptyGrainImage from '../../../../images/emptyGrain.svg';
 
-const ProductImage = ({ className, img, link, numberOfGrain, bestseller, backgroundColor }) => {
+const ProductImage = ({
+  className,
+  img,
+  link,
+  numberOfGrain,
+  bestseller = null,
+  backgroundColor,
+  order = false,
+}) => {
   const grains = [];
   for (let i = 0; i < 4; i++) {
     const grain = i < numberOfGrain ? grainImage : emptyGrainImage;
@@ -14,7 +22,14 @@ const ProductImage = ({ className, img, link, numberOfGrain, bestseller, backgro
   }
 
   return (
-    <Link className={cs(className, styles.productImageWrap)} style={{ backgroundColor }} to={link}>
+    <Link
+      className={cs(className, styles.productImageWrap, {
+        [styles.order]: order,
+        [styles.bestseller]: bestseller,
+      })}
+      style={{ backgroundColor }}
+      to={link}
+    >
       {bestseller && <div className={styles.bestseller}>Bestseller</div>}
       <Image className={styles.image} image={img} />
       <div className={styles.numberOfGrain}>

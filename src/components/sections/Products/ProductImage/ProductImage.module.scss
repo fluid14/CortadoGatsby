@@ -10,6 +10,43 @@
   background-color: $cortado1;
   margin-top: 40px;
 
+  &.order {
+    width: 205px;
+    height: 144px;
+    border-radius: 12px 12px 0 12px;
+
+    &.bestseller {
+      border-radius: 12px 0 0 12px;
+    }
+
+    .image {
+      position: absolute;
+      left: 5px;
+      bottom: 0;
+      width: 126px;
+      min-width: 126px;
+      height: 176px;
+      min-height: 176px;
+    }
+
+    .bestseller {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 148%;
+      padding: 3px 10px;
+    }
+
+    .numberOfGrain {
+      grid-gap: 3px;
+      padding: 7px 12px;
+
+      .grain {
+        width: 17px;
+        height: 21px;
+      }
+    }
+  }
+
   .bestseller {
     position: absolute;
     top: 0;
@@ -99,6 +136,14 @@
       left: 10px;
       width: 120px;
       max-width: 120px;
+    }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .productImageWrap {
+    &.order {
+      width: 100%;
     }
   }
 }
