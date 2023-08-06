@@ -1,17 +1,13 @@
 import React from 'react';
 import * as styles from './Benefit.module.scss';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import Image from '../../../shared/Image/Image';
 
 const Benefit = ({ icon, description }) => {
   return (
     <>
       {icon && (
         <li className={styles.benefitWrap}>
-          <GatsbyImage
-            className={styles.image}
-            image={icon.localFile.childImageSharp.gatsbyImageData}
-            alt={icon.alternativeText}
-          />
+          <Image className={styles.image} image={icon} />
           <p className={styles.text}>{description}</p>
         </li>
       )}

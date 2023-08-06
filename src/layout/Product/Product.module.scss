@@ -1,0 +1,49 @@
+@import 'src/styles/config';
+
+.productPageWrap {
+  .steps {
+    padding: {
+      top: 140px;
+    }
+    background: url('../../images/coddeOpacityUp.svg') left 480px / 216px no-repeat, url('../../images/coffeMini.svg') 450px 550px / 83px no-repeat, url('../../images/coffeOpacityDown.svg') right 80px / 216px no-repeat;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .productPageWrap {
+    .steps {
+      background: url('../../images/coddeOpacityUp.svg') left 480px / 216px no-repeat, url('../../images/coffeMini.svg') 450px 520px / 83px no-repeat, url('../../images/coffeOpacityDown.svg') right 80px / 216px no-repeat;
+    }
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .productPageWrap {
+    .steps {
+      background: url('../../images/coddeOpacityUp.svg') left 480px / 216px no-repeat, url('../../images/coffeMini.svg') 450px 520px / 83px no-repeat, url('../../images/coffeOpacityDown.svg') right -130px / 216px no-repeat;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .productPageWrap {
+    .steps {
+      padding: {
+        top: 60px;
+        bottom: 60px;
+      }
+      background: url('../../images/coddeOpacityUp.svg') left 1150px / 216px no-repeat, url('../../images/coffeMini.svg') 50px 500px / 83px no-repeat, url('../../images/coffeOpacityDown.svg') right -130px / 160px no-repeat;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .productPageWrap {
+    .steps {
+      padding: {
+        bottom: 40px;
+      }
+      background: url('../../images/coffeOpacityDown.svg') right -90px / 120px no-repeat;
+    }
+  }
+}

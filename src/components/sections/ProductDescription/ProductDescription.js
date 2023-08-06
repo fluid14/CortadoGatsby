@@ -3,14 +3,9 @@ import * as styles from './ProductDescription.module.scss';
 import cs from 'classnames';
 import Button from '../../shared/Button/Button';
 import routes from '../../../routes.json';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import Image from '../../shared/Image/Image';
 
-const ProductDescription = ({
-  name,
-  subName,
-  description,
-  descriptionImage: { localFile, alternativeText },
-}) => {
+const ProductDescription = ({ name, subName, description, descriptionImage }) => {
   return (
     <section className={cs('section fullWidth', styles.productDescription)}>
       <div className={styles.content}>
@@ -24,11 +19,7 @@ const ProductDescription = ({
       </div>
 
       <div className={styles.imageWrap}>
-        <GatsbyImage
-          className={styles.image}
-          image={localFile.childImageSharp.gatsbyImageData}
-          alt={alternativeText}
-        />
+        <Image className={styles.image} image={descriptionImage} />
       </div>
     </section>
   );

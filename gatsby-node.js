@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   alternativeText
                   localFile {
                     childImageSharp {
-                      gatsbyImageData
+                      gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                     }
                   }
                 }
@@ -78,6 +78,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 image {
                   alternativeText
                   localFile {
+                    url
                     childImageSharp {
                       gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                     }
@@ -98,7 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 alternativeText
                 localFile {
                   childImageSharp {
-                    gatsbyImageData
+                    gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                   }
                 }
               }
@@ -111,7 +112,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 icon {
                   localFile {
                     childImageSharp {
-                      gatsbyImageData
+                      gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                     }
                   }
                   alternativeText
@@ -175,7 +176,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 image {
                   localFile {
                     childImageSharp {
-                      gatsbyImageData
+                      gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                     }
                   }
                   alternativeText
@@ -206,7 +207,7 @@ exports.createPages = async ({ graphql, actions }) => {
             alternativeText
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
               }
             }
           }
@@ -235,8 +236,9 @@ exports.createPages = async ({ graphql, actions }) => {
               image {
                 alternativeText
                 localFile {
+                  url
                   childImageSharp {
-                    gatsbyImageData
+                    gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
                   }
                 }
               }
@@ -261,7 +263,7 @@ exports.createPages = async ({ graphql, actions }) => {
   query.data.allStrapiProduct.nodes.forEach((node) => {
     createPage({
       path: `/produkt/${slugify(node.name, { lower: true })}`,
-      component: path.resolve(`./src/layout/Product.js`),
+      component: path.resolve(`./src/layout/Product/Product.js`),
       context: {
         data: node,
       },

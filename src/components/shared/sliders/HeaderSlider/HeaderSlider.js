@@ -6,7 +6,7 @@ import { Pagination } from 'swiper/modules';
 import * as styles from './HeaderSlider.module.scss';
 import Button from '../../Button/Button';
 import cs from 'classnames';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import Image from '../../Image/Image';
 
 const HeaderSlider = ({ data: { Slide } }) => {
   return (
@@ -49,13 +49,7 @@ const HeaderSlider = ({ data: { Slide } }) => {
                 )}
               </div>
               <div className={styles.imageWrap}>
-                {image && (
-                  <GatsbyImage
-                    className={styles.image}
-                    image={image.localFile.childImageSharp.gatsbyImageData}
-                    alt={image.alternativeText}
-                  />
-                )}
+                {image && <Image className={styles.image} image={image} />}
               </div>
             </SwiperSlide>
           );

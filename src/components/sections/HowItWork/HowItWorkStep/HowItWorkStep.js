@@ -1,25 +1,13 @@
 import React from 'react';
 import * as styles from './HowItWorkStep.module.scss';
 import cs from 'classnames';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import Image from '../../../shared/Image/Image';
 
-const HowItWorkStep = ({
-  reverse,
-  image: {
-    alternativeText: imageAlt,
-    localFile: {
-      childImageSharp: { gatsbyImageData },
-    },
-  },
-  number,
-  title,
-  description,
-  backgroundColor,
-}) => {
+const HowItWorkStep = ({ reverse, image, number, title, description, backgroundColor }) => {
   return (
     <li className={cs(styles.stepWrap, { [styles.reverse]: reverse })}>
       <div className={styles.imageWrap} style={{ backgroundColor }}>
-        <GatsbyImage className={styles.image} image={gatsbyImageData} alt={imageAlt} />
+        <Image className={styles.image} image={image} />
         {number && <p className={styles.number}>{number}</p>}
       </div>
       <div className={styles.descriptionWrap}>
