@@ -20,6 +20,8 @@ import { Link } from 'gatsby';
 import Info from '../../components/shared/Info/Info';
 import OrderProductList from '../../components/Order/OrderProductList/OrderProductList';
 import { orderSchema } from '../../schemas/orderSchema';
+import { STRAPI_PRODUCT } from '../../constant';
+import useApi from '../../hooks/useApi';
 
 registerLocale('pl', pl);
 
@@ -36,17 +38,61 @@ const OrderForm = () => {
     defaultValues: { startDate: firstDayNextMonth() },
   });
   const [isVat, setIsVat] = useState(false);
+  const [isAnotherAddress, setIsAnotherAddress] = useState(false);
+  const [priceSummary, setPriceSummary] = useState(0);
+  const { createPaymentSession } = useApi();
 
   const onSubmit = async (data) => {
-    const payload = {
-      ...data,
+    const { name, surname, city, address: addressLine, zipCode: postalCode } = data;
+
+    const products = [];
+    Object.keys(data).forEach((key) => {
+      if (key.includes(STRAPI_PRODUCT) && data[key] > 0)
+        products.push({ price: key.replace(STRAPI_PRODUCT, ''), quantity: data[key] });
+    });
+
+    console.log(products);
+
+    const checkoutOptions = {
+      mode: 'payment',
+      lineItems: products,
+      successUrl: `http://localhost:8000/`,
+      cancelUrl: `http://localhost:8000/`,
+      billingAddressCollection: 'required',
+      // shippingAddressCollection: {
+      //   recipient: `${name} ${surname}`,
+      //   city,
+      //   postalCode,
+      //   addressLine,
+      // },
     };
 
-    console.log(payload);
+    // const redirectToCheckout = async () => {
+    //   const stripePromise = await stripe;
+    //   await stripePromise.redirectToCheckout(checkoutOptions);
+    // };
+    //
+    // if (products.length > 0) {
+    //   await redirectToCheckout();
+    // } else {
+    //   toast.error('Wybierz przynajmniej jedno opakowanie kawy');
+    // }
+
+    await createPaymentSession(checkoutOptions);
+    // console.log(payload);
+  };
+
+  const handleChangeProduct = (name, value, price) => {
+    setValue(name, value);
+    setPriceSummary((prev) => prev + price);
   };
 
   const handleVatChange = () => {
     setIsVat((prev) => !prev);
+  };
+
+  const handleAddressChange = () => {
+    setIsAnotherAddress((prev) => !prev);
   };
 
   return (
@@ -69,7 +115,7 @@ const OrderForm = () => {
                 <p className={styles.description}>Minimalna ilość to jedno opakowanie = 1 kg</p>
 
                 <div className={cs(styles.form, styles.amountPicker)}>
-                  <OrderProductList register={register} setValue={setValue} />
+                  <OrderProductList register={register} setValue={handleChangeProduct} />
                 </div>
 
                 <Info className={styles.info}>Minimalna ilość to jedno opakowanie = 1 kg</Info>
@@ -182,54 +228,123 @@ const OrderForm = () => {
                   >
                     Chcę fakturę VAT
                   </Checkbox>
+
+                  <Checkbox
+                    ref={null}
+                    name="isAnotherAddress"
+                    error={errors.isAnotherAddress}
+                    register={register}
+                    onClick={handleAddressChange}
+                  >
+                    Inny adres wysyłki
+                  </Checkbox>
                 </div>
 
                 {isVat && (
-                  <div className={cs(styles.form, styles.additionalForm)}>
-                    <Input
-                      ref={null}
-                      label="Nazwa firmy"
-                      name="companyName"
-                      type="text"
-                      error={errors.companyName}
-                      register={register}
-                    />
+                  <div className={styles.additionalForm}>
+                    <div className={styles.stepTitleWrap}>
+                      <h2 className={styles.title}>Dane do faktury</h2>
+                    </div>
+                    <div className={cs(styles.form, styles.additionalForm)}>
+                      <Input
+                        ref={null}
+                        label="Nazwa firmy"
+                        name="companyName"
+                        type="text"
+                        error={errors.companyName}
+                        register={register}
+                      />
 
-                    <Input
-                      ref={null}
-                      label="Nip"
-                      name="nip"
-                      type="text"
-                      error={errors.nip}
-                      register={register}
-                    />
+                      <Input
+                        ref={null}
+                        label="Nip"
+                        name="nip"
+                        type="text"
+                        error={errors.nip}
+                        register={register}
+                      />
 
-                    <Input
-                      ref={null}
-                      label="Miasto"
-                      name="companyCity"
-                      type="text"
-                      error={errors.companyCity}
-                      register={register}
-                    />
+                      <Input
+                        ref={null}
+                        label="Miasto"
+                        name="companyCity"
+                        type="text"
+                        error={errors.companyCity}
+                        register={register}
+                      />
 
-                    <Input
-                      ref={null}
-                      label="Ulica i numer lokalu"
-                      name="companyAddress"
-                      type="text"
-                      error={errors.companyAddress}
-                      register={register}
-                    />
+                      <Input
+                        ref={null}
+                        label="Ulica i numer lokalu"
+                        name="companyAddress"
+                        type="text"
+                        error={errors.companyAddress}
+                        register={register}
+                      />
 
-                    <Input
-                      ref={null}
-                      label="Kod pocztowy"
-                      name="companyZipCode"
-                      type="text"
-                      error={errors.companyZipCode}
-                      register={register}
-                    />
+                      <Input
+                        ref={null}
+                        label="Kod pocztowy"
+                        name="companyZipCode"
+                        type="text"
+                        error={errors.companyZipCode}
+                        register={register}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {isAnotherAddress && (
+                  <div className={styles.additionalForm}>
+                    <div className={styles.stepTitleWrap}>
+                      <h2 className={styles.title}>Adres wysyłki</h2>
+                    </div>
+                    <div className={cs(styles.form, styles.additionalForm)}>
+                      <Input
+                        ref={null}
+                        label="Imię"
+                        name="addresName"
+                        type="text"
+                        error={errors.addressName}
+                        register={register}
+                      />
+
+                      <Input
+                        ref={null}
+                        label="Nazwisko"
+                        name="addressSurname"
+                        type="text"
+                        error={errors.addressSurname}
+                        register={register}
+                      />
+
+                      <Input
+                        ref={null}
+                        label="Miasto"
+                        name="addressCity"
+                        type="text"
+                        error={errors.addressCity}
+                        register={register}
+                      />
+
+                      <Input
+                        ref={null}
+                        label="Ulica i numer lokalu"
+                        name="addressAddress"
+                        type="text"
+                        error={errors.addressAddress}
+                        register={register}
+                      />
+
+                      <Input
+                        ref={null}
+                        label="Kod pocztowy"
+                        name="addressZipCode"
+                        type="text"
+                        error={errors.addressZipCode}
+                        register={register}
+                      />
+                    </div>
                   </div>
                 )}
               </div>
@@ -293,7 +408,7 @@ const OrderForm = () => {
               </Checkbox>
               <div className={styles.right}>
                 <PriceSummary className={styles.priceSummary}>
-                  <span className="bold">Do zapłaty: 300 pln/</span>mc
+                  <span className="bold">Do zapłaty: {priceSummary} pln/</span>mc
                 </PriceSummary>
                 <Button className={styles.submitButton} type="submit">
                   Następny krok

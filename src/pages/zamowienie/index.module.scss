@@ -59,6 +59,10 @@
       margin: 0 auto;
     }
 
+    .additionalForm {
+      margin-top: 60px;
+    }
+
     .stepTitleWrap {
       display: flex;
       align-items: center;
@@ -109,7 +113,7 @@
       row-gap: 0;
 
       &.additionalForm {
-        margin-top: 60px;
+        margin-top: 20px;
       }
 
       &.deliveryForm {
@@ -177,14 +181,14 @@
         margin-bottom: 20px;
       }
 
+      .additionalForm {
+        margin-top: 40px;
+      }
+
       .form {
         grid-template-columns: repeat(2, 1fr);
         column-gap: 30px;
         row-gap: 0;
-
-        &.additionalForm {
-          margin-top: 40px;
-        }
 
         &.amountPicker {
           max-width: 100%;
@@ -253,14 +257,14 @@
         }
       }
 
+      .additionalForm {
+        margin-top: 30px;
+      }
+
       .form {
         grid-template-columns: 1fr;
         column-gap: 30px;
         row-gap: 0;
-
-        &.additionalForm {
-          margin-top: 30px;
-        }
 
         &.deliveryForm {
           grid-template-columns: repeat(2, 1fr);

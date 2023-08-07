@@ -3,19 +3,22 @@ import * as styles from './NumberPicker.module.scss';
 import cs from 'classnames';
 import plusImage from '../../../../images/icons/plus.svg';
 import minusImage from '../../../../images/icons/minus.svg';
+import { STRAPI_PRODUCT } from '../../../../constant';
 
-const NumberPicker = ({ className, name, register, setValue: setFormValue, stripeId }) => {
+const NumberPicker = ({ className, register, setValue: setFormValue, stripeId, price }) => {
   const [value, setValue] = useState(0);
-  setFormValue(stripeId, value);
+  const name = `${STRAPI_PRODUCT}${stripeId}`;
+
+  setFormValue(name, value, 0);
 
   const handlePlus = () => {
     setValue((prev) => prev + 1);
-    setFormValue(stripeId, value);
+    setFormValue(name, value, price);
   };
 
   const handleMinus = () => {
     setValue((prev) => (prev > 0 ? prev - 1 : 0));
-    setFormValue(stripeId, value);
+    setFormValue(name, value, value > 0 ? -price : 0);
   };
 
   return (
@@ -26,9 +29,9 @@ const NumberPicker = ({ className, name, register, setValue: setFormValue, strip
       <input
         className={styles.input}
         type="number"
-        name={stripeId}
-        id={stripeId}
-        {...register(stripeId)}
+        name={name}
+        id={name}
+        {...register(name)}
         disabled
       />
       <button className={cs(styles.plus, styles.button)} type="button" onClick={handlePlus}>

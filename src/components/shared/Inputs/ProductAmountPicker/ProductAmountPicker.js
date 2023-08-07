@@ -32,10 +32,10 @@ const ProductAmountPicker = ({
       <p className={styles.description}>1 opakowanie = 1kg</p>
       <NumberPicker
         className={styles.numberPicker}
-        name={name}
         register={register}
         setValue={setValue}
         stripeId={stripeId}
+        price={price}
       />
     </div>
   );

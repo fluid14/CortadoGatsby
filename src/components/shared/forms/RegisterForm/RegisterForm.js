@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 import Button from '../../Button/Button';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './schema';
+import { registerSchema } from '../../../../schemas/registerSchema';
 import { AuthContext } from '../../../../context/AuthContext';
 
 const RegisterForm = () => {
@@ -15,7 +15,7 @@ const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onTouched', resolver: yupResolver(schema) });
+  } = useForm({ mode: 'onTouched', resolver: yupResolver(registerSchema) });
 
   const onSubmit = async (data) => {
     const payload = {

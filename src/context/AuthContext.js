@@ -20,7 +20,7 @@ const AuthContext = createContext({
 
 const AuthProvider = ({ children }) => {
   const { getItem, setItem, removeItem } = useLocalStorage();
-  const { apiService } = useAxios();
+  const { apiStrapiService } = useAxios();
   const [loginState, setLoginState] = useState(() => false);
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const registerUser = async (data) => {
-    await apiService
-      .post(routes.api.register, data)
+    await apiStrapiService
+      .post(routes.strapiApi.register, data)
       .then(async ({ data: { jwt, user } }) => {
         if (jwt) {
           setItem(AUTH_TOKEN, jwt);
@@ -52,15 +52,17 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUser = async (data, userId) => {
-    await apiService.put(routes.api.update.replace('{id}', userId), data).then(async ({ data }) => {
-      setItem(USER, data);
-      toast.success(`Informacje zaktualizowane pomyślnie!`);
-    });
+    await apiStrapiService
+      .put(routes.strapiApi.update.replace('{id}', userId), data)
+      .then(async ({ data }) => {
+        setItem(USER, data);
+        toast.success(`Informacje zaktualizowane pomyślnie!`);
+      });
   };
 
   const loginUser = async (data) => {
-    await apiService
-      .post(routes.api.login, data)
+    await apiStrapiService
+      .post(routes.strapiApi.login, data)
       .then(async ({ data: { jwt, user } }) => {
         setItem(AUTH_TOKEN, jwt);
         setItem(USER, user);
@@ -79,8 +81,8 @@ const AuthProvider = ({ children }) => {
   };
 
   const changeUserPassword = async (data) => {
-    await apiService
-      .post(routes.api.changePassword, data)
+    await apiStrapiService
+      .post(routes.strapiApi.changePassword, data)
       .then(async () => {
         toast.success(`Hasło zostało zmienione!`);
       })

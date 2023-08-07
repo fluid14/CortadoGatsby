@@ -4,7 +4,7 @@ import Input from '../../Inputs/Input/Input';
 import Button from '../../Button/Button';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './schema';
+import { loginSchema } from '../../../../schemas/loginSchema';
 import { AuthContext } from '../../../../context/AuthContext';
 
 const LoginForm = () => {
@@ -13,7 +13,7 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onTouched', resolver: yupResolver(schema) });
+  } = useForm({ mode: 'onTouched', resolver: yupResolver(loginSchema) });
 
   const onSubmit = async (data) => loginUser(data);
 

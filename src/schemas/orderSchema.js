@@ -9,6 +9,7 @@ export const orderSchema = Yup.object().shape({
   address: Yup.string().required('To pole jest wymagane'),
   zipCode: Yup.string().required('To pole jest wymagane'),
   isVat: Yup.bool(),
+  isAnotherAddress: Yup.bool(),
   companyName: Yup.string().when(['isVat'], {
     is: true,
     then: () => Yup.string().required('To pole jest wymagane'),
@@ -26,6 +27,26 @@ export const orderSchema = Yup.object().shape({
     then: () => Yup.string().required('To pole jest wymagane'),
   }),
   companyZipCode: Yup.string().when(['isVat'], {
+    is: true,
+    then: () => Yup.string().required('To pole jest wymagane'),
+  }),
+  addressName: Yup.string().when(['isAnotherAddress'], {
+    is: true,
+    then: () => Yup.string().required('To pole jest wymagane'),
+  }),
+  addressSurname: Yup.string().when(['isAnotherAddress'], {
+    is: true,
+    then: () => Yup.string().required('To pole jest wymagane'),
+  }),
+  addressCity: Yup.string().when(['isAnotherAddress'], {
+    is: true,
+    then: () => Yup.string().required('To pole jest wymagane'),
+  }),
+  addressAddress: Yup.string().when(['isAnotherAddress'], {
+    is: true,
+    then: () => Yup.string().required('To pole jest wymagane'),
+  }),
+  addressZipCode: Yup.string().when(['isAnotherAddress'], {
     is: true,
     then: () => Yup.string().required('To pole jest wymagane'),
   }),

@@ -10,10 +10,10 @@ export const useAxios = () => {
   const { getItem } = useLocalStorage();
 
   const apiService = axios.create({
-    baseURL: process.env.STRAPI_API_URL,
+    baseURL: process.env.BE_API_URL,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${BEARER} ${getItem(AUTH_TOKEN) ?? process.env.STRAPI_API_TOKEN}`,
+      'X-API-KEY': process.env.BE_API_KEY,
     },
   });
 
@@ -22,6 +22,27 @@ export const useAxios = () => {
   });
 
   apiService.interceptors.response.use(
+    (response) => {
+      return onResponse(response);
+    },
+    (error) => {
+      return onResponseError(error);
+    }
+  );
+
+  const apiStrapiService = axios.create({
+    baseURL: process.env.STRAPI_API_URL,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${BEARER} ${getItem(AUTH_TOKEN) ?? process.env.STRAPI_API_TOKEN}`,
+    },
+  });
+
+  apiStrapiService.interceptors.request.use((config) => {
+    return onRequest(config);
+  });
+
+  apiStrapiService.interceptors.response.use(
     (response) => {
       return onResponse(response);
     },
@@ -70,5 +91,5 @@ export const useAxios = () => {
     return Promise.reject(error);
   };
 
-  return { apiService };
+  return { apiService, apiStrapiService };
 };
