@@ -1,6 +1,10 @@
 {
   "api": {
-    "createPaymentSession": "stripe/create-session"
+    "createPaymentSession": "stripe/create-session",
+    "user": {
+      "login": "user/login",
+      "register": "user/register"
+    }
   },
   "strapiApi" : {
     "getCurrentUser": "api/users/me",

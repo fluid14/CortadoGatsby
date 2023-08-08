@@ -20,7 +20,7 @@ const AuthContext = createContext({
 
 const AuthProvider = ({ children }) => {
   const { getItem, setItem, removeItem } = useLocalStorage();
-  const { apiStrapiService } = useAxios();
+  const { apiStrapiService, apiService } = useAxios();
   const [loginState, setLoginState] = useState(() => false);
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const registerUser = async (data) => {
-    await apiStrapiService
-      .post(routes.strapiApi.register, data)
+    await apiService
+      .post(routes.api.user.register, data)
       .then(async ({ data: { jwt, user } }) => {
         if (jwt) {
           setItem(AUTH_TOKEN, jwt);
@@ -61,9 +61,10 @@ const AuthProvider = ({ children }) => {
   };
 
   const loginUser = async (data) => {
-    await apiStrapiService
-      .post(routes.strapiApi.login, data)
+    await apiService
+      .post(routes.api.user.login, data)
       .then(async ({ data: { jwt, user } }) => {
+        console.log(jwt);
         setItem(AUTH_TOKEN, jwt);
         setItem(USER, user);
         setLoginState(() => true);
