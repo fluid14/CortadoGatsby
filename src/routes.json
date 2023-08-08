@@ -3,7 +3,8 @@
     "createPaymentSession": "stripe/create-session",
     "user": {
       "login": "user/login",
-      "register": "user/register"
+      "register": "user/register",
+      "update": "user/{id}"
     }
   },
   "strapiApi" : {

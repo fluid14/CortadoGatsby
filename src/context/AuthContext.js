@@ -52,8 +52,8 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUser = async (data, userId) => {
-    await apiStrapiService
-      .put(routes.strapiApi.update.replace('{id}', userId), data)
+    await apiService
+      .put(routes.api.user.update.replace('{id}', userId), data)
       .then(async ({ data }) => {
         setItem(USER, data);
         toast.success(`Informacje zaktualizowane pomyślnie!`);
