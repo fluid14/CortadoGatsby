@@ -94,11 +94,10 @@ const Order = () => {
         },
       },
       customer: getUser().stripeId,
+      shipping_options: [{ shipping_rate: deliveryMethod }],
       success_url: routes.orderSuccess,
       cancel_url: routes.order,
     };
-
-    // deliveryMethod,
 
     if (isVat)
       checkoutOptions.payment_intent_data.metadata.customerBillingAddress = `
