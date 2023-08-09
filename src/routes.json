@@ -17,5 +17,6 @@
   "account": "/app/konto",
   "accountOrders": "/app/konto",
   "accountSettings": "/app/konto/ustawienia",
-  "order": "app/zamowienie"
+  "order": "app/zamowienie",
+  "orderSuccess": "app/zamowienie/podsumowanie"
 }

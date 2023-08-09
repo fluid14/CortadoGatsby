@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import cs from 'classnames';
 import * as styles from './Order.module.scss';
 import Popup from '../../components/shared/Popup/Popup';
@@ -22,6 +22,9 @@ import OrderProductList from '../../components/Order/OrderProductList/OrderProdu
 import { orderSchema } from '../../schemas/orderSchema';
 import { STRAPI_PRODUCT } from '../../constant';
 import useApi from '../../hooks/useApi';
+import { AuthContext } from '../../context/AuthContext';
+import routes from '../../routes.json';
+import { toast } from 'react-toastify';
 
 registerLocale('pl', pl);
 
@@ -35,15 +38,35 @@ const Order = () => {
   } = useForm({
     mode: 'onTouched',
     resolver: yupResolver(orderSchema),
-    defaultValues: { startDate: firstDayNextMonth() },
+    defaultValues: { subscriptionStartDate: firstDayNextMonth() },
   });
   const [isVat, setIsVat] = useState(false);
   const [isAnotherAddress, setIsAnotherAddress] = useState(false);
   const [priceSummary, setPriceSummary] = useState(0);
+  const { getUser } = useContext(AuthContext);
   const { createPaymentSession } = useApi();
 
   const onSubmit = async (data) => {
-    const { name, surname, city, address: addressLine, zipCode: postalCode } = data;
+    const {
+      subscriptionStartDate,
+      name,
+      surname,
+      email,
+      city,
+      line1,
+      postalCode,
+      phone,
+      companyName = '',
+      nip = '',
+      companyCity = '',
+      companyLine1 = '',
+      companyPostalCode = '',
+      addressName = '',
+      addressSurname = '',
+      addressCity = '',
+      addressLine1 = '',
+      addressPostalCode = '',
+    } = data;
 
     const products = [];
     Object.keys(data).forEach((key) => {
@@ -51,35 +74,53 @@ const Order = () => {
         products.push({ price: key.replace(STRAPI_PRODUCT, ''), quantity: data[key] });
     });
 
-    console.log(products);
-
     const checkoutOptions = {
-      mode: 'payment',
       lineItems: products,
-      successUrl: `http://localhost:8000/`,
-      cancelUrl: `http://localhost:8000/`,
-      billingAddressCollection: 'required',
-      // shippingAddressCollection: {
-      //   recipient: `${name} ${surname}`,
-      //   city,
-      //   postalCode,
-      //   addressLine,
-      // },
+      mode: 'payment',
+      customerDetails: {
+        name: `${name} ${surname}`,
+        email,
+        phone,
+        address: {
+          city,
+          line1,
+          postalCode,
+        },
+      },
+      customer: getUser().stripeId,
+      customerEmail: email,
+      isVat,
+      isAnotherAddress,
+      metadata: { subscriptionStartDate },
+      successUrl: routes.orderSuccess,
+      cancelUrl: routes.order,
     };
 
-    // const redirectToCheckout = async () => {
-    //   const stripePromise = await stripe;
-    //   await stripePromise.redirectToCheckout(checkoutOptions);
-    // };
-    //
-    // if (products.length > 0) {
-    //   await redirectToCheckout();
-    // } else {
-    //   toast.error('Wybierz przynajmniej jedno opakowanie kawy');
-    // }
+    if (isVat)
+      checkoutOptions.billingAddress = {
+        companyName,
+        nip,
+        companyCity,
+        companyLine1,
+        companyPostalCode,
+      };
 
-    await createPaymentSession(checkoutOptions);
-    // console.log(payload);
+    if (isAnotherAddress)
+      checkoutOptions.billingAddress = {
+        addressName,
+        addressSurname,
+        addressCity,
+        addressLine1,
+        addressPostalCode,
+      };
+
+    console.log(checkoutOptions);
+
+    if (products.length > 0) {
+      // await createPaymentSession(checkoutOptions);
+    } else {
+      toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
+    }
   };
 
   const handleChangeProduct = (name, value, price) => {
@@ -135,9 +176,9 @@ const Order = () => {
                 <div className={styles.form}>
                   <Controller
                     control={control}
-                    name="startDate"
+                    name="subscriptionStartDate"
                     render={({ field }) => (
-                      <DatePickerWrap label="Start subskrypcji" name="startDate">
+                      <DatePickerWrap label="Start subskrypcji" name="subscriptionStartDate">
                         <DatePicker
                           locale="pl"
                           onChange={(date) => field.onChange(date)}
@@ -204,20 +245,32 @@ const Order = () => {
                   <Input
                     ref={null}
                     label="Ulica i numer lokalu"
-                    name="address"
+                    name="line1"
                     type="text"
-                    error={errors.address}
+                    error={errors.line1}
                     register={register}
                   />
 
                   <Input
                     ref={null}
                     label="Kod pocztowy"
-                    name="zipCode"
+                    name="postalCode"
                     type="text"
-                    error={errors.zipCode}
+                    error={errors.postalCode}
                     register={register}
                   />
+
+                  <Input
+                    ref={null}
+                    label="Numer telefonu"
+                    name="phone"
+                    type="text"
+                    error={errors.phone}
+                    register={register}
+                  />
+
+                  <span />
+                  <span />
 
                   <Checkbox
                     ref={null}
@@ -276,18 +329,27 @@ const Order = () => {
                       <Input
                         ref={null}
                         label="Ulica i numer lokalu"
-                        name="companyAddress"
+                        name="companyLine1"
                         type="text"
-                        error={errors.companyAddress}
+                        error={errors.companyLine1}
                         register={register}
                       />
 
                       <Input
                         ref={null}
                         label="Kod pocztowy"
-                        name="companyZipCode"
+                        name="companyPostalCode"
                         type="text"
-                        error={errors.companyZipCode}
+                        error={errors.companyPostalCode}
+                        register={register}
+                      />
+
+                      <Input
+                        ref={null}
+                        label="Numer telefonu"
+                        name="companyPhone"
+                        type="text"
+                        error={errors.companyPhone}
                         register={register}
                       />
                     </div>
@@ -303,7 +365,7 @@ const Order = () => {
                       <Input
                         ref={null}
                         label="Imię"
-                        name="addresName"
+                        name="addressName"
                         type="text"
                         error={errors.addressName}
                         register={register}
@@ -330,18 +392,27 @@ const Order = () => {
                       <Input
                         ref={null}
                         label="Ulica i numer lokalu"
-                        name="addressAddress"
+                        name="addressLine1"
                         type="text"
-                        error={errors.addressAddress}
+                        error={errors.addressLine1}
                         register={register}
                       />
 
                       <Input
                         ref={null}
                         label="Kod pocztowy"
-                        name="addressZipCode"
+                        name="addressPostalCode"
                         type="text"
-                        error={errors.addressZipCode}
+                        error={errors.addressPostalCode}
+                        register={register}
+                      />
+
+                      <Input
+                        ref={null}
+                        label="Numer telefonu"
+                        name="addressPhone"
+                        type="text"
+                        error={errors.addressPhone}
                         register={register}
                       />
                     </div>

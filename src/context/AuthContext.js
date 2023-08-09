@@ -34,11 +34,8 @@ const AuthProvider = ({ children }) => {
       .post(routes.api.user.register, data)
       .then(async ({ data: { jwt, user } }) => {
         if (jwt) {
-          setItem(AUTH_TOKEN, jwt);
-          setItem(USER, user);
-          setLoginState(() => true);
-          toast.success(`Zostałeś pomyślnie zarejestrowany!`);
-          await navigate(routes.account);
+          toast.success(`Zostałeś pomyślnie zarejestrowany! Teraz możesz się zalogować!`);
+          await navigate(routes.login);
         }
       })
       .catch((error) => {
@@ -63,7 +60,8 @@ const AuthProvider = ({ children }) => {
   const loginUser = async (data) => {
     await apiService
       .post(routes.api.user.login, data)
-      .then(async ({ data: { jwt, user } }) => {
+      .then(async ({ data, data: { jwt, user } }) => {
+        console.log(data);
         console.log(jwt);
         setItem(AUTH_TOKEN, jwt);
         setItem(USER, user);
@@ -101,7 +99,8 @@ const AuthProvider = ({ children }) => {
     removeItem(USER);
     removeItem(AUTH_TOKEN);
     setLoginState(() => false);
-    await navigate(routes.home);
+    toast.success(`Do zobaczenia!`);
+    await navigate(routes.login);
   };
 
   const getToken = () => getItem(AUTH_TOKEN);
