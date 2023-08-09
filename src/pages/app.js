@@ -6,6 +6,7 @@ import Register from '../views/Register/Register';
 import Login from '../views/Login/Login';
 import AccountOrders from '../views/Account/AccountOrders/AccountOrders';
 import AccountSettings from '../views/Account/AccountSettings/AccountSettings';
+import Order from '../views/Order/Order';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <PrivateRoute path="/" component={AccountOrders} />
           <PrivateRoute path="/ustawienia" component={AccountSettings} />
         </PrivateRoute>
+        <PrivateRoute path="/app/zamowienie" component={Order} />
         <Login path="/app/logowanie" />
         <Register path="/app/rejestracja" />
       </Router>

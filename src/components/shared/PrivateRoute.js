@@ -7,7 +7,7 @@ const PrivateRoute = ({ component: Component, location, ...rest }) => {
   const { isLoggedIn } = useContext(AuthContext);
 
   if (!isLoggedIn()) {
-    return navigate(routes.home);
+    return navigate(routes.login);
   }
 
   return <Component {...rest} />;

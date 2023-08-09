@@ -9,9 +9,6 @@
   },
   "strapiApi" : {
     "getCurrentUser": "api/users/me",
-    "register": "api/auth/local/register",
-    "login": "api/auth/local",
-    "update": "api/users/{id}",
     "changePassword": "api/auth/change-password"
   },
   "home": "/",
@@ -20,5 +17,5 @@
   "account": "/app/konto",
   "accountOrders": "/app/konto",
   "accountSettings": "/app/konto/ustawienia",
-  "order": "/zamowienie"
+  "order": "app/zamowienie"
 }

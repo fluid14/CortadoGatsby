@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cs from 'classnames';
-import * as styles from './index.module.scss';
+import * as styles from './Order.module.scss';
 import Popup from '../../components/shared/Popup/Popup';
 import PopupHeader from '../../components/shared/Popup/PopupHeader/PopupHeader';
 import PopupHeaderContentWrap from '../../components/shared/Popup/PopupHeader/PopupHeaderContentWrap/PopupHeaderContentWrap';
@@ -25,7 +25,7 @@ import useApi from '../../hooks/useApi';
 
 registerLocale('pl', pl);
 
-const OrderForm = () => {
+const Order = () => {
   const {
     register,
     handleSubmit,
@@ -422,4 +422,4 @@ const OrderForm = () => {
   );
 };
 
-export default OrderForm;
+export default Order;
