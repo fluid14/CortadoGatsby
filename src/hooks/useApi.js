@@ -20,7 +20,11 @@ const useApi = () => {
     });
   };
 
-  return { createPaymentSession };
+  const getShippingMethods = async () => {
+    return await apiService.get(routes.api.shippingMethods);
+  };
+
+  return { createPaymentSession, getShippingMethods };
 };
 
 export default useApi;

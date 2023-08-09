@@ -1,13 +1,14 @@
 {
   "api": {
     "createPaymentSession": "stripe/create-session",
+    "shippingMethods": "stripe/shipping-methods",
     "user": {
-      "login": "user/login",
+      "login": "/user/login",
       "register": "user/register",
       "update": "user/{id}"
     }
   },
-  "strapiApi" : {
+  "strapiApi": {
     "getCurrentUser": "api/users/me",
     "changePassword": "api/auth/change-password"
   },

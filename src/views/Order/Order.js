@@ -7,7 +7,6 @@ import PopupHeaderContentWrap from '../../components/shared/Popup/PopupHeader/Po
 import Input from '../../components/shared/Inputs/Input/Input';
 import { Controller, useForm } from 'react-hook-form';
 import Checkbox from '../../components/shared/Inputs/Checkbox/Checkbox';
-import Radio from '../../components/shared/Inputs/Radio/Radio';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import DatePickerWrap from '../../components/shared/Inputs/DatePickerWrap/DatePickerWrap';
 import pl from 'date-fns/locale/pl';
@@ -25,6 +24,7 @@ import useApi from '../../hooks/useApi';
 import { AuthContext } from '../../context/AuthContext';
 import routes from '../../routes.json';
 import { toast } from 'react-toastify';
+import OrderShippingMethods from '../../components/Order/OrderShippingMethods/OrderShippingMethods';
 
 registerLocale('pl', pl);
 
@@ -53,7 +53,7 @@ const Order = () => {
       surname,
       email,
       city,
-      line1,
+      line1: address,
       postalCode,
       phone,
       companyName = '',
@@ -61,11 +61,14 @@ const Order = () => {
       companyCity = '',
       companyLine1 = '',
       companyPostalCode = '',
+      companyPhone = '',
       addressName = '',
       addressSurname = '',
       addressCity = '',
       addressLine1 = '',
       addressPostalCode = '',
+      addressPhone = '',
+      deliveryMethod,
     } = data;
 
     const products = [];
@@ -75,49 +78,45 @@ const Order = () => {
     });
 
     const checkoutOptions = {
-      lineItems: products,
+      line_items: products,
       mode: 'payment',
-      customerDetails: {
-        name: `${name} ${surname}`,
-        email,
-        phone,
-        address: {
-          city,
-          line1,
-          postalCode,
+      payment_intent_data: {
+        metadata: {
+          subscriptionStartDate,
+          customer: `
+          ${name} ${surname}
+          ${email}
+          ${address}
+          ${city} ${postalCode}
+          ${phone}`,
+          customerBillingAddress: '-',
+          customerShippingAddress: '-',
         },
       },
       customer: getUser().stripeId,
-      customerEmail: email,
-      isVat,
-      isAnotherAddress,
-      metadata: { subscriptionStartDate },
-      successUrl: routes.orderSuccess,
-      cancelUrl: routes.order,
+      success_url: routes.orderSuccess,
+      cancel_url: routes.order,
     };
 
+    // deliveryMethod,
+
     if (isVat)
-      checkoutOptions.billingAddress = {
-        companyName,
-        nip,
-        companyCity,
-        companyLine1,
-        companyPostalCode,
-      };
+      checkoutOptions.payment_intent_data.metadata.customerBillingAddress = `
+          ${companyName}
+          ${nip}
+          ${companyLine1}
+          ${companyCity} ${companyPostalCode}
+          ${companyPhone}`;
 
     if (isAnotherAddress)
-      checkoutOptions.billingAddress = {
-        addressName,
-        addressSurname,
-        addressCity,
-        addressLine1,
-        addressPostalCode,
-      };
-
-    console.log(checkoutOptions);
+      checkoutOptions.payment_intent_data.metadata.customerShippingAddress = `
+          ${addressName} ${addressSurname}
+          ${addressLine1}
+          ${addressCity} ${addressPostalCode}
+          ${addressPhone}`;
 
     if (products.length > 0) {
-      // await createPaymentSession(checkoutOptions);
+      await createPaymentSession(checkoutOptions);
     } else {
       toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
     }
@@ -429,38 +428,11 @@ const Order = () => {
                 </div>
 
                 <div className={cs(styles.form, styles.deliveryForm)}>
-                  <Radio
-                    ref={null}
-                    name="delivery"
-                    error={errors.delivery}
+                  <OrderShippingMethods
                     register={register}
-                    value="dpd"
-                    id="dpd"
-                  >
-                    DPD
-                  </Radio>
-
-                  <Radio
-                    ref={null}
-                    name="delivery"
-                    error={errors.delivery}
-                    register={register}
-                    value="dpd"
-                    id="dpd"
-                  >
-                    DHL
-                  </Radio>
-
-                  <Radio
-                    ref={null}
-                    name="delivery"
-                    error={errors.delivery}
-                    register={register}
-                    value="dpd"
-                    id="dpd"
-                  >
-                    INPOST
-                  </Radio>
+                    errors={errors}
+                    setValue={handleChangeProduct}
+                  />
                 </div>
               </div>
             </div>
