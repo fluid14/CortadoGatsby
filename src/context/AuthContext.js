@@ -15,6 +15,8 @@ const AuthContext = createContext({
   getUser: () => {},
   updateUser: () => {},
   changeUserPassword: () => {},
+  forgotPassword: () => {},
+  resetPassword: () => {},
   loginState: false,
 });
 
@@ -61,8 +63,6 @@ const AuthProvider = ({ children }) => {
     await apiService
       .post(routes.api.user.login, data)
       .then(async ({ data, data: { jwt, user } }) => {
-        console.log(data);
-        console.log(jwt);
         setItem(AUTH_TOKEN, jwt);
         setItem(USER, user);
         setLoginState(() => true);
@@ -95,6 +95,25 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  const forgotPassword = async (data) => {
+    await apiService.post(routes.api.user.forgotPassword, data).then(async () => {
+      toast.success(`Sprawdz swoja skrzynkę mailową!`);
+    });
+  };
+
+  const resetPassword = async (data) => {
+    await apiService
+      .post(routes.api.user.resetPassword, data)
+      .then(async () => {
+        toast.success(`Hasło zostało zmienione!`);
+      })
+      .catch((error) => {
+        if (error?.response?.status === 400) {
+          toast.error(`Link do resetowania hasła wygasł!`);
+        }
+      });
+  };
+
   const logoutUser = async () => {
     removeItem(USER);
     removeItem(AUTH_TOKEN);
@@ -121,6 +140,8 @@ const AuthProvider = ({ children }) => {
         loginState,
         updateUser,
         changeUserPassword,
+        forgotPassword,
+        resetPassword,
       }}
     >
       {children}

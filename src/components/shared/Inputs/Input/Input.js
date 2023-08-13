@@ -4,7 +4,7 @@ import * as styles from './Input.module.scss';
 
 const Input = ({ className, label = '', name, error, register = () => {}, ...rest }) => {
   return (
-    <div className={styles.inputWrap}>
+    <div className={cs(className, styles.inputWrap)}>
       <label className={styles.label} htmlFor={name}>
         {label}
       </label>

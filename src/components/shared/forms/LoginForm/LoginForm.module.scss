@@ -7,6 +7,23 @@
   justify-content: flex-start;
   width: 100%;
 
+  .password {
+    margin-bottom: 5px;
+  }
+
+  .forgotPassword {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    .link {
+      font-size: 14px;
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+
   .button {
     margin-top: 30px;
     align-self: flex-end;

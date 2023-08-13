@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import cs from 'classnames';
 import * as styles from './Login.module.scss';
-import Popup from '../../components/shared/Popup/Popup';
-import PopupTitle from '../../components/shared/Popup/PopupTitle/PopupTitle';
+import Popup from '../../../components/shared/Popup/Popup';
+import PopupTitle from '../../../components/shared/Popup/PopupTitle/PopupTitle';
 import { Link, navigate } from 'gatsby';
-import PopupSubtitle from '../../components/shared/Popup/PopupSubtitle/PopupSubtitle';
-import LoginForm from '../../components/shared/forms/LoginForm/LoginForm';
-import routes from '../../routes.json';
-import { AuthContext } from '../../context/AuthContext';
+import PopupSubtitle from '../../../components/shared/Popup/PopupSubtitle/PopupSubtitle';
+import LoginForm from '../../../components/shared/forms/LoginForm/LoginForm';
+import routes from '../../../routes.json';
+import { AuthContext } from '../../../context/AuthContext';
 
 const Login = () => {
   const { isLoggedIn } = useContext(AuthContext);

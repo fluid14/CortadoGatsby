@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import cs from 'classnames';
 import * as styles from './Register.module.scss';
-import Popup from '../../components/shared/Popup/Popup';
-import PopupTitle from '../../components/shared/Popup/PopupTitle/PopupTitle';
+import Popup from '../../../components/shared/Popup/Popup';
+import PopupTitle from '../../../components/shared/Popup/PopupTitle/PopupTitle';
 import { Link, navigate } from 'gatsby';
-import PopupSubtitle from '../../components/shared/Popup/PopupSubtitle/PopupSubtitle';
-import RegisterForm from '../../components/shared/forms/RegisterForm/RegisterForm';
-import routes from '../../routes.json';
-import { AuthContext } from '../../context/AuthContext';
+import PopupSubtitle from '../../../components/shared/Popup/PopupSubtitle/PopupSubtitle';
+import RegisterForm from '../../../components/shared/forms/RegisterForm/RegisterForm';
+import routes from '../../../routes.json';
+import { AuthContext } from '../../../context/AuthContext';
 
 const Register = () => {
   const { isLoggedIn } = useContext(AuthContext);

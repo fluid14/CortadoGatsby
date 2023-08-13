@@ -6,6 +6,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../../../schemas/loginSchema';
 import { AuthContext } from '../../../../context/AuthContext';
+import { Link } from 'gatsby';
+import routes from '../../../../routes';
+import cs from 'classnames';
 
 const LoginForm = () => {
   const { loginUser } = useContext(AuthContext);
@@ -29,12 +32,19 @@ const LoginForm = () => {
       />
       <Input
         ref={null}
+        className={styles.password}
         label="Hasło"
         name="password"
         type="password"
         error={errors.password}
         register={register}
       />
+
+      <div className={styles.forgotPassword}>
+        <Link className={cs('link', styles.link)} to={routes.forgotPassword}>
+          Zapomniałeś hasła?
+        </Link>
+      </div>
 
       <Button className={styles.button} type="submit" size="medium">
         Zaloguj się
