@@ -15,7 +15,6 @@ import PriceSummary from '../../components/shared/Typography/PriceSummary/PriceS
 import Button from '../../components/shared/Button/Button';
 import { firstDayNextMonth } from '../../utils/date';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'gatsby';
 import Info from '../../components/shared/Info/Info';
 import OrderProductList from '../../components/Order/OrderProductList/OrderProductList';
 import { orderSchema } from '../../schemas/orderSchema';
@@ -447,9 +446,9 @@ const Order = () => {
                 register={register}
               >
                 Akceptuje&nbsp;
-                <Link className="link" to="/regulamin">
+                <a className="link" href="/regulamin" target="_blank">
                   regulamin
-                </Link>
+                </a>
               </Checkbox>
               <div className={styles.right}>
                 <PriceSummary className={styles.priceSummary}>

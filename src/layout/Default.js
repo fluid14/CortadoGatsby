@@ -8,6 +8,7 @@ import Products from '../components/sections/Products/Products';
 import TextWithImage from '../components/sections/TextWithImage/TextWithImage';
 import Partners from '../components/sections/Partners/Partners';
 import Faq from '../components/sections/Faq/Faq';
+import Wyswig from '../components/shared/Wyswig/Wyswig';
 
 const Default = ({ pageContext: { data } }) => {
   return (
@@ -42,6 +43,9 @@ const Default = ({ pageContext: { data } }) => {
 
           case 'sections.faq':
             return <Faq data={component} key={id} />;
+
+          case 'sections.wyswig':
+            return <Wyswig data={component} key={id} />;
 
           default:
             return null;

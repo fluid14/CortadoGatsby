@@ -198,6 +198,15 @@ exports.createPages = async ({ graphql, actions }) => {
                 id
               }
             }
+            ... on STRAPI__COMPONENT_SECTIONS_WYSWIG {
+              id
+              wyswig {
+                data {
+                  wyswig
+                }
+              }
+              strapi_component
+            }
           }
         }
       }
