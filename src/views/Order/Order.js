@@ -69,6 +69,7 @@ const Order = () => {
       addressPostalCode = '',
       addressPhone = '',
       deliveryMethod,
+      regulations,
     } = data;
 
     const products = [];
@@ -114,10 +115,12 @@ const Order = () => {
           ${addressCity} ${addressPostalCode}
           ${addressPhone}`;
 
-    if (products.length > 0) {
+    if (products.length > 0 && regulations) {
       await createPaymentSession(checkoutOptions);
-    } else {
+    } else if (products.length === 0) {
       toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
+    } else if (!regulations) {
+      toast.error('Musisz zaakceptować regulamin!');
     }
   };
 

@@ -60,5 +60,5 @@ export const orderSchema = Yup.object().shape({
     then: () => Yup.string().required('To pole jest wymagane'),
   }),
   deliveryMethod: Yup.string().required('To pole jest wymagane'),
-  regulations: Yup.bool().oneOf([true], 'To pole jest wymagane'),
+  regulations: Yup.bool().oneOf([true, false], 'To pole jest wymagane'),
 });
