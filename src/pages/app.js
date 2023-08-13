@@ -7,18 +7,21 @@ import Login from '../views/Login/Login';
 import AccountOrders from '../views/Account/AccountOrders/AccountOrders';
 import AccountSettings from '../views/Account/AccountSettings/AccountSettings';
 import Order from '../views/Order/Order';
+import Summary from '../views/Summary/Summary';
+import routes from '../routes.json';
 
 const App = () => {
   return (
     <>
       <Router>
-        <PrivateRoute path="/app/konto" component={Account}>
+        <PrivateRoute path={routes.account} component={Account}>
           <PrivateRoute path="/" component={AccountOrders} />
           <PrivateRoute path="/ustawienia" component={AccountSettings} />
         </PrivateRoute>
-        <PrivateRoute path="/app/zamowienie" component={Order} />
-        <Login path="/app/logowanie" />
-        <Register path="/app/rejestracja" />
+        <PrivateRoute path={routes.order} component={Order} />
+        <PrivateRoute path={routes.orderSuccess} component={Summary} />
+        <Login path={routes.login} />
+        <Register path={routes.register} />
       </Router>
     </>
   );

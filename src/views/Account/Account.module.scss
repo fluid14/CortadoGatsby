@@ -19,3 +19,25 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  .accountWrap {
+    .greetings {
+      font-size: 30px;
+      padding: 20px 0;
+    }
+
+    .accountContentWrap {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+
+      .accountContent {
+        padding: {
+          top: 30px;
+          left: 0;
+        };
+      }
+    }
+  }
+}

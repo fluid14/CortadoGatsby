@@ -7,3 +7,9 @@
   color: $primary;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 992px) {
+  .accountContentTitle {
+    margin-bottom: 15px;
+  }
+}

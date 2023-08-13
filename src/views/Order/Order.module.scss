@@ -124,7 +124,7 @@
 
       &.amountPicker {
         max-width: 770px;
-        margin: 102px auto 20px;
+        margin: 69px auto 20px;
       }
     }
   }
@@ -138,6 +138,10 @@
 
         &.amountPicker {
           grid-template-columns: repeat(3, 1fr);
+        }
+
+        .empty {
+          display: none;
         }
       }
     }
@@ -267,7 +271,7 @@
         row-gap: 0;
 
         &.deliveryForm {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: 1fr;
           margin-top: 20px;
         }
 

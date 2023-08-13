@@ -267,7 +267,7 @@ const Order = () => {
                     register={register}
                   />
 
-                  <span />
+                  <span className={styles.empty} />
                   <span />
 
                   <Checkbox

@@ -55,3 +55,25 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  .accountAsideWrap {
+    .accountSidebarList {
+      left: -20px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .accountAsideWrap {
+    .accountSidebarList {
+      .accountSidebarItem {
+        .navLink {
+          &:before {
+            left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
