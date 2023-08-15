@@ -10,7 +10,7 @@ const OrderProductList = ({ register, setValue }) => {
       allStrapiProduct {
         nodes {
           name
-          id
+          strapi_id
           numberOfGrain
           bestseller
           image {

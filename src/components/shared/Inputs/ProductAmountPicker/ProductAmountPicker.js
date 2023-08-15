@@ -12,7 +12,7 @@ const ProductAmountPicker = ({
     bestseller,
     price,
     stripeId,
-    id,
+    strapi_id: id,
   },
   register,
   setValue,
