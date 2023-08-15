@@ -12,6 +12,7 @@ const ProductAmountPicker = ({
     bestseller,
     price,
     stripeId,
+    id,
   },
   register,
   setValue,
@@ -36,6 +37,8 @@ const ProductAmountPicker = ({
         setValue={setValue}
         stripeId={stripeId}
         price={price}
+        productId={id}
+        productName={name}
       />
     </div>
   );

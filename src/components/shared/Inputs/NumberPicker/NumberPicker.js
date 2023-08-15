@@ -5,20 +5,30 @@ import plusImage from '../../../../images/icons/plus.svg';
 import minusImage from '../../../../images/icons/minus.svg';
 import { STRAPI_PRODUCT } from '../../../../constant';
 
-const NumberPicker = ({ className, register, setValue: setFormValue, stripeId, price }) => {
-  const [value, setValue] = useState(0);
+const NumberPicker = ({
+  className,
+  register,
+  setValue: setFormValue,
+  stripeId,
+  price,
+  productName,
+  productId,
+}) => {
+  const [value, setValue] = useState({ quantity: 0, name: productName, id: productId });
   const name = `${STRAPI_PRODUCT}${stripeId}`;
 
-  setFormValue(name, value, 0);
+  setFormValue(name, value.quantity, 0);
 
   const handlePlus = () => {
-    setValue((prev) => prev + 1);
-    setFormValue(name, value, price);
+    setValue((prev) => ({ ...prev, quantity: prev.quantity + 1 }));
+    setFormValue(name, value.quantity, price);
   };
 
   const handleMinus = () => {
-    setValue((prev) => (prev > 0 ? prev - 1 : 0));
-    setFormValue(name, value, value > 0 ? -price : 0);
+    setValue((prev) =>
+      prev.quantity > 0 ? { ...prev, quantity: prev.quantity - 1 } : { ...prev, quantity: 0 }
+    );
+    setFormValue(name, value.quantity, value.quantity > 0 ? -price : 0);
   };
 
   return (

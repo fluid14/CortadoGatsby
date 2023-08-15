@@ -97,6 +97,7 @@ const Order = () => {
       shipping_options: [{ shipping_rate: deliveryMethod }],
       success_url: routes.orderSuccess,
       cancel_url: routes.order,
+      user: getUser().id,
     };
 
     if (isVat)
