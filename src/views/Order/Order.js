@@ -127,7 +127,7 @@ const Order = () => {
           ${addressPhone}`;
 
     if (line_items.length > 0 && regulations) {
-      // await createPaymentSession(checkoutOptions);
+      await createPaymentSession(checkoutOptions);
     } else if (line_items.length === 0) {
       toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
     } else if (!regulations) {
