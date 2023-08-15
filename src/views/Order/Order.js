@@ -67,9 +67,11 @@ const Order = () => {
       addressLine1 = '',
       addressPostalCode = '',
       addressPhone = '',
-      deliveryMethod,
+      deliveryMethod: delivery,
       regulations,
     } = data;
+
+    const deliveryMethod = JSON.parse(delivery);
 
     const line_items = [];
     for (const [key, value] of Object.entries(data)) {
@@ -104,12 +106,18 @@ const Order = () => {
         },
       },
       customer: getUser().stripeId,
-      shipping_options: [{ shipping_rate: deliveryMethod }],
+      shipping_options: [{ shipping_rate: deliveryMethod.stripeId }],
       success_url: routes.orderSuccess,
       cancel_url: routes.order,
       user: getUser().id,
       products,
+      deliveryMethod: {
+        ...deliveryMethod,
+        price: deliveryMethod.price / 100,
+      },
     };
+
+    console.log(checkoutOptions);
 
     if (isVat)
       checkoutOptions.payment_intent_data.metadata.customerBillingAddress = `
@@ -127,7 +135,7 @@ const Order = () => {
           ${addressPhone}`;
 
     if (line_items.length > 0 && regulations) {
-      await createPaymentSession(checkoutOptions);
+      // await createPaymentSession(checkoutOptions);
     } else if (line_items.length === 0) {
       toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
     } else if (!regulations) {

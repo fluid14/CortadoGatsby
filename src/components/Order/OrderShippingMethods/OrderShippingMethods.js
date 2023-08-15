@@ -13,7 +13,6 @@ const OrderShippingMethods = ({ register, errors, setValue }) => {
         result: { data: shippingMethods },
       } = data;
       setShippingMethods(() => shippingMethods);
-      console.log(shippingMethods);
     });
   }, []);
 
@@ -35,7 +34,7 @@ const OrderShippingMethods = ({ register, errors, setValue }) => {
               name="deliveryMethod"
               error={errors.deliveryMethod}
               register={register}
-              value={id}
+              value={JSON.stringify({ stripeId: id, name, price: amount })}
               id={id}
               data-price={amount / 100}
               onClick={handleRadioChange}
