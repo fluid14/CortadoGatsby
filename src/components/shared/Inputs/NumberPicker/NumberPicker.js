@@ -17,18 +17,18 @@ const NumberPicker = ({
   const [value, setValue] = useState({ quantity: 0, name: productName, id: productId });
   const name = `${STRAPI_PRODUCT}${stripeId}`;
 
-  setFormValue(name, value.quantity, 0);
+  setFormValue(name, value, 0);
 
   const handlePlus = () => {
     setValue((prev) => ({ ...prev, quantity: prev.quantity + 1 }));
-    setFormValue(name, value.quantity, price);
+    setFormValue(name, value, price);
   };
 
   const handleMinus = () => {
     setValue((prev) =>
       prev.quantity > 0 ? { ...prev, quantity: prev.quantity - 1 } : { ...prev, quantity: 0 }
     );
-    setFormValue(name, value.quantity, value.quantity > 0 ? -price : 0);
+    setFormValue(name, value, value.quantity > 0 ? -price : 0);
   };
 
   return (
@@ -41,6 +41,7 @@ const NumberPicker = ({
         type="number"
         name={name}
         id={name}
+        value={value.quantity}
         {...register(name)}
         disabled
       />

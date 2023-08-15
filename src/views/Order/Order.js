@@ -71,14 +71,24 @@ const Order = () => {
       regulations,
     } = data;
 
+    const line_items = [];
+    for (const [key, value] of Object.entries(data)) {
+      const { quantity } = value;
+      if (key.includes(STRAPI_PRODUCT) && quantity > 0) {
+        line_items.push({ price: key.replace(STRAPI_PRODUCT, ''), quantity });
+      }
+    }
+
     const products = [];
-    Object.keys(data).forEach((key) => {
-      if (key.includes(STRAPI_PRODUCT) && data[key] > 0)
-        products.push({ price: key.replace(STRAPI_PRODUCT, ''), quantity: data[key] });
-    });
+    for (const [key, value] of Object.entries(data)) {
+      const { quantity, id: product, name: title } = value;
+      if (key.includes(STRAPI_PRODUCT) && quantity > 0) {
+        products.push({ stripeId: key.replace(STRAPI_PRODUCT, ''), quantity, product, title });
+      }
+    }
 
     const checkoutOptions = {
-      line_items: products,
+      line_items,
       mode: 'payment',
       payment_intent_data: {
         metadata: {
@@ -98,6 +108,7 @@ const Order = () => {
       success_url: routes.orderSuccess,
       cancel_url: routes.order,
       user: getUser().id,
+      products,
     };
 
     if (isVat)
@@ -115,9 +126,9 @@ const Order = () => {
           ${addressCity} ${addressPostalCode}
           ${addressPhone}`;
 
-    if (products.length > 0 && regulations) {
-      await createPaymentSession(checkoutOptions);
-    } else if (products.length === 0) {
+    if (line_items.length > 0 && regulations) {
+      // await createPaymentSession(checkoutOptions);
+    } else if (line_items.length === 0) {
       toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
     } else if (!regulations) {
       toast.error('Musisz zaakceptować regulamin!');
