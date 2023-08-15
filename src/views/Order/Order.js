@@ -111,7 +111,7 @@ const Order = () => {
       cancel_url: routes.order,
       user: getUser().id,
       products,
-      deliveryMethod: {
+      shipping: {
         ...deliveryMethod,
         price: deliveryMethod.price / 100,
       },
