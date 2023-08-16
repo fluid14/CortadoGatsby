@@ -1,6 +1,6 @@
 import React from 'react';
 import * as styles from './Partner.module.scss';
-import Modal from '../../../shared/Modal/Modal';
+import Modal from '../../../shared/Modals/Modal';
 import useModal from '../../../../hooks/useModal';
 import Image from '../../../shared/Image/Image';
 

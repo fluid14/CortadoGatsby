@@ -19,6 +19,7 @@ const AuthContext = createContext({
   resetPassword: () => {},
   getUserOrders: () => {},
   getUserOrder: () => {},
+  cancelUserOrder: () => {},
   loginState: false,
 });
 
@@ -132,6 +133,10 @@ const AuthProvider = ({ children }) => {
     return await apiService.get(routes.api.order.root.replace('{id}', id));
   };
 
+  const cancelUserOrder = async (id) => {
+    return await apiService.put(routes.api.order.root.replace('{id}', id));
+  };
+
   const getToken = () => getItem(AUTH_TOKEN);
 
   const getUser = () => getItem(USER);
@@ -154,6 +159,7 @@ const AuthProvider = ({ children }) => {
         resetPassword,
         getUserOrders,
         getUserOrder,
+        cancelUserOrder,
       }}
     >
       {children}

@@ -1,5 +1,54 @@
 @import 'src/styles/config';
 
 .accountOrdersWrap {
+  .orderList {
+    .orderItem {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-bottom: 30px;
+      border-bottom: 1px solid $bgLightGray;
+      padding-bottom: 10px;
 
+      .products {
+        margin-bottom: 10px;
+
+        .productItem {
+          margin-bottom: 3px;
+
+          .productName {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0;
+            color: $primary;
+
+            .quantity {
+              font-weight: 300;
+            }
+          }
+        }
+      }
+
+      .cell {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 3px;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 148%;
+
+        .title {
+          font-weight: 500;
+          margin-right: 5px;
+        }
+      }
+
+      .cancelButton {
+        align-self: flex-end;
+      }
+    }
+  }
 }
