@@ -47,7 +47,8 @@ const AccountOrders = () => {
       <AccountContentTitle>Zamówienia</AccountContentTitle>
 
       <ul className={styles.orderList}>
-        {orders &&
+        {orders.length === 0 && <p>Nie masz jeszcze żadnych zamówień</p>}
+        {orders.length > 0 &&
           orders.map(({ attributes: order, id }) => (
             <li className={styles.orderItem} key={order.createdAt}>
               <ul className={styles.products}>

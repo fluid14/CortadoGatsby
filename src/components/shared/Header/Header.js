@@ -160,26 +160,57 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-          <li className={cs(styles.navItem, styles.mobile)}>
-            <Link
-              className={styles.navLink}
-              activeClassName={styles.active}
-              to={routes.login}
-              onClick={handleBurgerClick}
-            >
-              Logowanie
-            </Link>
-          </li>
-          <li className={cs(styles.navItem, styles.mobile)}>
-            <Link
-              className={styles.navLink}
-              activeClassName={styles.active}
-              to={routes.register}
-              onClick={handleBurgerClick}
-            >
-              Rejestracja
-            </Link>
-          </li>
+
+          {loginState ? (
+            <>
+              <li className={cs(styles.navItem, styles.mobile)}>
+                <Link
+                  className={styles.navLink}
+                  activeClassName={styles.active}
+                  to={routes.account}
+                  onClick={handleBurgerClick}
+                >
+                  Moje konto
+                </Link>
+              </li>
+              <li className={cs(styles.navItem, styles.mobile)}>
+                <Link
+                  className={styles.navLink}
+                  activeClassName={styles.active}
+                  to={routes.account}
+                  onClick={() => {
+                    logoutUser();
+                    handleBurgerClick();
+                  }}
+                >
+                  Wyloguj
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className={cs(styles.navItem, styles.mobile)}>
+                <Link
+                  className={styles.navLink}
+                  activeClassName={styles.active}
+                  to={routes.login}
+                  onClick={handleBurgerClick}
+                >
+                  Logowanie
+                </Link>
+              </li>
+              <li className={cs(styles.navItem, styles.mobile)}>
+                <Link
+                  className={styles.navLink}
+                  activeClassName={styles.active}
+                  to={routes.register}
+                  onClick={handleBurgerClick}
+                >
+                  Rejestracja
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
         <Button
           className={cs(styles.subscription, styles.mobile)}
