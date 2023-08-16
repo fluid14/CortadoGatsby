@@ -13,7 +13,7 @@ import pl from 'date-fns/locale/pl';
 import PopupFooter from '../../components/shared/Popup/PopupFooter/PopupFooter';
 import PriceSummary from '../../components/shared/Typography/PriceSummary/PriceSummary';
 import Button from '../../components/shared/Button/Button';
-import { firstDayNextMonth } from '../../utils/date';
+import { firstDayNextMonth, formatDate } from '../../utils/date';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Info from '../../components/shared/Info/Info';
 import OrderProductList from '../../components/Order/OrderProductList/OrderProductList';
@@ -94,7 +94,7 @@ const Order = () => {
       mode: 'payment',
       payment_intent_data: {
         metadata: {
-          subscriptionStartDate,
+          subscriptionStartDate: formatDate(new Date(subscriptionStartDate)),
           customer: `
           ${name} ${surname}
           ${email}
