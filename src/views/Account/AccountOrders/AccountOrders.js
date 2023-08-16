@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import * as styles from './AccountOrders.module.scss';
 import AccountContentTitle from '../../../components/Account/AccountContentTitle/AccountContentTitle';
+import { AuthContext } from '../../../context/AuthContext';
 
 const AccountOrders = () => {
+  const { getUserOrders, getUserOrder } = useContext(AuthContext);
+  useEffect(() => {
+    getUserOrders().then(({ data: { orders } }) => {
+      orders.forEach(({ id }) => {
+        console.log(id);
+        getUserOrder(id).then((data) => console.log(data));
+      });
+    });
+  }, []);
+
   return (
     <section className={styles.accountOrdersWrap}>
       <AccountContentTitle>Zamówienia</AccountContentTitle>

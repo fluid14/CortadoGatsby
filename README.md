@@ -7,6 +7,9 @@
   Gatsby Minimal Starter
 </h1>
 
+##Node
+18.12.1
+
 ## 🚀 Quick start
 
 1.  **Create a Gatsby site.**

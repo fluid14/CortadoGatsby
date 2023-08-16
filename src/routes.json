@@ -3,11 +3,14 @@
     "createPaymentSession": "stripe/create-session",
     "shippingMethods": "stripe/shipping-methods",
     "user": {
+      "root": "user/{id}",
       "login": "/user/login",
       "register": "user/register",
-      "update": "user/{id}",
       "forgotPassword": "user/forgot-password",
       "resetPassword": "user/reset-password"
+    },
+    "order": {
+      "root": "order/{id}"
     }
   },
   "strapiApi": {

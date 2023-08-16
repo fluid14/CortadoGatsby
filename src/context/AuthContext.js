@@ -17,6 +17,8 @@ const AuthContext = createContext({
   changeUserPassword: () => {},
   forgotPassword: () => {},
   resetPassword: () => {},
+  getUserOrders: () => {},
+  getUserOrder: () => {},
   loginState: false,
 });
 
@@ -52,7 +54,7 @@ const AuthProvider = ({ children }) => {
 
   const updateUser = async (data, userId) => {
     await apiService
-      .put(routes.api.user.update.replace('{id}', userId), data)
+      .put(routes.api.user.root.replace('{id}', userId), data)
       .then(async ({ data }) => {
         setItem(USER, data);
         toast.success(`Informacje zaktualizowane pomyślnie!`);
@@ -122,6 +124,14 @@ const AuthProvider = ({ children }) => {
     await navigate(routes.login);
   };
 
+  const getUserOrders = async () => {
+    return await apiService.get(routes.api.user.root.replace('{id}', getUser().id));
+  };
+
+  const getUserOrder = async (id) => {
+    return await apiService.get(routes.api.order.root.replace('{id}', id));
+  };
+
   const getToken = () => getItem(AUTH_TOKEN);
 
   const getUser = () => getItem(USER);
@@ -142,6 +152,8 @@ const AuthProvider = ({ children }) => {
         changeUserPassword,
         forgotPassword,
         resetPassword,
+        getUserOrders,
+        getUserOrder,
       }}
     >
       {children}
