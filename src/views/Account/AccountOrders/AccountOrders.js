@@ -20,6 +20,7 @@ const AccountOrders = () => {
   }, []);
 
   const handleGetUserOrders = () => {
+    setOrders(() => []);
     return getUserOrders().then(({ data: { orders } }) => {
       orders.forEach(({ id }) => {
         getUserOrder(id).then(({ data: { data } }) => setOrders((prev) => [...prev, data]));
