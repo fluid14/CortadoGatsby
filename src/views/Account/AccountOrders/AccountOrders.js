@@ -23,7 +23,12 @@ const AccountOrders = () => {
     setOrders(() => []);
     return getUserOrders().then(({ data: { orders } }) => {
       orders.forEach(({ id }) => {
-        getUserOrder(id).then(({ data: { data } }) => setOrders((prev) => [...prev, data]));
+        getUserOrder(id).then(({ data: { data } }) => {
+          const mappedData = { ...data };
+          mappedData.startDate = formatDate(new Date(data.startDate));
+          mappedData.createdAt = formatDate(new Date(data.createdAt));
+          setOrders((prev) => [...prev, mappedData]);
+        });
       });
     });
   };
@@ -77,7 +82,7 @@ const AccountOrders = () => {
               </p>
               <p className={styles.cell}>
                 <span className={styles.title}>Rozpoczęcie subskrypcji:</span>
-                {formatDate(new Date(order.startDate))}
+                {order.startDate}
               </p>
               <p className={styles.cell}>
                 <span className={styles.title}>Metoda dostawy:</span>
@@ -85,7 +90,7 @@ const AccountOrders = () => {
               </p>
               <p className={styles.cell}>
                 <span className={styles.title}>Data zamówienia:</span>
-                {formatDate(new Date(order.createdAt))}
+                {order.createdAt}
               </p>
               <p className={styles.cell}>
                 <span className={styles.title}>Cena:</span>

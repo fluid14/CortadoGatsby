@@ -1,35 +1,48 @@
 import React from 'react';
 import ProductAmountPicker from '../../shared/Inputs/ProductAmountPicker/ProductAmountPicker';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 
 const OrderProductList = ({ register, setValue }) => {
-  const {
-    allStrapiProduct: { nodes },
-  } = useStaticQuery(graphql`
-    query ProductsOrderQuery {
-      allStrapiProduct {
-        nodes {
-          name
-          strapi_id
-          numberOfGrain
-          bestseller
-          image {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData
+  return (
+    <StaticQuery
+      query={graphql`
+        query ProductsOrderQuery {
+          allStrapiProduct {
+            nodes {
+              name
+              strapi_id
+              numberOfGrain
+              bestseller
+              image {
+                alternativeText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                  url
+                }
               }
-              url
+              imageBackgroundColor
+              price
+              stripeId
             }
           }
-          imageBackgroundColor
-          price
-          stripeId
         }
-      }
-    }
-  `);
+      `}
+      render={(products) => (
+        <OrderProductListComponent products={products} register={register} setValue={setValue} />
+      )}
+    />
+  );
+};
 
+const OrderProductListComponent = ({
+  register,
+  setValue,
+  products: {
+    allStrapiProduct: { nodes },
+  },
+}) => {
   return (
     <>
       {nodes.map((data) => (

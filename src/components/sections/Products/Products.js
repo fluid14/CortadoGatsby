@@ -3,35 +3,46 @@ import * as styles from './Products.module.scss';
 import cs from 'classnames';
 import Button from '../../shared/Button/Button';
 import Product from './Product/Product';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 
-const Products = ({ data: { title, text, button }, without = '' }) => {
-  const {
-    allStrapiProduct: { nodes },
-  } = useStaticQuery(graphql`
-    query ProductsQuery {
-      allStrapiProduct {
-        nodes {
-          name
-          description
-          id
-          numberOfGrain
-          bestseller
-          image {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData
+const Products = ({ data }) => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query ProductsQuery {
+          allStrapiProduct {
+            nodes {
+              name
+              description
+              id
+              numberOfGrain
+              bestseller
+              image {
+                alternativeText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                  url
+                }
               }
-              url
+              imageBackgroundColor
             }
           }
-          imageBackgroundColor
         }
-      }
-    }
-  `);
+      `}
+      render={(products) => <ProductsComponent data={data} products={products} />}
+    />
+  );
+};
 
+const ProductsComponent = ({
+  data: { title, text, button },
+  without = '',
+  products: {
+    allStrapiProduct: { nodes },
+  },
+}) => {
   return (
     <section
       className={cs('section small', styles.productsWrap, { [styles.nonMargin]: !button?.url })}
