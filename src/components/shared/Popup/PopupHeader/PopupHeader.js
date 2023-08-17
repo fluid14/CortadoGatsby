@@ -5,7 +5,7 @@ import * as styles from './PopupHeader.module.scss';
 const PopupHeader = ({ children, className }) => {
   return (
     <div className={cs('popupHeader', className, styles.popupHeader)}>
-      <div className={styles.contentWrap}>{children}</div>
+      <div>{children}</div>
     </div>
   );
 };

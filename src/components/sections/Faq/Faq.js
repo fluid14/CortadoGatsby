@@ -12,7 +12,7 @@ const Faq = ({ data: { title, questions } }) => {
   );
 
   return (
-    <section className={cs('section fullWidth', styles.faqWrap)}>
+    <div className={cs('section fullWidth', styles.faqWrap)}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.accordionWrap}>
         {questions.length &&
@@ -22,7 +22,7 @@ const Faq = ({ data: { title, questions } }) => {
             </Accordion>
           ))}
       </div>
-    </section>
+    </div>
   );
 };
 

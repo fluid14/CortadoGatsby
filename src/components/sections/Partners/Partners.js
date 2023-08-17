@@ -5,10 +5,10 @@ import Partner from './Partner/Partner';
 
 const Partners = ({ data: { images } }) => {
   return (
-    <section className={cs('section fullWidth small', styles.partnersWrap)}>
+    <div className={cs('section fullWidth small', styles.partnersWrap)}>
       {images.length &&
         images.map(({ id, image, text }) => <Partner key={id} image={image} text={text} />)}
-    </section>
+    </div>
   );
 };
 

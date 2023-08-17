@@ -13,6 +13,9 @@ module.exports = {
     description: `Najlepsza kawa dla Twojej firmy!`,
     author: `@springStudio`,
   },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     'gatsby-plugin-sass',
     'gatsby-plugin-sass',

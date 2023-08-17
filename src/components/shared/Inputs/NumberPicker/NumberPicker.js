@@ -33,7 +33,7 @@ const NumberPicker = ({
 
   return (
     <div className={cs(className, styles.numberPicker)}>
-      <button className={cs(styles.minus, styles.button)} type="button" onClick={handleMinus}>
+      <button className={cs(styles.button)} type="button" onClick={handleMinus}>
         <img src={minusImage} alt="minus" />
       </button>
       <input
@@ -45,7 +45,7 @@ const NumberPicker = ({
         {...register(name)}
         disabled
       />
-      <button className={cs(styles.plus, styles.button)} type="button" onClick={handlePlus}>
+      <button className={cs(styles.button)} type="button" onClick={handlePlus}>
         <img src={plusImage} alt="plus" />
       </button>
     </div>

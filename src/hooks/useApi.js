@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAxios } from './useAxios';
 import routes from '../routes.json';
 import { useStripe } from './useStripe';

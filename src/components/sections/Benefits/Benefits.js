@@ -6,7 +6,7 @@ import Benefit from './Benefit/Benefit';
 
 const Benefits = ({ data: { text, title, benefits, button } }) => {
   return (
-    <section className={cs('section fullWidth', styles.benefitsWrap)}>
+    <div className={cs('section fullWidth', styles.benefitsWrap)}>
       <div className={styles.descriptionWrap}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.text}>{text}</p>
@@ -25,9 +25,9 @@ const Benefits = ({ data: { text, title, benefits, button } }) => {
 
       <ul className={styles.list}>
         {benefits.length &&
-          benefits.map(({ id, icon, text }) => <Benefit key={id} icon={icon} description={text} />)}
+          benefits.map(({ icon, text }) => <Benefit key={text} icon={icon} description={text} />)}
       </ul>
-    </section>
+    </div>
   );
 };
 

@@ -21,10 +21,7 @@ const Product = ({
       />
       <h4 className={styles.title}>{name}</h4>
       <p className={styles.description}>{description}</p>
-      <Link
-        className={cs('link', styles.productPage)}
-        to={`/produkt/${slugify(name, { lower: true })}`}
-      >
+      <Link className={cs('link')} to={`/produkt/${slugify(name, { lower: true })}`}>
         Karta produktu
       </Link>
     </li>

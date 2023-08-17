@@ -48,7 +48,7 @@ const AccountOrders = () => {
   };
 
   return (
-    <section className={styles.accountOrdersWrap}>
+    <div className={styles.accountOrdersWrap}>
       <AccountContentTitle>Zamówienia</AccountContentTitle>
 
       <ul className={styles.orderList}>
@@ -119,7 +119,7 @@ const AccountOrders = () => {
           Czy na pewno chcesz anulować subskrypcje?
         </ConfirmModal>
       </Modal>
-    </section>
+    </div>
   );
 };
 

@@ -11,12 +11,12 @@ const TextWithImage = ({
   },
 }) => {
   return (
-    <section
+    <div
       className={cs('section fullWidth', styles.textWithImageWrap)}
       style={{ backgroundImage: `url(${url})` }}
     >
       <h3 className={styles.text}>{text}</h3>
-    </section>
+    </div>
   );
 };
 

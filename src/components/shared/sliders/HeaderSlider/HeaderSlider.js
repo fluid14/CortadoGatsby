@@ -10,7 +10,7 @@ import Image from '../../Image/Image';
 
 const HeaderSlider = ({ data: { Slide } }) => {
   return (
-    <section className={cs('section fullWidth', styles.sliderWrap)}>
+    <div className={cs('section fullWidth', styles.sliderWrap)}>
       <Swiper
         className={cs(styles.slider)}
         modules={[Pagination]}
@@ -57,7 +57,7 @@ const HeaderSlider = ({ data: { Slide } }) => {
 
         <div className={styles.swiperPagination} />
       </Swiper>
-    </section>
+    </div>
   );
 };
 

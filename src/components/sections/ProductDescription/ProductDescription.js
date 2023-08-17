@@ -7,13 +7,13 @@ import Image from '../../shared/Image/Image';
 
 const ProductDescription = ({ name, subName, description, descriptionImage }) => {
   return (
-    <section className={cs('section fullWidth', styles.productDescription)}>
+    <div className={cs('section fullWidth', styles.productDescription)}>
       <div className={styles.content}>
         <h1 className={styles.title}>{name}</h1>
         <h2 className={styles.subTitle}>{subName}</h2>
         <p className={styles.text}>{description}</p>
 
-        <Button className={styles.subscriptionButton} size="small" type="link" to={routes.order}>
+        <Button size="small" type="link" to={routes.order}>
           Chcę subskrybować
         </Button>
       </div>
@@ -21,7 +21,7 @@ const ProductDescription = ({ name, subName, description, descriptionImage }) =>
       <div className={styles.imageWrap}>
         <Image className={styles.image} image={descriptionImage} />
       </div>
-    </section>
+    </div>
   );
 };
 

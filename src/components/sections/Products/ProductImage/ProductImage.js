@@ -28,13 +28,15 @@ const ProductImage = ({
         [styles.bestseller]: bestseller,
       })}
       style={{ backgroundColor }}
-      to={link}
+      to={link || '#'}
     >
       {bestseller && <div className={styles.bestseller}>Bestseller</div>}
       <Image className={styles.image} image={img} />
       <div className={styles.numberOfGrain}>
         {grains.length &&
-          grains.map((grain, index) => <img className={styles.grain} src={grain} alt="grain" />)}
+          grains.map((grain, index) => (
+            <img key={index} className={styles.grain} src={grain} alt="grain" />
+          ))}
       </div>
     </Link>
   );

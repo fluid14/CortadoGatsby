@@ -18,7 +18,7 @@ const HowItWork = ({ data }) => {
   } = data;
 
   return (
-    <section className={cs('section fullWidth', styles.howItWorkWrap)} id={sectionId}>
+    <div className={cs('section fullWidth', styles.howItWorkWrap)} id={sectionId}>
       <h1 className={styles.title}>{title}</h1>
       <div className={styles.descriptionWrap}>
         <p className={styles.subTitle}>{descriptionTitle}</p>
@@ -32,7 +32,7 @@ const HowItWork = ({ data }) => {
         diagramSufix={diagramSufix}
         button={button}
       />
-    </section>
+    </div>
   );
 };
 

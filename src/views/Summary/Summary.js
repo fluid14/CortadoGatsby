@@ -6,13 +6,13 @@ import routes from '../../routes.json';
 
 const Summary = () => {
   return (
-    <section className={cs('section', styles.summaryWrap)}>
+    <div className={cs('section', styles.summaryWrap)}>
       <h1 className={styles.title}>Dziękujemy za złożenie zamówienia!</h1>
       <p className={styles.subtitle}>Na Twój adres email wysłaliśmy potwierdzenie.</p>
       <Button type="link" to={routes.accountOrders} size="medium">
         Przejdź do zamówień
       </Button>
-    </section>
+    </div>
   );
 };
 

@@ -159,7 +159,7 @@ const HeaderComponent = ({
         <ul className={styles.navList}>
           {navigation.length &&
             navigation.map(({ id, title, url }) => (
-              <li className={styles.navItem} key={id}>
+              <li key={id}>
                 <Link
                   className={styles.navLink}
                   activeClassName={styles.active}
@@ -173,7 +173,7 @@ const HeaderComponent = ({
 
           {loginState ? (
             <>
-              <li className={cs(styles.navItem, styles.mobile)}>
+              <li className={cs(styles.mobile)}>
                 <Link
                   className={styles.navLink}
                   activeClassName={styles.active}
@@ -183,7 +183,7 @@ const HeaderComponent = ({
                   Moje konto
                 </Link>
               </li>
-              <li className={cs(styles.navItem, styles.mobile)}>
+              <li className={cs(styles.mobile)}>
                 <Link
                   className={styles.navLink}
                   activeClassName={styles.active}
@@ -199,7 +199,7 @@ const HeaderComponent = ({
             </>
           ) : (
             <>
-              <li className={cs(styles.navItem, styles.mobile)}>
+              <li className={cs(styles.mobile)}>
                 <Link
                   className={styles.navLink}
                   activeClassName={styles.active}
@@ -209,7 +209,7 @@ const HeaderComponent = ({
                   Logowanie
                 </Link>
               </li>
-              <li className={cs(styles.navItem, styles.mobile)}>
+              <li className={cs(styles.mobile)}>
                 <Link
                   className={styles.navLink}
                   activeClassName={styles.active}

@@ -58,7 +58,7 @@ const AccountSettings = () => {
   };
 
   return (
-    <section className={styles.accountSettingsWrap}>
+    <div className={styles.accountSettingsWrap}>
       <AccountContentTitle>Ustawienia</AccountContentTitle>
 
       <form className={styles.formWrap} onSubmit={handleSubmit(onSubmit)}>
@@ -138,11 +138,11 @@ const AccountSettings = () => {
           </div>
         )}
 
-        <Button className={styles.button} type="submit" size="medium">
+        <Button type="submit" size="medium">
           Zapisz
         </Button>
       </form>
-    </section>
+    </div>
   );
 };
 

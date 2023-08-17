@@ -19,7 +19,7 @@ const HowItWorkSteps = ({
           steps.map(
             ({ title, description, number, strapi_id: id, image, backgroundColor }, index) => (
               <HowItWorkStep
-                key={id}
+                key={id || index}
                 image={image}
                 number={number}
                 title={title}

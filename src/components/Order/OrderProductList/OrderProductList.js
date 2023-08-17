@@ -45,9 +45,9 @@ const OrderProductListComponent = ({
 }) => {
   return (
     <>
-      {nodes.map((data) => (
+      {nodes.map((data, index) => (
         <ProductAmountPicker
-          key={data.id}
+          key={data.strapi_id}
           ref={null}
           data={data}
           register={register}

@@ -6,7 +6,7 @@ import RatingStars from '../../shared/RatingStars/RatingStars';
 
 const Testimonials = ({ data: { stars, subText, title, reviews } }) => {
   return (
-    <section className={cs('section fullWidth small', styles.testimonialsWrap)}>
+    <div className={cs('section fullWidth small', styles.testimonialsWrap)}>
       <div className={styles.popup}>
         <div className={styles.description}>
           <h3 className={styles.title}>{title}</h3>
@@ -15,7 +15,7 @@ const Testimonials = ({ data: { stars, subText, title, reviews } }) => {
         </div>
         <TestimonialsSlider slides={reviews} />
       </div>
-    </section>
+    </div>
   );
 };
 

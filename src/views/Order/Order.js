@@ -16,7 +16,6 @@ import Button from '../../components/shared/Button/Button';
 import { firstDayNextMonth, formatDate } from '../../utils/date';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Info from '../../components/shared/Info/Info';
-import OrderProductList from '../../components/Order/OrderProductList/OrderProductList';
 import { orderSchema } from '../../schemas/orderSchema';
 import { STRAPI_PRODUCT } from '../../constant';
 import useApi from '../../hooks/useApi';
@@ -24,6 +23,7 @@ import { AuthContext } from '../../context/AuthContext';
 import routes from '../../routes.json';
 import { toast } from 'react-toastify';
 import OrderShippingMethods from '../../components/Order/OrderShippingMethods/OrderShippingMethods';
+import OrderProductList from '../../components/Order/OrderProductList/OrderProductList';
 
 registerLocale('pl', pl);
 
@@ -458,7 +458,6 @@ const Order = () => {
             <PopupFooter className={styles.popupFooter}>
               <Checkbox
                 ref={null}
-                className={styles.regulations}
                 name="regulations"
                 error={errors.regulations}
                 register={register}

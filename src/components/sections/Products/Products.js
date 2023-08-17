@@ -44,9 +44,7 @@ const ProductsComponent = ({
   },
 }) => {
   return (
-    <section
-      className={cs('section small', styles.productsWrap, { [styles.nonMargin]: !button?.url })}
-    >
+    <div className={cs('section small', styles.productsWrap, { [styles.nonMargin]: !button?.url })}>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{text}</p>
 
@@ -61,7 +59,7 @@ const ProductsComponent = ({
           {button?.text}
         </Button>
       )}
-    </section>
+    </div>
   );
 };
 

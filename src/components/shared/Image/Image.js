@@ -8,10 +8,14 @@ const Image = ({ image, className }) => {
         <GatsbyImage
           className={className}
           image={image?.localFile?.childImageSharp?.gatsbyImageData}
-          alt={image.alternativeText}
+          alt={image.alternativeText || 'alternative text'}
         />
       ) : (
-        <img className={className} src={image.localFile.url} alt={image.alternativeText} />
+        <img
+          className={className}
+          src={image.localFile.url}
+          alt={image.alternativeText || 'alternative text'}
+        />
       )}
     </>
   );

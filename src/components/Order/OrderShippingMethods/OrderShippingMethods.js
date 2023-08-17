@@ -25,25 +25,27 @@ const OrderShippingMethods = ({ register, errors, setValue }) => {
 
   return (
     <>
-      {shippingMethods.map(({ id, active, display_name: name, fixed_amount: { amount } }) => (
-        <>
-          {active && (
-            <Radio
-              key={id}
-              ref={null}
-              name="deliveryMethod"
-              error={errors.deliveryMethod}
-              register={register}
-              value={JSON.stringify({ stripeId: id, name, price: amount })}
-              id={id}
-              data-price={amount / 100}
-              onClick={handleRadioChange}
-            >
-              {name}
-            </Radio>
-          )}
-        </>
-      ))}
+      {shippingMethods.map(
+        ({ id, active, display_name: name, fixed_amount: { amount } }, index) => (
+          <React.Fragment key={id}>
+            {active && (
+              <Radio
+                key={id}
+                ref={null}
+                name="deliveryMethod"
+                error={errors.deliveryMethod}
+                register={register}
+                value={JSON.stringify({ stripeId: id, name, price: amount })}
+                id={id}
+                data-price={amount / 100}
+                onClick={handleRadioChange}
+              >
+                {name}
+              </Radio>
+            )}
+          </React.Fragment>
+        )
+      )}
     </>
   );
 };

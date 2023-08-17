@@ -9,15 +9,15 @@ const Account = ({ children }) => {
   const { name } = getUser();
 
   return (
-    <section className={cs('section', styles.accountWrap)}>
+    <div className={cs('section', styles.accountWrap)}>
       <h1 className={styles.greetings}>Dzień dobry {name}!</h1>
 
       <div className={styles.accountContentWrap}>
-        <AccountAside className={styles.accountAside} />
+        <AccountAside />
 
         <div className={styles.accountContent}>{children}</div>
       </div>
-    </section>
+    </div>
   );
 };
 

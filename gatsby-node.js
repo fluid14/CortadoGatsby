@@ -5,6 +5,21 @@
 const path = require(`path`);
 const slugify = require('slugify');
 
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html' || stage === 'develop-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /bad-module/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
+};
+
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions;
   if (page.path.match(/^\/app/)) {
