@@ -9,11 +9,13 @@ export const useAxios = () => {
   const { showPreloader, hidePreloader } = useContext(PreloaderContext);
   const { getItem } = useLocalStorage();
 
+  const baseURL = process.env.BE_API_URL;
+  const xApiKey = process.env.BE_API_KEY;
   const apiService = axios.create({
-    baseURL: process.env.BE_API_URL,
+    baseURL,
     headers: {
       'Content-Type': 'application/json',
-      'X-API-KEY': process.env.BE_API_KEY,
+      'X-API-KEY': xApiKey,
     },
   });
 
@@ -30,11 +32,13 @@ export const useAxios = () => {
     }
   );
 
+  const strapiBaseURL = process.env.STRAPI_API_URL;
+  const strapiToken = process.env.STRAPI_API_TOKEN;
   const apiStrapiService = axios.create({
-    baseURL: process.env.STRAPI_API_URL,
+    baseURL: strapiBaseURL,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${BEARER} ${getItem(AUTH_TOKEN) ?? process.env.STRAPI_API_TOKEN}`,
+      Authorization: `${BEARER} ${getItem(AUTH_TOKEN) ?? strapiToken}`,
     },
   });
 

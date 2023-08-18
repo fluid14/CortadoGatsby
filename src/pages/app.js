@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Router } from '@gatsbyjs/reach-router';
 import PrivateRoute from '../components/shared/PrivateRoute';
 import Login from '../views/user/Login/Login';
@@ -13,20 +13,27 @@ import Summary from '../views/Summary/Summary';
 import routes from '../routes';
 
 const App = () => {
+  const [hasMounted, setHasMounted] = React.useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   return (
     <>
-      <Router>
-        <PrivateRoute path={routes.account} component={Account}>
-          <PrivateRoute path="/" component={AccountOrders} />
-          <PrivateRoute path="/ustawienia" component={AccountSettings} />
-        </PrivateRoute>
-        <PrivateRoute path={routes.order} component={Order} />
-        <PrivateRoute path={routes.orderSuccess} component={Summary} />
-        <Login path={routes.login} />
-        <Register path={routes.register} />
-        <ForgotPassword path={routes.forgotPassword} />
-        <ResetPassword path={routes.resetPassword} />
-      </Router>
+      {!hasMounted ? null : (
+        <Router>
+          <PrivateRoute path={routes.account} component={Account}>
+            <PrivateRoute path="/" component={AccountOrders} />
+            <PrivateRoute path="/ustawienia" component={AccountSettings} />
+          </PrivateRoute>
+          <PrivateRoute path={routes.order} component={Order} />
+          <PrivateRoute path={routes.orderSuccess} component={Summary} />
+          <Login path={routes.login} />
+          <Register path={routes.register} />
+          <ForgotPassword path={routes.forgotPassword} />
+          <ResetPassword path={routes.resetPassword} />
+        </Router>
+      )}
     </>
   );
 };
