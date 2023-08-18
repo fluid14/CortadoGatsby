@@ -9,8 +9,8 @@ export const useAxios = () => {
   const { showPreloader, hidePreloader } = useContext(PreloaderContext);
   const { getItem } = useLocalStorage();
 
-  const baseURL = process.env.BE_API_URL;
-  const xApiKey = process.env.BE_API_KEY;
+  const baseURL = process.env.GATSBY_BE_API_URL;
+  const xApiKey = process.env.GATSBY_BE_API_KEY;
   const apiService = axios.create({
     baseURL,
     headers: {
@@ -32,8 +32,8 @@ export const useAxios = () => {
     }
   );
 
-  const strapiBaseURL = process.env.STRAPI_API_URL;
-  const strapiToken = process.env.STRAPI_API_TOKEN;
+  const strapiBaseURL = process.env.GATSBY_STRAPI_API_URL;
+  const strapiToken = process.env.GATSBY_STRAPI_API_TOKEN;
   const apiStrapiService = axios.create({
     baseURL: strapiBaseURL,
     headers: {
