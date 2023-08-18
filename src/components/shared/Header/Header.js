@@ -2,38 +2,48 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import * as styles from './Header.module.scss';
 import Button from '../Button/Button';
 import { StaticImage } from 'gatsby-plugin-image';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, Link, StaticQuery } from 'gatsby';
 import cs from 'classnames';
 import { isBrowser } from '../../../utils/isBrowser';
 import routes from '../../../routes';
 import { AuthContext } from '../../../context/AuthContext';
 
 const Header = () => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query HeaderQuery {
+          strapiHeader {
+            button {
+              secondary
+              size
+              text
+              url
+            }
+            logoText
+            mail
+            text
+            navigation {
+              id
+              title
+              url
+            }
+          }
+        }
+      `}
+      render={(data) => <HeaderComponent data={data} />}
+    />
+  );
+};
+
+const HeaderComponent = ({
+  data: {
+    strapiHeader: { logoText, text, mail, button, navigation },
+  },
+}) => {
   const [burgerState, setBurgerState] = useState(false);
   const headerRef = useRef(null);
   const { logoutUser, loginState } = useContext(AuthContext);
-  const {
-    strapiHeader: { logoText, text, mail, button, navigation },
-  } = useStaticQuery(graphql`
-    query HeaderQuery {
-      strapiHeader {
-        button {
-          secondary
-          size
-          text
-          url
-        }
-        logoText
-        mail
-        text
-        navigation {
-          id
-          title
-          url
-        }
-      }
-    }
-  `);
 
   const handleBurgerClick = () => {
     setBurgerState((prev) => !prev);
