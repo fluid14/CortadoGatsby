@@ -3,48 +3,39 @@ import * as styles from './Products.module.scss';
 import cs from 'classnames';
 import Button from '../../shared/Button/Button';
 import Product from './Product/Product';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
-const Products = ({ data }) => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query ProductsQuery {
-          allStrapiProduct {
-            nodes {
-              name
-              description
-              id
-              numberOfGrain
-              bestseller
-              image {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                  url
-                }
+const Products = ({ data: { title, text, button }, without = '' }) => {
+  const {
+    allStrapiProduct: { nodes },
+  } = useStaticQuery(graphql`
+    query ProductsQuery {
+      allStrapiProduct {
+        nodes {
+          name
+          description
+          id
+          numberOfGrain
+          bestseller
+          image {
+            alternativeText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
               }
-              imageBackgroundColor
+              url
             }
           }
+          imageBackgroundColor
         }
-      `}
-      render={(products) => <ProductsComponent data={data} products={products} />}
-    />
-  );
-};
+      }
+    }
+  `);
 
-const ProductsComponent = ({
-  data: { title, text, button },
-  without = '',
-  products: {
-    allStrapiProduct: { nodes },
-  },
-}) => {
   return (
-    <div className={cs('section small', styles.productsWrap, { [styles.nonMargin]: !button?.url })}>
+    <section
+      className={cs('section small', styles.productsWrap, { [styles.nonMargin]: !button?.url })}
+    >
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{text}</p>
 
@@ -59,7 +50,7 @@ const ProductsComponent = ({
           {button?.text}
         </Button>
       )}
-    </div>
+    </section>
   );
 };
 
