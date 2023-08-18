@@ -1,0 +1,39 @@
+name: GATSBY BUILD
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: 18.12.1
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+        env:
+          STRAPI_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+          STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
+          
+      - name: 📂 Sync files
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          REMOTE_PORT: 222
+          ARGS: '--delete --exclude=cms'
+          SOURCE: 'public/'
+          TARGET: 'domains/fzfgxcybtz.cfolks.pl/public_html/page'
+          SCRIPT_BEFORE: ls
