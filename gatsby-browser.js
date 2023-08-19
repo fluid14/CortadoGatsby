@@ -11,6 +11,11 @@ import { PreloaderProvider } from './src/context/PreloaderContext';
 import Preloader from './src/components/shared/Preloader/Preloader';
 import { AuthProvider } from './src/context/AuthContext';
 
+export function shouldUpdateScroll() {
+  setTimeout(() => window.scrollTo(0, 0), 0);
+  return false;
+}
+
 export const wrapRootElement = ({ element }) => (
   <PreloaderProvider>
     <AuthProvider>
