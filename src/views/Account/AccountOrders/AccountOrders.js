@@ -79,12 +79,6 @@ const AccountOrders = () => {
                 {order.status === 'canceled' && 'Anulowane'}
               </p>
               <p className={styles.cell}>
-                <span className={styles.title}>Płatność:</span>
-                {order.payment === 'unpaid' || order.payment === 'failed'
-                  ? 'Nieopłacone'
-                  : 'Opłacone'}
-              </p>
-              <p className={styles.cell}>
                 <span className={styles.title}>Rozpoczęcie subskrypcji:</span>
                 {order.startDate}
               </p>
