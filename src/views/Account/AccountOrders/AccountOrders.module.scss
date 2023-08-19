@@ -11,6 +11,10 @@
       border-bottom: 1px solid $bgLightGray;
       padding-bottom: 10px;
 
+      &.canceled {
+        opacity: .5;
+      }
+
       .products {
         margin-bottom: 10px;
 

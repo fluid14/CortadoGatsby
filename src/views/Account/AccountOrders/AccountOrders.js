@@ -8,6 +8,7 @@ import Modal from '../../../components/shared/Modals/Modal';
 import useModal from '../../../hooks/useModal';
 import ConfirmModal from '../../../components/shared/Modals/Confirm/Confirm';
 import { toast } from 'react-toastify';
+import cs from 'classnames';
 
 const AccountOrders = () => {
   const { isShowing, toggle } = useModal();
@@ -55,7 +56,10 @@ const AccountOrders = () => {
         {orders.length === 0 && <p>Nie masz jeszcze żadnych zamówień</p>}
         {orders.length > 0 &&
           orders.map(({ attributes: order, id }) => (
-            <li className={styles.orderItem} key={order.createdAt}>
+            <li
+              className={cs(styles.orderItem, { [styles.canceled]: order.status === 'canceled' })}
+              key={order.createdAt}
+            >
               <ul className={styles.products}>
                 {order.products &&
                   order.products.map((product) => (
@@ -105,6 +109,7 @@ const AccountOrders = () => {
                   Anuluj
                 </Button>
               )}
+              {order.status === 'canceled' && <p className={styles.cancelButton}>Anulowane</p>}
             </li>
           ))}
       </ul>

@@ -19,6 +19,8 @@ const OrderShippingMethods = ({ register, errors, setValue }) => {
   const handleRadioChange = (e) => {
     const value = e.target.value;
     const price = e.target.getAttribute('data-price');
+    console.log(value);
+    console.log(price);
     setValue('deliveryMethod', value, price - prevPrice);
     setPrevPrice(() => price);
   };
