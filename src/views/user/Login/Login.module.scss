@@ -5,6 +5,7 @@
     top: 50px;
     bottom: 50px;
   }
+  background-color: $cortado13;
 
   &::before {
     content: '';
@@ -13,7 +14,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba($cortado1, .3);
+    background-color: $cortado13;
     z-index: -1;
   }
 
