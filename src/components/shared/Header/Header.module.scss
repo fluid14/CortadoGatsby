@@ -248,6 +248,10 @@
     transform: translateX(-100%);
     transition: .4s ease;
 
+    .mobile {
+      display: flex;
+    }
+
     &.active {
       transform: translateX(0);
     }
@@ -330,10 +334,6 @@
   .nav {
     .subscription {
       margin-top: 20px;
-    }
-
-    .mobile {
-      display: flex;
     }
   }
 }
