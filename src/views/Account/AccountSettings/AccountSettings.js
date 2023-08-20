@@ -57,11 +57,15 @@ const AccountSettings = () => {
     }
   };
 
+  const onError = (errors) => {
+    console.log(errors);
+  };
+
   return (
     <div className={styles.accountSettingsWrap}>
       <AccountContentTitle>Ustawienia</AccountContentTitle>
 
-      <form className={styles.formWrap} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.formWrap} onSubmit={handleSubmit(onSubmit, onError)}>
         <div className={styles.form}>
           <Input
             ref={null}
