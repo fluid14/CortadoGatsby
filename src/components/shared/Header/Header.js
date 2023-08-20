@@ -52,7 +52,7 @@ const HeaderComponent = ({
 
   const handleClickOutside = (event) => {
     if (headerRef.current && !headerRef.current.contains(event.target)) {
-      handleBurgerClick();
+      setBurgerState(() => false);
     }
   };
 

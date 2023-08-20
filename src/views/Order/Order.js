@@ -24,6 +24,7 @@ import routes from '../../routes.json';
 import { toast } from 'react-toastify';
 import OrderShippingMethods from '../../components/Order/OrderShippingMethods/OrderShippingMethods';
 import OrderProductList from '../../components/Order/OrderProductList/OrderProductList';
+import { PreloaderContext } from '../../context/PreloaderContext';
 
 registerLocale('pl', pl);
 
@@ -44,6 +45,7 @@ const Order = () => {
   const [priceSummary, setPriceSummary] = useState(0);
   const { getUser } = useContext(AuthContext);
   const { createPaymentSession } = useApi();
+  const { showPreloader } = useContext(PreloaderContext);
 
   const onSubmit = async (data) => {
     const {
@@ -133,6 +135,7 @@ const Order = () => {
           ${addressPhone}`;
 
     if (line_items.length > 0 && regulations) {
+      showPreloader();
       await createPaymentSession(checkoutOptions);
     } else if (line_items.length === 0) {
       toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
