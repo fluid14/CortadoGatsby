@@ -26,8 +26,7 @@ const AccountOrders = () => {
       orders.forEach(({ id }) => {
         getUserOrder(id).then(({ data: { data } }) => {
           const mappedData = { ...data };
-          mappedData.startDate = formatDate(new Date(data.startDate));
-          mappedData.createdAt = formatDate(new Date(data.createdAt));
+          mappedData.attributes.createdAt = formatDate(new Date(data.attributes.createdAt));
           setOrders((prev) => [...prev, mappedData]);
         });
       });
@@ -58,7 +57,7 @@ const AccountOrders = () => {
           orders.map(({ attributes: order, id }) => (
             <li
               className={cs(styles.orderItem, { [styles.canceled]: order.status === 'canceled' })}
-              key={order.createdAt}
+              key={id}
             >
               <ul className={styles.products}>
                 {order.products &&

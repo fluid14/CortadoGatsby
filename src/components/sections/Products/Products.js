@@ -37,14 +37,22 @@ const Products = ({ data }) => {
 };
 
 const ProductsComponent = ({
-  data: { title, text, button },
+  data: {
+    title,
+    text,
+    button,
+    sectionInfo: { sectionId },
+  },
   without = '',
   products: {
     allStrapiProduct: { nodes },
   },
 }) => {
   return (
-    <div className={cs('section small', styles.productsWrap, { [styles.nonMargin]: !button?.url })}>
+    <div
+      id={sectionId}
+      className={cs('section small', styles.productsWrap, { [styles.nonMargin]: !button?.url })}
+    >
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{text}</p>
 

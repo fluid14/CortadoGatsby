@@ -29,6 +29,7 @@
     "gatsby-plugin-sass": "^6.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-plugin-sitemap": "^6.11.0",
+    "gatsby-react-router-scroll": "^6.11.0",
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-source-strapi": "^3.3.0",
     "gatsby-transformer-sharp": "^5.11.0",
