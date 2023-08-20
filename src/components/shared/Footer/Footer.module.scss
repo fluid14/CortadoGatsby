@@ -1,0 +1,103 @@
+@import 'src/styles/config';
+
+$margin: 100px;
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: {
+    top: 30px;
+    bottom: 30px;
+  }
+
+  .logo {
+    margin: {
+      right: 150px;
+      bottom: 30px;
+    };
+  }
+
+  .content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-right: $margin;
+
+    .menuItem {
+      margin-bottom: 5px;
+    }
+
+    .menuLink {
+      transition: .3s ease;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  .contact {
+    margin-right: $margin;
+
+    .contactCompany {
+      font-size: 18px;
+      font-weight: 500;
+      color: $primary;
+      margin-bottom: 5px;
+    }
+
+    .contactText {
+      margin-bottom: 2px;
+      font-weight: 400;
+    }
+  }
+
+  .contactLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .contactText {
+      transition: .3s ease;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  $margin: 0;
+
+  .footer {
+    flex-direction: column;
+
+    .logo {
+      margin: {
+        right: 0;
+      };
+    }
+
+    .content {
+      flex-direction: column;
+    }
+
+    .menu {
+      margin-bottom: 20px;
+    }
+
+    .contact {
+      margin-bottom: 20px;
+    }
+  }
+}

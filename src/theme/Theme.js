@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/shared/Header/Header';
 import { ToastContainer } from 'react-toastify';
+import Footer from '../components/shared/Footer/Footer';
 
 const Theme = ({ children }) => {
   const [isClient, setIsClient] = useState(false);
@@ -14,6 +15,7 @@ const Theme = ({ children }) => {
         <>
           <Header />
           <main>{children}</main>
+          <Footer />
           <ToastContainer
             position="top-right"
             autoClose={5000}

@@ -8,6 +8,7 @@ import { isBrowser } from '../../../utils/isBrowser';
 import routes from '../../../routes';
 import { AuthContext } from '../../../context/AuthContext';
 import { AnchorLink } from 'gatsby-plugin-anchor-links';
+import Logo from '../Logo/Logo';
 
 const Header = () => {
   return (
@@ -82,9 +83,7 @@ const HeaderComponent = ({
     <div className={styles.headerWrap} ref={headerRef}>
       <header className={styles.header}>
         <div className={styles.logoWrap}>
-          <Link className={styles.logo} to="/">
-            {logoText}
-          </Link>
+          <Logo>{logoText}</Logo>
           <p className={styles.contact}>
             {text}
             <a className={styles.contactLink} href={`mailto: ${mail}`}>
