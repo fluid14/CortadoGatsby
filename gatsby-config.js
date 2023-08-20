@@ -78,6 +78,12 @@ module.exports = {
               populate: 'deep',
             },
           },
+          {
+            singularName: 'footer',
+            queryParams: {
+              populate: 'deep',
+            },
+          },
         ],
       },
     },

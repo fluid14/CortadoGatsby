@@ -2,49 +2,80 @@ import React from 'react';
 import * as styles from './Footer.module.scss';
 import Logo from '../Logo/Logo';
 import cs from 'classnames';
-import { Link } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 const Footer = () => {
   return (
+    <StaticQuery
+      query={graphql`
+        query FooterQuery {
+          strapiFooter {
+            address
+            addressTitle
+            city
+            email
+            logoText
+            phone
+            postalCode
+            sectionInfo {
+              sectionId
+            }
+            navigation {
+              title
+              url
+              id
+            }
+          }
+        }
+      `}
+      render={(footer) => <FooterComponent data={footer} />}
+    />
+  );
+};
+
+const FooterComponent = ({ data: { strapiFooter } }) => {
+  console.log(strapiFooter);
+  const {
+    address,
+    addressTitle,
+    city,
+    email,
+    logoText,
+    phone,
+    postalCode,
+    sectionInfo: { sectionId },
+    navigation,
+  } = strapiFooter;
+  return (
     <footer className={cs('section fullWidth small', styles.footer)}>
-      <Logo className={styles.logo}>Cortado</Logo>
+      <Logo className={styles.logo}>{logoText}</Logo>
 
       <div className={styles.content}>
         <ul className={styles.menu}>
-          <li className={styles.menuItem}>
-            <Link to="/" className={styles.menuLink}>
-              Start
-            </Link>
-          </li>
-          <li className={styles.menuItem}>
-            <Link to="/" className={styles.menuLink}>
-              Jak to działa
-            </Link>
-          </li>
-          <li className={styles.menuItem}>
-            <Link to="/" className={styles.menuLink}>
-              Nasze kawy
-            </Link>
-          </li>
-          <li className={styles.menuItem}>
-            <Link to="/" className={styles.menuLink}>
-              Kontakt
-            </Link>
-          </li>
+          {navigation.map(({ id, title, url }) => (
+            <li className={styles.menuItem} key={id}>
+              <AnchorLink to={url} className={styles.menuLink}>
+                {title}
+              </AnchorLink>
+            </li>
+          ))}
         </ul>
 
-        <div className={styles.contact} id="kontakt">
-          <p className={styles.contactCompany}>Cortado</p>
-          <p className={styles.contactText}>ul.Przykładowa 12</p>
-          <p className={styles.contactText}>00-000 Poznań</p>
+        <div className={styles.contact} id={sectionId}>
+          <p className={styles.contactCompany}>{addressTitle}</p>
+          <p className={styles.contactText}>{address}</p>
+          <p className={styles.contactText}>
+            {postalCode} {city}
+          </p>
         </div>
 
         <div className={styles.contactLinks}>
-          <a className={styles.contactText} href="tel: +48999888777">
-            +48999888777
+          <a className={styles.contactText} href={`tel: ${phone}`}>
+            {phone}
           </a>
-          <a className={styles.contactText} href="mailto: biuro@cortado.pl">
-            biuro@cortado.pl
+          <a className={styles.contactText} href={`mailto: ${email}`}>
+            {email}
           </a>
         </div>
       </div>
