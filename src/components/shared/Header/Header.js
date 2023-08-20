@@ -7,6 +7,7 @@ import cs from 'classnames';
 import { isBrowser } from '../../../utils/isBrowser';
 import routes from '../../../routes';
 import { AuthContext } from '../../../context/AuthContext';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 const Header = () => {
   return (
@@ -168,15 +169,10 @@ const HeaderComponent = ({
         <ul className={styles.navList}>
           {navigation.length &&
             navigation.map(({ id, title, url }) => (
-              <li key={id}>
-                <Link
-                  className={styles.navLink}
-                  activeClassName={styles.active}
-                  to={url}
-                  onClick={handleBurgerClick}
-                >
+              <li key={id} onClick={handleBurgerClick}>
+                <AnchorLink className={styles.navLink} activeClassName={styles.active} to={url}>
                   {title}
-                </Link>
+                </AnchorLink>
               </li>
             ))}
 
