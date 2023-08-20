@@ -4,7 +4,7 @@ import useApi from '../../../hooks/useApi';
 
 const OrderShippingMethods = ({ register, errors, setValue }) => {
   const [shippingMethods, setShippingMethods] = useState([]);
-  const [prevPrice, setPrevPrice] = useState(0);
+  const [prevPrice, setPrevPrice] = useState(() => 0);
   const { getShippingMethods } = useApi();
 
   useEffect(() => {
@@ -19,10 +19,10 @@ const OrderShippingMethods = ({ register, errors, setValue }) => {
   const handleRadioChange = (e) => {
     const value = e.target.value;
     const price = e.target.getAttribute('data-price');
-    console.log(value);
-    console.log(price);
-    setValue('deliveryMethod', value, price - prevPrice);
-    setPrevPrice(() => price);
+    if (prevPrice !== price) {
+      setValue('deliveryMethod', value, price - prevPrice);
+      setPrevPrice(() => price);
+    }
   };
 
   return (
@@ -40,7 +40,7 @@ const OrderShippingMethods = ({ register, errors, setValue }) => {
                 value={JSON.stringify({ stripeId: id, name, price: amount })}
                 id={id}
                 data-price={amount / 100}
-                onClick={handleRadioChange}
+                onChange={handleRadioChange}
               >
                 {name}
               </Radio>

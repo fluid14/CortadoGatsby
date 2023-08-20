@@ -160,14 +160,14 @@ const HeaderComponent = ({
           {navigation.length &&
             navigation.map(({ id, title, url }) => (
               <li key={id}>
-                <a
+                <Link
                   className={styles.navLink}
-                  // activeClassName={styles.active}
-                  href={url}
+                  activeClassName={styles.active}
+                  to={url}
                   onClick={handleBurgerClick}
                 >
                   {title}
-                </a>
+                </Link>
               </li>
             ))}
 
