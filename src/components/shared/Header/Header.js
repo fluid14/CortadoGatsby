@@ -49,6 +49,12 @@ const HeaderComponent = ({
     setBurgerState((prev) => !prev);
   };
 
+  const handleClickOutside = (event) => {
+    if (headerRef.current && !headerRef.current.contains(event.target)) {
+      handleBurgerClick();
+    }
+  };
+
   useEffect(() => {
     if (isBrowser()) {
       const header = headerRef.current;
@@ -66,6 +72,8 @@ const HeaderComponent = ({
         },
         false
       );
+
+      document.addEventListener('click', handleClickOutside, true);
     }
   }, []);
 
@@ -91,6 +99,7 @@ const HeaderComponent = ({
             to={button.url}
             size={button.size}
             secondary={button.secondary}
+            onClick={() => setBurgerState(false)}
           >
             {button.text}
           </Button>
@@ -228,6 +237,7 @@ const HeaderComponent = ({
           to={button.url}
           size={button.size}
           secondary={button.secondary}
+          onClick={handleBurgerClick}
         >
           {button.text}
         </Button>
