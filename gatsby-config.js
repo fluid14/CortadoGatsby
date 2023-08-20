@@ -88,5 +88,6 @@ module.exports = {
         duration: 100,
       },
     },
+    'gatsby-plugin-sitemap',
   ],
 };
