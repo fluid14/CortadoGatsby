@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import * as styles from './Header.module.scss';
 import Button from '../Button/Button';
-import { StaticImage } from 'gatsby-plugin-image';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import cs from 'classnames';
 import { isBrowser } from '../../../utils/isBrowser';
@@ -105,11 +104,7 @@ const HeaderComponent = ({
           </Button>
 
           <div className={styles.loginWrap}>
-            <StaticImage
-              className={styles.loginImage}
-              src="../../../images/icons/person.svg"
-              alt="user"
-            />
+            <img className={styles.loginImage} src="../../../images/icons/person.svg" alt="user" />
             {loginState ? (
               <>
                 <Button
