@@ -39,6 +39,17 @@ exports.createPages = async ({ graphql, actions }) => {
             path
             Title
           }
+          seo {
+            description
+            keywords
+            preventIndexing
+            title
+            shareImage {
+              localFile {
+                url
+              }
+            }
+          }
           main {
             ... on STRAPI__COMPONENT_SECTIONS_HEADER_SLIDER {
               id
@@ -231,6 +242,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
       allStrapiProduct {
         nodes {
+          seo {
+            description
+            keywords
+            preventIndexing
+            title
+            shareImage {
+              localFile {
+                url
+              }
+            }
+          }
           name
           subName
           description
@@ -282,12 +304,13 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  query.data.allStrapiPage.nodes.forEach(({ pageInfo: { path: pagePath }, main: data }) => {
+  query.data.allStrapiPage.nodes.forEach(({ pageInfo: { path: pagePath }, main: data, seo }) => {
     createPage({
       path: pagePath,
       component: path.resolve(`./src/layout/Default.js`),
       context: {
         data,
+        seo,
       },
     });
   });

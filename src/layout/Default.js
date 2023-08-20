@@ -9,6 +9,7 @@ import TextWithImage from '../components/sections/TextWithImage/TextWithImage';
 import Partners from '../components/sections/Partners/Partners';
 import Faq from '../components/sections/Faq/Faq';
 import Wyswig from '../components/shared/Wyswig/Wyswig';
+import Seo from '../components/seo';
 
 const Default = ({ pageContext: { data } }) => {
   return (
@@ -56,3 +57,5 @@ const Default = ({ pageContext: { data } }) => {
 };
 
 export default Default;
+
+export const Head = ({ pageContext: { seo } }) => <Seo {...seo} />;

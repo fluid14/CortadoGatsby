@@ -3,6 +3,7 @@ import * as styles from './Product.module.scss';
 import ProductDescription from '../../components/sections/ProductDescription/ProductDescription';
 import HowItWorkSteps from '../../components/sections/HowItWork/HowItWorkSteps/HowItWorkSteps';
 import Products from '../../components/sections/Products/Products';
+import Seo from '../../components/seo';
 
 const Product = ({
   pageContext: {
@@ -39,3 +40,9 @@ const Product = ({
 };
 
 export default Product;
+
+export const Head = ({
+  pageContext: {
+    data: { seo },
+  },
+}) => <Seo {...seo} />;

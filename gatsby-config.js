@@ -72,6 +72,12 @@ module.exports = {
               populate: 'deep',
             },
           },
+          {
+            singularName: 'global',
+            queryParams: {
+              populate: 'deep',
+            },
+          },
         ],
       },
     },
