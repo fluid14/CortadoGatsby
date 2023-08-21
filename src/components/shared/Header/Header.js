@@ -8,6 +8,7 @@ import routes from '../../../routes';
 import { AuthContext } from '../../../context/AuthContext';
 import { AnchorLink } from 'gatsby-plugin-anchor-links';
 import Logo from '../Logo/Logo';
+import personImage from '../../../images/icons/person.svg';
 
 const Header = () => {
   return (
@@ -104,7 +105,7 @@ const HeaderComponent = ({
           </Button>
 
           <div className={styles.loginWrap}>
-            <img className={styles.loginImage} src="../../../images/icons/person.svg" alt="user" />
+            <img className={styles.loginImage} src={personImage} alt="user" />
             {loginState ? (
               <>
                 <Button
