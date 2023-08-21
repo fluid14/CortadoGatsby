@@ -80,6 +80,8 @@
     justify-content: flex-end;
 
     .loginWrap {
+      display: flex;
+      align-items: center;
       margin-left: 40px;
 
       .loginImage {
