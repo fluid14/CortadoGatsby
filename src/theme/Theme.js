@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/shared/Header/Header';
 import { ToastContainer } from 'react-toastify';
 import Footer from '../components/shared/Footer/Footer';
 
@@ -13,7 +12,7 @@ const Theme = ({ children }) => {
     <>
       {isClient && (
         <>
-          <Header />
+          {/*<Header />*/}
           <main>{children}</main>
           <Footer />
           <ToastContainer
