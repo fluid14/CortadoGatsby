@@ -4,9 +4,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import * as styles from './HeaderSlider.module.scss';
-import Button from '../../Button/Button';
 import cs from 'classnames';
 import Image from '../../Image/Image';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 const HeaderSlider = ({ data: { Slide } }) => {
   return (
@@ -38,14 +38,14 @@ const HeaderSlider = ({ data: { Slide } }) => {
                 <h2 className={styles.title}>{title}</h2>
                 <p className={styles.text}>{text}</p>
                 {button && (
-                  <Button
+                  <AnchorLink
                     to={button.url}
                     size={button.size}
                     secondary={button.secondary}
                     type="link"
                   >
                     {button.text}
-                  </Button>
+                  </AnchorLink>
                 )}
               </div>
               <div className={styles.imageWrap}>
