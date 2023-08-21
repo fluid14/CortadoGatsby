@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import * as styles from './Header.module.scss';
 import Button from '../Button/Button';
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import cs from 'classnames';
 import { isBrowser } from '../../../utils/isBrowser';
 import routes from '../../../routes';
@@ -10,11 +10,7 @@ import { AnchorLink } from 'gatsby-plugin-anchor-links';
 import Logo from '../Logo/Logo';
 import personImage from '../../../images/icons/person.svg';
 
-const HeaderComponent = ({
-  data: {
-    strapiHeader: { logoText, text, mail, button, navigation },
-  },
-}) => {
+const Header = () => {
   const [burgerState, setBurgerState] = useState(false);
   const headerRef = useRef(null);
   const { logoutUser, loginState } = useContext(AuthContext);
@@ -55,11 +51,11 @@ const HeaderComponent = ({
     <div className={styles.headerWrap} ref={headerRef}>
       <header className={styles.header}>
         <div className={styles.logoWrap}>
-          <Logo>{logoText}</Logo>
+          <Logo>Cortado</Logo>
           <p className={styles.contact}>
-            {text}
-            <a className={styles.contactLink} href={`mailto: ${mail}`}>
-              {mail}
+            Zapytaj o produkt
+            <a className={styles.contactLink} href={`mailto: info@cortado.pl`}>
+              info@cortado.pl
             </a>
           </p>
         </div>
@@ -68,12 +64,11 @@ const HeaderComponent = ({
           <Button
             className={styles.subscription}
             type="link"
-            to={button.url}
-            size={button.size}
-            secondary={button.secondary}
+            to={routes.subscription}
+            size="small"
             onClick={() => setBurgerState(false)}
           >
-            {button.text}
+            Chcę subskrybować
           </Button>
 
           <div className={styles.loginWrap}>
@@ -134,14 +129,39 @@ const HeaderComponent = ({
 
       <nav className={cs(styles.nav, { [styles.active]: burgerState })}>
         <ul className={styles.navList}>
-          {navigation.length &&
-            navigation.map(({ id, title, url }) => (
-              <li key={id} onClick={handleBurgerClick}>
-                <AnchorLink className={styles.navLink} activeClassName={styles.active} to={url}>
-                  {title}
-                </AnchorLink>
-              </li>
-            ))}
+          {/*{navigation.length &&*/}
+          {/*  navigation.map(({ id, title, url }) => (*/}
+          {/*    <li key={id} onClick={handleBurgerClick}>*/}
+          {/*      <AnchorLink className={styles.navLink} activeClassName={styles.active} to={url}>*/}
+          {/*        {title}*/}
+          {/*      </AnchorLink>*/}
+          {/*    </li>*/}
+          {/*  ))}*/}
+
+          <li onClick={handleBurgerClick}>
+            <AnchorLink className={styles.navLink} activeClassName={styles.active} to="/">
+              Start
+            </AnchorLink>
+          </li>
+          <li onClick={handleBurgerClick}>
+            <AnchorLink
+              className={styles.navLink}
+              activeClassName={styles.active}
+              to="/#jaktodziala"
+            >
+              Jak to działa?
+            </AnchorLink>
+          </li>
+          <li onClick={handleBurgerClick}>
+            <AnchorLink className={styles.navLink} activeClassName={styles.active} to="/#naszeKawy">
+              Nasze kawy
+            </AnchorLink>
+          </li>
+          <li onClick={handleBurgerClick}>
+            <AnchorLink className={styles.navLink} activeClassName={styles.active} to="/#kontakt">
+              Kontakt
+            </AnchorLink>
+          </li>
 
           {loginState ? (
             <>
@@ -195,49 +215,48 @@ const HeaderComponent = ({
           )}
         </ul>
         <Button
-          className={cs(styles.subscription, styles.mobile)}
+          className={styles.subscription}
           type="link"
-          to={button.url}
-          size={button.size}
-          secondary={button.secondary}
-          onClick={handleBurgerClick}
+          to={routes.subscription}
+          size="small"
+          onClick={() => setBurgerState(false)}
         >
-          {button.text}
+          Chcę subskrybować
         </Button>
       </nav>
     </div>
   );
 };
 
-const Header = () => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query HeaderQuery {
-          strapiHeader {
-            button {
-              secondary
-              size
-              text
-              url
-            }
-            logoText
-            mail
-            text
-            navigation {
-              id
-              title
-              url
-            }
-          }
-        }
-      `}
-      render={(data) => {
-        console.log(data);
-        return <>{data && <HeaderComponent data={data} />}</>;
-      }}
-    />
-  );
-};
+// const Header = () => {
+//   return (
+//     <StaticQuery
+//       query={graphql`
+//         query HeaderQuery {
+//           strapiHeader {
+//             button {
+//               secondary
+//               size
+//               text
+//               url
+//             }
+//             logoText
+//             mail
+//             text
+//             navigation {
+//               id
+//               title
+//               url
+//             }
+//           }
+//         }
+//       `}
+//       render={(data) => {
+//         console.log(data);
+//         return <>{data && <HeaderComponent data={data} />}</>;
+//       }}
+//     />
+//   );
+// };
 
 export default Header;
