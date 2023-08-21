@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Footer from '../components/shared/Footer/Footer';
+import Header from '../components/shared/Header/Header';
 
 const Theme = ({ children }) => {
   const [isClient, setIsClient] = useState(false);
