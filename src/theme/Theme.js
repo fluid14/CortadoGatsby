@@ -12,7 +12,7 @@ const Theme = ({ children }) => {
     <>
       {isClient && (
         <>
-          {/*<Header />*/}
+          <Header />
           <main>{children}</main>
           <Footer />
           <ToastContainer
