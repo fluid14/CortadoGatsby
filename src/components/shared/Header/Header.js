@@ -64,7 +64,7 @@ const Header = () => {
           <Button
             className={styles.subscription}
             type="link"
-            to={routes.subscription}
+            to={routes.order}
             size="small"
             onClick={() => setBurgerState(false)}
           >
@@ -215,11 +215,11 @@ const Header = () => {
           )}
         </ul>
         <Button
-          className={styles.subscription}
+          className={cs(styles.subscription, styles.mobile)}
           type="link"
-          to={routes.subscription}
+          to={routes.order}
           size="small"
-          onClick={() => setBurgerState(false)}
+          onClick={handleBurgerClick}
         >
           Chcę subskrybować
         </Button>
