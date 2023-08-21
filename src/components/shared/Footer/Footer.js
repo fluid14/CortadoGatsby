@@ -44,7 +44,7 @@ const FooterComponent = ({ data: { strapiFooter } }) => {
     logoText,
     phone,
     postalCode,
-    sectionInfo: { sectionId },
+    sectionInfo,
     navigation,
   } = strapiFooter;
   return (
@@ -62,7 +62,7 @@ const FooterComponent = ({ data: { strapiFooter } }) => {
           ))}
         </ul>
 
-        <div className={styles.contact} id={sectionId}>
+        <div className={styles.contact} id={sectionInfo?.sectionId}>
           <p className={styles.contactCompany}>{addressTitle}</p>
           <p className={styles.contactText}>{address}</p>
           <p className={styles.contactText}>

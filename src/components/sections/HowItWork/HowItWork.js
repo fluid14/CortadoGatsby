@@ -6,7 +6,7 @@ import HowItWorkSteps from './HowItWorkSteps/HowItWorkSteps';
 const HowItWork = ({ data }) => {
   const {
     title,
-    sectionInfo: { sectionId },
+    sectionInfo,
     descriptionTitle,
     description: {
       data: { description },
@@ -18,7 +18,7 @@ const HowItWork = ({ data }) => {
   } = data;
 
   return (
-    <div className={cs('section fullWidth', styles.howItWorkWrap)} id={sectionId}>
+    <div className={cs('section fullWidth', styles.howItWorkWrap)} id={sectionInfo?.sectionId}>
       <h1 className={styles.title}>{title}</h1>
       <div className={styles.descriptionWrap}>
         <p className={styles.subTitle}>{descriptionTitle}</p>
