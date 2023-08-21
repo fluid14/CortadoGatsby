@@ -11,12 +11,10 @@ import Logo from '../Logo/Logo';
 import personImage from '../../../images/icons/person.svg';
 
 const HeaderComponent = ({
-  data,
   data: {
     strapiHeader: { logoText, text, mail, button, navigation },
   },
 }) => {
-  console.log(data);
   const [burgerState, setBurgerState] = useState(false);
   const headerRef = useRef(null);
   const { logoutUser, loginState } = useContext(AuthContext);
@@ -234,7 +232,10 @@ const Header = () => {
           }
         }
       `}
-      render={(data) => <>{data && <HeaderComponent data={data} />}</>}
+      render={(data) => {
+        console.log(data);
+        return <>{data && <HeaderComponent data={data} />}</>;
+      }}
     />
   );
 };
