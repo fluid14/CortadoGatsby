@@ -22,8 +22,8 @@
   "account": "/app/konto",
   "accountOrders": "/app/konto",
   "accountSettings": "/app/konto/ustawienia",
-  "order": "app/zamowienie",
-  "orderSuccess": "app/zamowienie/podsumowanie",
+  "order": "/app/zamowienie",
+  "orderSuccess": "/app/zamowienie/podsumowanie",
   "forgotPassword": "/app/zapomnialem-hasla",
   "resetPassword": "/app/reset-hasla"
 }

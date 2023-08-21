@@ -153,7 +153,7 @@ const Header = () => {
             </AnchorLink>
           </li>
           <li onClick={handleBurgerClick}>
-            <AnchorLink className={styles.navLink} activeClassName={styles.active} to="/#naszeKawy">
+            <AnchorLink className={styles.navLink} activeClassName={styles.active} to="/#naszekawy">
               Nasze kawy
             </AnchorLink>
           </li>
