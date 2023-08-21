@@ -3,40 +3,40 @@ import * as styles from './Products.module.scss';
 import cs from 'classnames';
 import Button from '../../shared/Button/Button';
 import Product from './Product/Product';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 
-// const Products = ({ data }) => {
-//   return (
-//     <StaticQuery
-//       query={graphql`
-//         query ProductsQuery {
-//           allStrapiProduct {
-//             nodes {
-//               name
-//               description
-//               id
-//               numberOfGrain
-//               bestseller
-//               image {
-//                 alternativeText
-//                 localFile {
-//                   childImageSharp {
-//                     gatsbyImageData
-//                   }
-//                   url
-//                 }
-//               }
-//               imageBackgroundColor
-//             }
-//           }
-//         }
-//       `}
-//       render={(products) => <ProductsComponent data={data} products={products} />}
-//     />
-//   );
-// };
+const Products = ({ data }) => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query ProductsQuery {
+          allStrapiProduct {
+            nodes {
+              name
+              description
+              id
+              numberOfGrain
+              bestseller
+              image {
+                alternativeText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                  url
+                }
+              }
+              imageBackgroundColor
+            }
+          }
+        }
+      `}
+      render={(products) => <ProductsComponent data={data} products={products} />}
+    />
+  );
+};
 
-const Products = ({
+const ProductsComponent = ({
   data: {
     title,
     text,
@@ -44,34 +44,10 @@ const Products = ({
     sectionInfo: { sectionId },
   },
   without = '',
-}) => {
-  const data = useStaticQuery(graphql`
-    query ProductsQuery {
-      allStrapiProduct {
-        nodes {
-          name
-          description
-          id
-          numberOfGrain
-          bestseller
-          image {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-              url
-            }
-          }
-          imageBackgroundColor
-        }
-      }
-    }
-  `);
-
-  const {
+  products: {
     allStrapiProduct: { nodes },
-  } = data;
+  },
+}) => {
   return (
     <div
       id={sectionId}
