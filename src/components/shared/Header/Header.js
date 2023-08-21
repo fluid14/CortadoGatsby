@@ -10,34 +10,6 @@ import { AnchorLink } from 'gatsby-plugin-anchor-links';
 import Logo from '../Logo/Logo';
 import personImage from '../../../images/icons/person.svg';
 
-const Header = () => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query HeaderQuery {
-          strapiHeader {
-            button {
-              secondary
-              size
-              text
-              url
-            }
-            logoText
-            mail
-            text
-            navigation {
-              id
-              title
-              url
-            }
-          }
-        }
-      `}
-      render={(data) => <HeaderComponent data={data} />}
-    />
-  );
-};
-
 const HeaderComponent = ({
   data: {
     strapiHeader: { logoText, text, mail, button, navigation },
@@ -234,6 +206,34 @@ const HeaderComponent = ({
         </Button>
       </nav>
     </div>
+  );
+};
+
+const Header = () => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query HeaderQuery {
+          strapiHeader {
+            button {
+              secondary
+              size
+              text
+              url
+            }
+            logoText
+            mail
+            text
+            navigation {
+              id
+              title
+              url
+            }
+          }
+        }
+      `}
+      render={(data) => <>{data && <HeaderComponent data={data} />}</>}
+    />
   );
 };
 
