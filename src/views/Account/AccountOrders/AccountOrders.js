@@ -8,6 +8,7 @@ import Modal from '../../../components/shared/Modals/Modal';
 import useModal from '../../../hooks/useModal';
 import ConfirmModal from '../../../components/shared/Modals/Confirm/Confirm';
 import { toast } from 'react-toastify';
+import routes from '../../../routes';
 import cs from 'classnames';
 
 const AccountOrders = () => {
@@ -52,7 +53,11 @@ const AccountOrders = () => {
       <AccountContentTitle>Zamówienia</AccountContentTitle>
 
       <ul className={styles.orderList}>
-        {orders.length === 0 && <p>Nie masz jeszcze żadnych zamówień</p>}
+        {orders.length === 0 && (
+          <Button type="link" to={routes.order} className={styles.orderButton} size="medium">
+            Złóż pierwsze zamówienie
+          </Button>
+        )}
         {orders.length > 0 &&
           orders.map(({ attributes: order, id }) => (
             <li

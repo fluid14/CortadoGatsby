@@ -2,6 +2,13 @@
 
 .accountOrdersWrap {
   .orderList {
+
+    .orderButton {
+      margin: {
+        bottom: 30px;
+      }
+    }
+
     .orderItem {
       display: flex;
       flex-direction: column;
