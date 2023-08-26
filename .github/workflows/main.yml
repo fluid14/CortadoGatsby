@@ -33,7 +33,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_USER: ${{ secrets.SSH_USERNAME }}
           REMOTE_PORT: 222
-          ARGS: '--delete --exclude=cms'
+          ARGS: '--delete --exclude=app_be --exclude=cortadoAdmin'
           SOURCE: 'public/'
           TARGET: 'domains/fzfgxcybtz.cfolks.pl/public_html/page'
           SCRIPT_BEFORE: ls
