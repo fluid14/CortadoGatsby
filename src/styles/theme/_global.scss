@@ -5,17 +5,36 @@ html {
 
 body {
   margin: 0 auto;
+  min-height: 100vh;
+}
+
+#___gatsby {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
   padding-top: 170px;
+
+  #___gatsby {
+    display: none;
+    min-height: unset;
+    padding: 0;
+  }
+
+  main,
+  footer {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 992px) {
-  body {
+  #___gatsby {
     padding-top: 91px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  body {
+  #___gatsby {
     padding-top: 70px;
   }
 }
