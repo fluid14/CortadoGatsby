@@ -27,7 +27,7 @@ const OrderCoffeeCalculator = () => {
 
   const toggleCalculatorState = () => setIsCalculatorAccordion((prev) => !prev);
 
-  const handleChangeResult = () => {
+  const handleChangeResult = (e) => {
     const { employeeAmount, coffeeAmount } = getValues();
 
     if (employeeAmount > 0 && coffeeAmount > 0) {
@@ -37,7 +37,7 @@ const OrderCoffeeCalculator = () => {
       setResult(() => 0);
     }
 
-    setTimeout(() => setFocus('employeeAmount'), 10);
+    if (e.target.name === 'employeeAmount') setTimeout(() => setFocus('employeeAmount'), 10);
   };
 
   return (
@@ -54,7 +54,7 @@ const OrderCoffeeCalculator = () => {
         <div className={styles.calculatorContent}>
           <div className={styles.calculator}>
             <Input
-              onChange={handleChangeResult}
+              onChange={(e) => handleChangeResult(e)}
               ref={null}
               label="Ilość pracowników"
               name="employeeAmount"

@@ -8,7 +8,7 @@ const Input = ({
   name,
   error,
   register = () => {},
-  onChange = () => {},
+  onChange = (e) => {},
   ...rest
 }) => {
   return (
