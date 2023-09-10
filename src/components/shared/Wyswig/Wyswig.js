@@ -9,7 +9,6 @@ const Wyswig = ({ className, data }) => {
     },
   } = data;
 
-  console.log(wyswig);
   return (
     <div
       className={cs('section', className, styles.wyswig)}

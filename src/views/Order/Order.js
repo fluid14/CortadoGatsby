@@ -25,6 +25,7 @@ import { toast } from 'react-toastify';
 import OrderShippingMethods from '../../components/Order/OrderShippingMethods/OrderShippingMethods';
 import OrderProductList from '../../components/Order/OrderProductList/OrderProductList';
 import { PreloaderContext } from '../../context/PreloaderContext';
+import OrderCoffeeCalculator from '../../components/Order/OrderCoffeeCalculator/OrderCoffeeCalculator';
 
 registerLocale('pl', pl);
 
@@ -174,7 +175,7 @@ const Order = () => {
                   </div>
                   <h2 className={styles.title}>Wybierz kawę i jej ilość</h2>
                 </div>
-                <p className={styles.description}>Minimalna ilość to jedno opakowanie = 1 kg</p>
+                <OrderCoffeeCalculator />
 
                 <div className={cs(styles.form, styles.amountPicker)}>
                   <OrderProductList register={register} setValue={handleChangeProduct} />

@@ -252,7 +252,6 @@ const Header = () => {
 //         }
 //       `}
 //       render={(data) => {
-//         console.log(data);
 //         return <>{data && <HeaderComponent data={data} />}</>;
 //       }}
 //     />

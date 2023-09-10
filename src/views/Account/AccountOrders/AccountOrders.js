@@ -36,7 +36,6 @@ const AccountOrders = () => {
 
   const handleCancelUserOrder = (id) => {
     setOrderId(() => id);
-    console.log(orderId);
     toggle();
   };
 

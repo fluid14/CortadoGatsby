@@ -35,7 +35,6 @@ const Footer = () => {
 };
 
 const FooterComponent = ({ data: { strapiFooter } }) => {
-  console.log(strapiFooter);
   const {
     address,
     addressTitle,

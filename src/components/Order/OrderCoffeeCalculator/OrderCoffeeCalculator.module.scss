@@ -1,0 +1,109 @@
+@import 'src/styles/config';
+
+.orderCoffeeCalculator {
+  .calculatorButton {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 148%;
+    margin-bottom: 40px;
+  }
+
+  :global {
+    .accordion-item {
+      background-color: transparent;
+      border: none;
+
+      .accordion-header {
+        display: none;
+      }
+
+      .accordion-body {
+        padding: 0;
+      }
+    }
+  }
+
+  .calculatorContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .calculator {
+      min-width: 250px;
+
+      .employeeAmount {
+        max-width: 200px;
+      }
+
+      .coffeeAmountRadioWrap {
+        display: flex;
+        flex-direction: column;
+
+        .radioDescription {
+          font-weight: 400;
+          margin-bottom: 5px;
+        }
+
+        .coffeeRadio {
+          font-weight: 300;
+          margin-bottom: 3px;
+        }
+      }
+    }
+
+    .calculatorResult {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+
+      .resultDescription {
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .result {
+        width: 100%;
+        text-align: center;
+        font-size: 48px;
+        color: $primary;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .orderCoffeeCalculator {
+    .calculatorContent {
+      flex-direction: column;
+      max-width: 100%;
+
+      .calculator {
+        width: 100%;
+        max-width: 100%;
+
+        .employeeAmount {
+          max-width: 100%;
+        }
+
+        .coffeeAmountRadioWrap {
+          margin-bottom: 20px;
+        }
+      }
+
+      .calculatorResult {
+        width: 100%;
+
+        .result {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}

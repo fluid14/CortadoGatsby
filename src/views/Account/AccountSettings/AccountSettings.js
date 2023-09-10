@@ -58,7 +58,7 @@ const AccountSettings = () => {
   };
 
   const onError = (errors) => {
-    console.log(errors);
+    console.error(errors);
   };
 
   return (
