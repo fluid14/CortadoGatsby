@@ -1,0 +1,30 @@
+@import 'src/styles/config';
+
+.summaryWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .title,
+  .subtitle {
+    text-align: center;
+  }
+
+  .subtitle {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .summaryWrap {
+    .title{
+      font-size: 30px;
+    }
+  }
+}

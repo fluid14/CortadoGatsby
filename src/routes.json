@@ -24,6 +24,7 @@
   "accountSettings": "/app/konto/ustawienia",
   "order": "/app/zamowienie",
   "orderSuccess": "/app/zamowienie/podsumowanie",
+  "orderSuccessProforma": "/app/zamowienie/podsumowanie/proforma",
   "forgotPassword": "/app/zapomnialem-hasla",
   "resetPassword": "/app/reset-hasla"
 }

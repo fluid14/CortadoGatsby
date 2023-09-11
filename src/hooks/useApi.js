@@ -17,7 +17,7 @@ const useApi = () => {
       };
 
       if (body.status !== 'proforma') await redirectToCheckout();
-      if (body.status === 'proforma') await navigate(routes.orderSuccess);
+      if (body.status === 'proforma') await navigate(routes.orderSuccessProforma);
     });
   };
 

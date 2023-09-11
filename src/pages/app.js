@@ -11,6 +11,7 @@ import AccountSettings from '../views/Account/AccountSettings/AccountSettings';
 import Order from '../views/Order/Order';
 import Summary from '../views/Summary/Summary';
 import routes from '../routes';
+import SummaryProforma from '../views/SummaryProforma/SummaryProforma';
 
 const App = () => {
   const [hasMounted, setHasMounted] = React.useState(false);
@@ -28,6 +29,7 @@ const App = () => {
           </PrivateRoute>
           <PrivateRoute path={routes.order} component={Order} />
           <PrivateRoute path={routes.orderSuccess} component={Summary} />
+          <PrivateRoute path={routes.orderSuccessProforma} component={SummaryProforma} />
           <Login path={routes.login} />
           <Register path={routes.register} />
           <ForgotPassword path={routes.forgotPassword} />
