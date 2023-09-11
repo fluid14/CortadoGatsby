@@ -72,6 +72,7 @@ const Order = () => {
       addressPhone = '',
       deliveryMethod: delivery,
       regulations,
+      proforma,
     } = data;
 
     const deliveryMethod = JSON.parse(delivery);
@@ -135,9 +136,11 @@ const Order = () => {
           ${addressCity} ${addressPostalCode}
           ${addressPhone}`;
 
-    if (line_items.length > 0 && regulations) {
+    if (line_items.length > 0 && regulations && !proforma) {
       showPreloader();
       await createPaymentSession(checkoutOptions);
+    } else if (line_items.length > 0 && regulations && proforma) {
+      console.log('proforma');
     } else if (line_items.length === 0) {
       toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
     } else if (!regulations) {
@@ -374,6 +377,15 @@ const Order = () => {
                         error={errors.companyPhone}
                         register={register}
                       />
+
+                      <Checkbox
+                        ref={null}
+                        name="proforma"
+                        error={errors.proforma}
+                        register={register}
+                      >
+                        Faktura proforma
+                      </Checkbox>
                     </div>
                   </div>
                 )}
