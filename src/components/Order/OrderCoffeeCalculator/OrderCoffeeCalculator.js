@@ -43,7 +43,7 @@ const OrderCoffeeCalculator = () => {
   return (
     <div className={styles.orderCoffeeCalculator}>
       <p className={cs(styles.description, 'mb-0')}>Nie wiesz ile kawy potrzebujecie?</p>
-      <p className={styles.description}>
+      <p className={cs(styles.description, 'mb-0')}>
         Skorzystaj z naszego
         <Button className={styles.calculatorButton} onClick={toggleCalculatorState} text>
           &nbsp;kalkulatora
