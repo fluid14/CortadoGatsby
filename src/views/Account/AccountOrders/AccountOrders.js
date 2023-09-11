@@ -78,6 +78,8 @@ const AccountOrders = () => {
                 <span className={styles.title}>Status:</span>
                 {order.status === 'in progress' && 'W trakcie realizacji'}
                 {order.status === 'complete' && 'W trakcie realizacji'}
+                {order.status === 'proforma' && 'W trakcie realizacji'}
+                {order.status === 'dispatched' && 'W trakcie realizacji'}
                 {order.status === 'failed' && 'Nie powiodło się'}
                 {order.status === 'canceled' && 'Anulowane'}
               </p>
@@ -97,7 +99,7 @@ const AccountOrders = () => {
                 <span className={styles.title}>Cena:</span>
                 {order.price}zł
               </p>
-              {order.status !== 'canceled' && order.status !== 'failed' && (
+              {order.status === 'dispatched' && (
                 <Button
                   className={styles.cancelButton}
                   size="small"
@@ -107,6 +109,25 @@ const AccountOrders = () => {
                 </Button>
               )}
               {order.status === 'canceled' && <p className={styles.cancelButton}>Anulowane</p>}
+              {order.status === 'failed' && (
+                <p className={styles.cancelButton}>Zamówienie nie powiodło się</p>
+              )}
+              {order.status === 'in progress' && (
+                <p className={styles.cancelButton}>
+                  Możliwość anulowania pojawi się kiedy pierwsze zamówienie zostanie wysłane
+                </p>
+              )}
+              {order.status === 'complete' && (
+                <p className={styles.cancelButton}>
+                  Możliwość anulowania pojawi się kiedy pierwsze zamówienie zostanie wysłane
+                </p>
+              )}
+
+              {order.status === 'proforma' && (
+                <p className={styles.cancelButton}>
+                  Możliwość anulowania pojawi się kiedy pierwsze zamówienie zostanie wysłane
+                </p>
+              )}
             </li>
           ))}
       </ul>
