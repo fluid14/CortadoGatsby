@@ -119,6 +119,7 @@ const Order = () => {
         ...deliveryMethod,
         price: deliveryMethod.price / 100,
       },
+      status: 'in progress',
     };
 
     if (isVat)
@@ -140,7 +141,8 @@ const Order = () => {
       showPreloader();
       await createPaymentSession(checkoutOptions);
     } else if (line_items.length > 0 && regulations && proforma) {
-      console.log('proforma');
+      checkoutOptions.status = 'proforma';
+      await createPaymentSession(checkoutOptions);
     } else if (line_items.length === 0) {
       toast.error('Wybierz przynajmniej jedno opakowanie kawy!');
     } else if (!regulations) {

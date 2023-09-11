@@ -1,6 +1,7 @@
 import { useAxios } from './useAxios';
 import routes from '../routes.json';
 import { useStripe } from './useStripe';
+import { navigate } from 'gatsby';
 
 const useApi = () => {
   const { apiService } = useAxios();
@@ -15,7 +16,8 @@ const useApi = () => {
         await stripePromise.redirectToCheckout({ sessionId: result.id });
       };
 
-      await redirectToCheckout();
+      if (body.status !== 'proforma') await redirectToCheckout();
+      if (body.status === 'proforma') await navigate(routes.orderSuccess);
     });
   };
 
