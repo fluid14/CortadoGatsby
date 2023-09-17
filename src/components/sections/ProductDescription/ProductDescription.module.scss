@@ -11,7 +11,7 @@
     width: 55%;
     padding: {
       top: 58px;
-      bottom: 58px;
+      bottom: 10px;
       right: 80px;
     }
 
@@ -37,6 +37,11 @@
       color: $black;
       margin-bottom: 19px;
       max-width: 533px;
+
+      &.sign {
+        margin-top: 30px;
+        font-size: 14px;
+      }
     }
   }
 
@@ -72,12 +77,16 @@
       width: 100%;
       padding: {
         top: 40px;
-        bottom: 40px;
+        bottom: 10px;
         right: 0;
       }
 
       .text {
         max-width: unset;
+
+        &.sign {
+          margin-top: 20px;
+        }
       }
     }
 
@@ -97,7 +106,7 @@
     .content {
       padding: {
         top: 25px;
-        bottom: 25px;
+        bottom: 10px;
       }
 
       .title {

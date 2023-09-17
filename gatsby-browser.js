@@ -12,7 +12,7 @@ import Preloader from './src/components/shared/Preloader/Preloader';
 import { AuthProvider } from './src/context/AuthContext';
 
 export function shouldUpdateScroll() {
-  setTimeout(() => window.scrollTo(0, 0), 0);
+  setTimeout(() => window.scrollTo(0, 0), 10);
   return false;
 }
 

@@ -273,32 +273,6 @@ exports.createPages = async ({ graphql, actions }) => {
             text
             title
           }
-          productSteps {
-            button {
-              id
-              secondary
-              size
-              text
-              url
-            }
-            subtext
-            title
-            steps {
-              backgroundColor
-              description
-              id
-              image {
-                alternativeText
-                localFile {
-                  url
-                  childImageSharp {
-                    gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
-                  }
-                }
-              }
-              title
-            }
-          }
         }
       }
     }

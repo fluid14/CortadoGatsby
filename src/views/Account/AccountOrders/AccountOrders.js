@@ -57,6 +57,12 @@ const AccountOrders = () => {
             Złóż pierwsze zamówienie
           </Button>
         )}
+
+        {orders.length > 0 && (
+          <Button type="link" to={routes.order} className={styles.orderButton} size="medium">
+            Złóż kolejne zamówienie
+          </Button>
+        )}
         {orders.length > 0 &&
           orders.map(({ attributes: order, id }) => (
             <li
@@ -99,7 +105,7 @@ const AccountOrders = () => {
                 <span className={styles.title}>Cena:</span>
                 {order.price}zł
               </p>
-              {order.status === 'dispatched' && (
+              {(order.status === 'dispatched' || order.status === 'proforma') && (
                 <Button
                   className={styles.cancelButton}
                   size="small"
@@ -113,18 +119,12 @@ const AccountOrders = () => {
                 <p className={styles.cancelButton}>Zamówienie nie powiodło się</p>
               )}
               {order.status === 'in progress' && (
-                <p className={styles.cancelButton}>
+                <p className={styles.cancelText}>
                   Możliwość anulowania pojawi się kiedy pierwsze zamówienie zostanie wysłane
                 </p>
               )}
               {order.status === 'complete' && (
-                <p className={styles.cancelButton}>
-                  Możliwość anulowania pojawi się kiedy pierwsze zamówienie zostanie wysłane
-                </p>
-              )}
-
-              {order.status === 'proforma' && (
-                <p className={styles.cancelButton}>
+                <p className={styles.cancelText}>
                   Możliwość anulowania pojawi się kiedy pierwsze zamówienie zostanie wysłane
                 </p>
               )}

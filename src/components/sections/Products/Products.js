@@ -5,7 +5,7 @@ import Button from '../../shared/Button/Button';
 import Product from './Product/Product';
 import { graphql, StaticQuery } from 'gatsby';
 
-const Products = ({ data }) => {
+const Products = ({ data, without }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -31,7 +31,7 @@ const Products = ({ data }) => {
           }
         }
       `}
-      render={(products) => <ProductsComponent data={data} products={products} />}
+      render={(products) => <ProductsComponent data={data} products={products} without={without} />}
     />
   );
 };

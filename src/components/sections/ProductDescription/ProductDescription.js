@@ -16,6 +16,10 @@ const ProductDescription = ({ name, subName, description, descriptionImage }) =>
         <Button size="small" type="link" to={routes.order}>
           Chcę subskrybować
         </Button>
+
+        <p className={cs(styles.text, styles.sign)}>
+          Chcesz bezpłatną próbkę? <br /> Skontaktuj się z nami
+        </p>
       </div>
 
       <div className={styles.imageWrap}>
